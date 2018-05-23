@@ -111,8 +111,8 @@ Still misses documentation. I should remove the paragraph that says it doesn&#39
   <body class="logged-in env-production full-width rgh-monospace-textareas intent-mouse">
   <p id="aditya"></p>
   <p id="tab_c"></p>
-  <button id="sort" onclick="sort()">Sort</button>
-
+  <button id="sort" onclick="sort(0)">Sort with production first</button>
+  <button id="sort" onclick="sort(1)">Sort with test first</button>
   <div class="position-relative js-header-wrapper ">
     <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#start-of-content" tabindex="1" class="p-3 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
     <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
@@ -710,10 +710,10 @@ from
               </span>
           </span>
           <div class="filename d-block text-emphasized css-truncate css-truncate-target">
-            CSVFile.java
+            GitRepositoryTest.java
           </div>
           <span class="description width-fit">
-            ...in/java/org/repodriller/persistence/csv/CSVFile.java
+            ...in/java/org/repodriller/persistence/csv/GitRepositoryTest.java
           </span>
         </div>
       </a>
@@ -1662,7 +1662,7 @@ from
 
               show-inline-notes
            ">
-  <div class="file-header js-file-header rgh-copy-file-path" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-short-path="c4809ca" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709">
+  <div class="file-header js-file-header rgh-copy-file-path" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-short-path="c4809ca" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709">
     <div class="file-actions">
 
         <span class="show-file-notes pt-1">
@@ -1672,7 +1672,7 @@ from
           </label>
         </span>
 
-          <div class="BtnGroup"><button aria-label="Copy file path to clipboard" class="copy-btn btn btn-sm tooltipped tooltipped-s BtnGroup-item" type="button">Copy path</button><a href="https://github.com/mauricioaniche/repodriller/blob/678a2b8d33ebd9ce66621551d2519ac3b45a678b/src/main/java/org/repodriller/persistence/csv/CSVFile.java" class="btn btn-sm tooltipped tooltipped-nw BtnGroup-item" rel="nofollow" aria-label="View the whole file at version 678a2b8 ">View</a></div>
+          <div class="BtnGroup"><button aria-label="Copy file path to clipboard" class="copy-btn btn btn-sm tooltipped tooltipped-s BtnGroup-item" type="button">Copy path</button><a href="https://github.com/mauricioaniche/repodriller/blob/678a2b8d33ebd9ce66621551d2519ac3b45a678b/src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" class="btn btn-sm tooltipped tooltipped-nw BtnGroup-item" rel="nofollow" aria-label="View the whole file at version 678a2b8 ">View</a></div>
 
           <a class="btn-octicon tooltipped tooltipped-n" href="https://desktop.github.com/" aria-label="Open this file in GitHub Desktop" data-ga-click="Repository, open with desktop, type:windows">
               <svg class="octicon octicon-device-desktop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"></path></svg>
@@ -1686,7 +1686,7 @@ from
     <div class="file-info">
         <span class="diffstat tooltipped tooltipped-e" aria-label="2 additions &amp; 0 deletions">2 <span class="block-diff-added"></span><span class="block-diff-added"></span><span class="block-diff-neutral"></span><span class="block-diff-neutral"></span><span class="block-diff-neutral"></span></span>
 
-      <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="link-gray-dark js-copy-btn-target" title="src/main/java/org/repodriller/persistence/csv/CSVFile.java">src/main/java/org/repodriller/persistence/csv/CSVFile.java</a>
+      <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="link-gray-dark js-copy-btn-target" title="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java">src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java</a>
 
 
     </div>
@@ -1704,7 +1704,7 @@ from
 
       <tbody><tr class="js-expandable-line refined-github-diff-signs" data-position="0">
     <td class="blob-num blob-num-expandable" colspan="1">
-      <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="diff-expander js-expand" title="Expand" aria-label="Expand" data-url="/mauricioaniche/repodriller/blob_excerpt/7b87f53686c7c6f5af3d42d3392a41267d6ac792?diff=split&amp;in_wiki_context=&amp;left_hunk_size=6&amp;mode=100644&amp;next_line_num_left=28&amp;next_line_num_right=28&amp;path=src%2Fmain%2Fjava%2Forg%2Frepodriller%2Fpersistence%2Fcsv%2FCSVFile.java&amp;prev_line_num_left=&amp;prev_line_num_right=&amp;right_hunk_size=7" data-left-range="1-27" data-right-range="1-27">
+      <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="diff-expander js-expand" title="Expand" aria-label="Expand" data-url="/mauricioaniche/repodriller/blob_excerpt/7b87f53686c7c6f5af3d42d3392a41267d6ac792?diff=split&amp;in_wiki_context=&amp;left_hunk_size=6&amp;mode=100644&amp;next_line_num_left=28&amp;next_line_num_right=28&amp;path=src%2Fmain%2Fjava%2Forg%2Frepodriller%2Fpersistence%2Fcsv%2FGitRepositoryTest.java&amp;prev_line_num_left=&amp;prev_line_num_right=&amp;right_hunk_size=7" data-left-range="1-27" data-right-range="1-27">
         <svg class="octicon octicon-unfold" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.5 7.5L14 10c0 .55-.45 1-1 1H9v-1h3.5l-2-2h-7l-2 2H5v1H1c-.55 0-1-.45-1-1l2.5-2.5L0 5c0-.55.45-1 1-1h4v1H1.5l2 2h7l2-2H9V4h4c.55 0 1 .45 1 1l-2.5 2.5zM6 6h2V3h2L7 0 4 3h2v3zm2 3H6v3H4l3 3 3-3H8V9z"></path></svg>
       </a>
     </td>
@@ -1716,7 +1716,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L28" data-line-number="28"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="1" data-line="28" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="1" data-line="28" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"> </span>
 
@@ -1725,7 +1725,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R28" data-line-number="28"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="1" data-line="28" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="1" data-line="28" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"> </span>
 
@@ -1738,7 +1738,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L29" data-line-number="29"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="2" data-line="29" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="2" data-line="29" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-k">import</span> <span class="pl-smi">org.repodriller.RepoDrillerException</span>;</span>
 
@@ -1747,7 +1747,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R29" data-line-number="29"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="2" data-line="29" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="2" data-line="29" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-k">import</span> <span class="pl-smi">org.repodriller.RepoDrillerException</span>;</span>
 
@@ -1760,7 +1760,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L30" data-line-number="30"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="3" data-line="30" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="3" data-line="30" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-k">import</span> <span class="pl-smi">org.repodriller.persistence.PersistenceMechanism</span>;</span>
 
@@ -1769,7 +1769,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R30" data-line-number="30"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="3" data-line="30" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="3" data-line="30" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-k">import</span> <span class="pl-smi">org.repodriller.persistence.PersistenceMechanism</span>;</span>
 
@@ -1785,7 +1785,7 @@ from
     <td class="blob-num blob-num-addition js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R31" data-line-number="31"></td>
 
     <td class="code-review blob-code blob-code-addition">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-split-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="4" data-line="31" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-split-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="4" data-line="31" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-k">import</span> <span class="pl-smi">org.repodriller.util.PathUtils</span>;</span>
 
@@ -1798,7 +1798,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L31" data-line-number="31"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="5" data-line="32" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="5" data-line="32" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"> </span>
 
@@ -1807,7 +1807,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R32" data-line-number="32"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="5" data-line="32" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="5" data-line="32" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"> </span>
 
@@ -1820,7 +1820,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L32" data-line-number="32"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="6" data-line="33" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="6" data-line="33" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-c"><span class="pl-c">/**</span></span></span>
 
@@ -1829,7 +1829,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R33" data-line-number="33"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="6" data-line="33" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="6" data-line="33" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-c"><span class="pl-c">/**</span></span></span>
 
@@ -1842,7 +1842,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L33" data-line-number="33"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="7" data-line="34" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="7" data-line="34" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-c"> * A CSVFile lets you write Comma-Separated Value format data to a file</span></span>
 
@@ -1851,7 +1851,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R34" data-line-number="34"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="7" data-line="34" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="7" data-line="34" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-c"> * A CSVFile lets you write Comma-Separated Value format data to a file</span></span>
 
@@ -1861,7 +1861,7 @@ from
 
       <tr class="js-expandable-line refined-github-diff-signs" data-position="8">
     <td class="blob-num blob-num-expandable" colspan="1">
-      <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="diff-expander js-expand" title="Expand" aria-label="Expand" data-url="/mauricioaniche/repodriller/blob_excerpt/7b87f53686c7c6f5af3d42d3392a41267d6ac792?diff=split&amp;in_wiki_context=&amp;left_hunk_size=6&amp;mode=100644&amp;next_line_num_left=169&amp;next_line_num_right=170&amp;path=src%2Fmain%2Fjava%2Forg%2Frepodriller%2Fpersistence%2Fcsv%2FCSVFile.java&amp;prev_line_num_left=33&amp;prev_line_num_right=34&amp;right_hunk_size=7" data-left-range="34-168" data-right-range="35-169">
+      <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="diff-expander js-expand" title="Expand" aria-label="Expand" data-url="/mauricioaniche/repodriller/blob_excerpt/7b87f53686c7c6f5af3d42d3392a41267d6ac792?diff=split&amp;in_wiki_context=&amp;left_hunk_size=6&amp;mode=100644&amp;next_line_num_left=169&amp;next_line_num_right=170&amp;path=src%2Fmain%2Fjava%2Forg%2Frepodriller%2Fpersistence%2Fcsv%2FGitRepositoryTest.java&amp;prev_line_num_left=33&amp;prev_line_num_right=34&amp;right_hunk_size=7" data-left-range="34-168" data-right-range="35-169">
         <svg class="octicon octicon-unfold" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.5 7.5L14 10c0 .55-.45 1-1 1H9v-1h3.5l-2-2h-7l-2 2H5v1H1c-.55 0-1-.45-1-1l2.5-2.5L0 5c0-.55.45-1 1-1h4v1H1.5l2 2h7l2-2H9V4h4c.55 0 1 .45 1 1l-2.5 2.5zM6 6h2V3h2L7 0 4 3h2v3zm2 3H6v3H4l3 3 3-3H8V9z"></path></svg>
       </a>
     </td>
@@ -1873,7 +1873,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L169" data-line-number="169"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="9" data-line="170" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="9" data-line="170" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-c">	 <span class="pl-c">*/</span></span></span>
 
@@ -1882,7 +1882,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R170" data-line-number="170"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="9" data-line="170" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="9" data-line="170" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner"><span class="pl-c">	 <span class="pl-c">*/</span></span></span>
 
@@ -1895,7 +1895,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L170" data-line-number="170"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="10" data-line="171" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="10" data-line="171" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">	<span class="pl-k">private</span> <span class="pl-k">void</span> open(<span class="pl-smi">String</span> fileName, <span class="pl-k">boolean</span> append) {</span>
 
@@ -1904,7 +1904,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R171" data-line-number="171"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="10" data-line="171" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="10" data-line="171" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">	<span class="pl-k">private</span> <span class="pl-k">void</span> open(<span class="pl-smi">String</span> fileName, <span class="pl-k">boolean</span> append) {</span>
 
@@ -1917,7 +1917,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L171" data-line-number="171"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="11" data-line="172" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="11" data-line="172" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">		<span class="pl-k">try</span> {</span>
 
@@ -1926,7 +1926,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R172" data-line-number="172"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="11" data-line="172" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="11" data-line="172" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">		<span class="pl-k">try</span> {</span>
 
@@ -1942,7 +1942,7 @@ from
     <td class="blob-num blob-num-addition js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R173" data-line-number="173"></td>
 
     <td class="code-review blob-code blob-code-addition">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-split-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="12" data-line="173" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-split-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="12" data-line="173" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">			fileName <span class="pl-k">=</span> <span class="pl-smi">PathUtils</span><span class="pl-k">.</span>fullPath(fileName);</span>
 
@@ -1955,7 +1955,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L172" data-line-number="172"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="13" data-line="174" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="13" data-line="174" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">			ps <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PrintStream</span>(<span class="pl-k">new</span> <span class="pl-smi">FileOutputStream</span>(fileName, append));</span>
 
@@ -1964,7 +1964,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R174" data-line-number="174"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="13" data-line="174" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="13" data-line="174" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">			ps <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">PrintStream</span>(<span class="pl-k">new</span> <span class="pl-smi">FileOutputStream</span>(fileName, append));</span>
 
@@ -1977,7 +1977,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L173" data-line-number="173"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="14" data-line="175" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="14" data-line="175" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">			isOpen <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
 
@@ -1986,7 +1986,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R175" data-line-number="175"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="14" data-line="175" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="14" data-line="175" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">			isOpen <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
 
@@ -1999,7 +1999,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709L174" data-line-number="174"></td>
 
     <td class="code-review blob-code blob-code-context ">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="15" data-line="176" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="deletion" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="15" data-line="176" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">		} <span class="pl-k">catch</span> (<span class="pl-smi">Exception</span> e) {</span>
 
@@ -2008,7 +2008,7 @@ from
     <td class="blob-num blob-num-context js-linkable-line-number" id="diff-c4809ca2a9c2801ec0794c7a54f4e709R176" data-line-number="176"></td>
 
     <td class="code-review blob-code blob-code-context">
-        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/CSVFile.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="15" data-line="176" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
+        <button class="btn-link add-line-comment js-add-line-comment js-add-single-line-comment" data-type="addition" data-path="src/main/java/org/repodriller/persistence/csv/GitRepositoryTest.java" data-anchor="diff-c4809ca2a9c2801ec0794c7a54f4e709" data-position="15" data-line="176" data-side="right" type="button" aria-label="Add line comment"><svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg></button>
 
       <span class="blob-code-inner">		} <span class="pl-k">catch</span> (<span class="pl-smi">Exception</span> e) {</span>
 
@@ -2019,7 +2019,7 @@ from
 
   <tr class="js-expandable-line refined-github-diff-signs">
    <td class="blob-num blob-num-expandable" colspan="1">
-     <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="diff-expander js-expand" title="Expand" aria-label="Expand" data-url="/mauricioaniche/repodriller/blob_excerpt/7b87f53686c7c6f5af3d42d3392a41267d6ac792?diff=split&amp;in_wiki_context=&amp;mode=100644&amp;path=src%2Fmain%2Fjava%2Forg%2Frepodriller%2Fpersistence%2Fcsv%2FCSVFile.java&amp;prev_line_num_left=174&amp;prev_line_num_right=176" data-left-range="175-180" data-right-range="177-180">
+     <a href="https://github.com/mauricioaniche/repodriller/pull/125/files?utf8=%E2%9C%93&amp;diff=split#diff-c4809ca2a9c2801ec0794c7a54f4e709" class="diff-expander js-expand" title="Expand" aria-label="Expand" data-url="/mauricioaniche/repodriller/blob_excerpt/7b87f53686c7c6f5af3d42d3392a41267d6ac792?diff=split&amp;in_wiki_context=&amp;mode=100644&amp;path=src%2Fmain%2Fjava%2Forg%2Frepodriller%2Fpersistence%2Fcsv%2FGitRepositoryTest.java&amp;prev_line_num_left=174&amp;prev_line_num_right=176" data-left-range="175-180" data-right-range="177-180">
        <svg class="octicon octicon-unfold" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.5 7.5L14 10c0 .55-.45 1-1 1H9v-1h3.5l-2-2h-7l-2 2H5v1H1c-.55 0-1-.45-1-1l2.5-2.5L0 5c0-.55.45-1 1-1h4v1H1.5l2 2h7l2-2H9V4h4c.55 0 1 .45 1 1l-2.5 2.5zM6 6h2V3h2L7 0 4 3h2v3zm2 3H6v3H4l3 3 3-3H8V9z"></path></svg>
      </a>
    </td>
