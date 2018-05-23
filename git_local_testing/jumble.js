@@ -60,6 +60,7 @@ function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
         testIndex = index2;
         hasTest = true;
         pushDiv(index2,divContainer);
+        testFile.splice(j,1);
         break;
       }
     }
@@ -67,6 +68,12 @@ function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
       pushDiv(index,divContainer);
     }
   }
+//adding the remaining test files
+  for(i=0;i<testFile.length;i++){
+      var remainingIndex = testFile[i];
+      pushDiv(remainingIndex,divContainer);
+  }
+
 }
 
 function pushDiv(index,divContainer){
