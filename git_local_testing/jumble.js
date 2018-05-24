@@ -22,14 +22,14 @@ var aditya = document.getElementById("aditya");
 //aditya.innerHTML = fileName; // Displaying the filenames
 //p2.innerHTML = divContainer[1];
 //toggle part for testing
-  toggle_inFileOrder(aditya);
+  //toggle_inFileOrder(aditya);
 //ends here
 show(parseInt(tab_counter.innerHTML),divContainer);
 
 }
 
 function toggle_inFileOrder(adi){
-  document.body.classList.add("full-width");
+  //document.body.classList.add("full-width");
   //var idFiles = document.getElementById("files");
   //idFiles.style.display ="inline-block";
 }
@@ -94,9 +94,9 @@ function pushDiv(index,divContainer){
 function show(n,divContainer){
   for(i=0;i<n;i++){
       var div = document.getElementById("diff-"+i);
-      div.style.display ="inline-block";
-      div.style.width = "49.5%";
-      div.style.verticalAlign = "top";
+      // div.style.display ="inline-block";
+      // div.style.width = "49.5%";
+      // div.style.verticalAlign = "top";
       div.innerHTML = divContainer[i];
   }
 }
