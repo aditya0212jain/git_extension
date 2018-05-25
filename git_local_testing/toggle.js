@@ -62,7 +62,7 @@ function showTest(btn){
   var p1 = document.getElementById("aditya");
   var p2 = document.getElementById("tab_c");
 
-  p1.innerHTML = testIndex;
+  //p1.innerHTML = testIndex;
 
   var mainIndex;
   for(i=0;i<fileName.length;i++){
@@ -77,7 +77,7 @@ function showTest(btn){
     }
   }
 
-  p2.innerHTML = mainIndex;
+  //p2.innerHTML = mainIndex;
   for(k=0;k<4;k++){
     console.log(divContainer[k]);
   }
@@ -140,3 +140,26 @@ function addButton(index,fileName){
   btn.setAttribute("value",t);
   btnGroup.appendChild(btn);
 }
+
+function placeBtn(){
+  var d1 = document.getElementsByClassName("diffbar")[0];
+  var sortProd = document.createElement("BUTTON");
+  var textnode = document.createTextNode("Sort test first");
+  sortProd.appendChild(textnode);
+  sortProd.classList.add("btn");
+  sortProd.classList.add("btn-sm");
+  sortProd.classList.add("diffbar-item");
+  sortProd.setAttribute("onclick","sort(1)");
+  d1.insertBefore(sortProd, d1.childNodes[5]);
+  var sortProd = document.createElement("BUTTON");
+  var textnode = document.createTextNode("Sort production first");
+  sortProd.appendChild(textnode);
+  sortProd.classList.add("btn");
+  sortProd.classList.add("btn-sm");
+  sortProd.classList.add("diffbar-item");
+  sortProd.setAttribute("onclick","sort(0)");
+  d1.insertBefore(sortProd,d1.childNodes[5]);
+}
+
+
+window.onload = function () {toggleSide();placeBtn()};
