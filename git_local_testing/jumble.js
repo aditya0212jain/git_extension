@@ -17,13 +17,6 @@ getNames(tab_counter,fileName,prodFile,testFile,fileinfo);
 
 sortDiv(prodFile,fileName,pattern,divContainer,testFile);
 
-var aditya = document.getElementById("aditya");
-//var p2 = document.getElementById("tab_c");
-//aditya.innerHTML = fileName; // Displaying the filenames
-//p2.innerHTML = divContainer[1];
-//toggle part for testing
-  //toggle_inFileOrder(aditya);
-//ends here
 show(parseInt(tab_counter.innerHTML),divContainer);
 
 }

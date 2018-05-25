@@ -104,26 +104,6 @@ function showTest(btn){
 
 }
 
-function pushDiv(index,divContainer){
-  var div = document.getElementById("diff-"+index);
-  divContainer.push(div.innerHTML);
-}
-
-function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
-  for(i=0;i<parseInt(tab_counter.innerHTML);i++){
-    var myRegex = /(.*)(<a)(.*)(>)(.*)(<\/a>)(.*)/g;
-    let str = fileinfo[i].innerHTML;
-    let path = myRegex.exec(str);
-    fileName.push(path[5].split('\\').pop().split('/').pop())
-    var testornot = fileName[i].toLowerCase();
-    if(testornot.search("test")===-1){
-      prodFile.push(i);
-    }else{
-      testFile.push(i);
-    }
-    //filePath.push(path[5]);
-  }
-}
 
 function addButton(index,fileName){
   var div0 = document.getElementById("diff-"+index);
