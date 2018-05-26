@@ -193,5 +193,15 @@ function placeBtn(){
   d1.insertBefore(div1,d1.childNodes[3]);
 }
 
+function onloadFunc () {
+  var linkurl = document.URL;
+  var myRegex4 = /(.)*(github)(.)*(files)(.)*(&diff)(.)*/g;
+  console.log(linkurl);
+  console.log(myRegex4);
+  if(myRegex4.test(linkurl)==true){
+    toggleSide();
+    placeBtn();
+  }
+}
 
-window.onload = function () {toggleSide();placeBtn()};
+window.onload = function () {onloadFunc()};
