@@ -18,6 +18,7 @@ function toggleSide(currentFile){
 
 function showTest(btn){
   console.log("in");
+  console.log(btn.id);
   if(btn.parentElement.parentElement.parentElement.parentElement.hasAttribute("style")==true){
     var div = btn.parentElement.parentElement.parentElement.parentElement;
     div.removeAttribute("style");
@@ -99,8 +100,13 @@ function showTest(btn){
     div.innerHTML = divContainer[i];
     }
   }
-  }
 
+  }
+  console.log(btn.id);
+
+  var tu = document.getElementById(btn.id);
+  //tu.addEventListener('click',function() {showTest(this)});
+  addClick();
 }
 
 function addButton(index,fileName){
@@ -114,12 +120,12 @@ function addButton(index,fileName){
   btn.classList.add("btn-sm");
   btn.classList.add("BtnGroup-item");
   //btn.setAttribute("onclick","showTest(this)");
-  btn.addEventListener("click",function() { showTest(this); },true);
   var t = fileName[index];
   btn.setAttribute("value",t);
   var text = "test"+index;
   btn.setAttribute("id",text);
   btnGroup.appendChild(btn);
+  //document.getElementById("test"+index).addEventListener('click',function() { showTest(document.getElementById("test"+index)); },false);
 }
 
 function placeBtn(){
@@ -134,11 +140,11 @@ function placeBtn(){
   btn1.setAttribute("type","submit");
   btn2.setAttribute("class","btn btn-sm");
   //btn1.setAttribute("onclick","sort(0);this.parentElement.parentElement.parentElement.removeAttribute('open');");
-  btn1.addEventListener("click",productionFirst);
+  btn1.addEventListener("click",productionFirst,false);
   btn1.setAttribute("id","productionFirstButton");
   btn2.setAttribute("id","testFirstButton");
   //btn2.setAttribute("onclick","sort(1);this.parentElement.parentElement.parentElement.removeAttribute('open');");
-  btn2.addEventListener("click",testFirst);
+  btn2.addEventListener("click",testFirst,false);
   var div3 = document.createElement("div");
   div3.setAttribute("style","left:-83px");
   div3.setAttribute("class","Popover-message text-left p-3 mx-auto Box box-shadow-large");
@@ -169,7 +175,19 @@ function onloadFunc () {
   if(myRegex4.test(linkurl)==true){
     toggleSide();
     placeBtn();
+    addClick();
   }
+}
+
+function addClick() {
+  var n = document.getElementById("files_tab_counter");
+  for(i=0;i<parseInt(n.innerHTML);i++){
+    var t = document.getElementById("test"+i);
+    if(t!=null){
+      t.addEventListener('click',function() {showTest(this)});
+    }
+  }
+
 }
 
 function productionFirst(){
