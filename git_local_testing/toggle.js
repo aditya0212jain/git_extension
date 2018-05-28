@@ -198,10 +198,10 @@ function onloadFunc () {
   var myRegex4 = /(.)*(github)(.)*(files)(.)*(&diff)(.)*/g;
   console.log(linkurl);
   console.log(myRegex4);
-  if(myRegex4.test(linkurl)==true){
+  //if(myRegex4.test(linkurl)==true){
     toggleSide();
     placeBtn();
-  }
+  //}
 }
 
 window.onload = function () {onloadFunc()};
