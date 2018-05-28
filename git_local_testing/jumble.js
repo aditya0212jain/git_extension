@@ -21,12 +21,6 @@ show(parseInt(tab_counter.innerHTML),divContainer);
 
 }
 
-function toggle_inFileOrder(adi){
-  //document.body.classList.add("full-width");
-  //var idFiles = document.getElementById("files");
-  //idFiles.style.display ="inline-block";
-}
-
 function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
   for(i=0;i<parseInt(tab_counter.innerHTML);i++){
     var myRegex = /(.*)(<a)(.*)(>)(.*)(<\/a>)(.*)/g;
@@ -87,9 +81,6 @@ function pushDiv(index,divContainer){
 function show(n,divContainer){
   for(i=0;i<n;i++){
       var div = document.getElementById("diff-"+i);
-      // div.style.display ="inline-block";
-      // div.style.width = "49.5%";
-      // div.style.verticalAlign = "top";
       div.innerHTML = divContainer[i];
   }
 }
