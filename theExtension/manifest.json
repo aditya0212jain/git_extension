@@ -1,0 +1,14 @@
+{
+  "name": "TCR",
+  "manifest_version":2,
+  "version":"1.0",
+  "description": "Test code reviewer",
+  "permissions": ["tabs","activeTab", "*://*.google.com/*"],
+  "author":"Aditya Jain",
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["jumble.js","toggle.js"]
+    }
+  ]
+}
