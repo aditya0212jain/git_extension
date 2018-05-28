@@ -1,15 +1,11 @@
 function toggleSide(currentFile){
-  var tab_counter = document.getElementById("files_tab_counter");
-  var fileinfo = document.getElementsByClassName("file-info");
-  //var filePath = []function sort(pattern){
 
   var tab_counter = document.getElementById("files_tab_counter");
   var fileinfo = document.getElementsByClassName("file-info");
-  //var filePath = []
+
   var fileName = [];
   var prodFile = [];
   var testFile = [];
-  var divContainer = [];
 
   getNames(tab_counter,fileName,prodFile,testFile,fileinfo);
 
@@ -20,30 +16,24 @@ function toggleSide(currentFile){
 
 }
 
-function hideTest(btn){
-
-}
-
-
 function showTest(btn){
+  console.log("in");
   if(btn.parentElement.parentElement.parentElement.parentElement.hasAttribute("style")==true){
     var div = btn.parentElement.parentElement.parentElement.parentElement;
     div.removeAttribute("style");
     var id = div.id;
-    console.log(id);
+    //console.log(id);
     var id2 = id[id.length-1];
     id2 = parseInt(id2) +1;
-    console.log(id2);
+    //console.log(id2);
     var div2 = document.getElementById("diff-"+id2);
     div2.removeAttribute("style");
-
   }
   else{
   document.body.classList.add("full-width");
-  console.log(btn.innerHTML);
-  console.log(btn.value);
+  //console.log(btn.innerHTML);
+  //console.log(btn.value);
   var btnValue = btn.value;
-
   var tab_counter = document.getElementById("files_tab_counter");
   var fileinfo = document.getElementsByClassName("file-info");
   //var filePath = []function sort(pattern){
@@ -77,9 +67,6 @@ function showTest(btn){
     }
   }
 
-  var p1 = document.getElementById("aditya");
-  var p2 = document.getElementById("tab_c");
-
   var mainIndex;
   for(i=0;i<fileName.length;i++){
     if(i!=testIndex){
@@ -93,7 +80,6 @@ function showTest(btn){
     }
   }
 
-  //p2.innerHTML = mainIndex;
 
   for(i=0;i<parseInt(tab_counter.innerHTML);i++){
     var div = document.getElementById("diff-"+i);
@@ -113,15 +99,9 @@ function showTest(btn){
     div.innerHTML = divContainer[i];
     }
   }
-  console.log(btn.innerHTML);
-  btn.innerHTML="Hide Test";
-  console.log(btn.innerHTML);
-  btn.setAttribute("onclick","hideTest(this)");
-  console.log(btn.onclick);
   }
 
 }
-
 
 function addButton(index,fileName){
   var div0 = document.getElementById("diff-"+index);
@@ -133,31 +113,17 @@ function addButton(index,fileName){
   btn.classList.add("btn");
   btn.classList.add("btn-sm");
   btn.classList.add("BtnGroup-item");
-  btn.setAttribute("onclick","showTest(this)");
+  //btn.setAttribute("onclick","showTest(this)");
+  btn.addEventListener("click",function() { showTest(this); },true);
   var t = fileName[index];
   btn.setAttribute("value",t);
+  var text = "test"+index;
+  btn.setAttribute("id",text);
   btnGroup.appendChild(btn);
 }
 
 function placeBtn(){
   var d1 = document.getElementsByClassName("diffbar")[0];
-  // var sortProd = document.createElement("BUTTON");
-  // var textnode = document.createTextNode("Sort test first");
-  // sortProd.appendChild(textnode);
-  // sortProd.classList.add("btn");
-  // sortProd.classList.add("btn-sm");
-  // sortProd.classList.add("diffbar-item");
-  // sortProd.setAttribute("onclick","sort(1)");
-  // d1.insertBefore(sortProd, d1.childNodes[5]);
-  // var sortProd = document.createElement("BUTTON");
-  // var textnode = document.createTextNode("Sort production first");
-  // sortProd.appendChild(textnode);
-  // sortProd.classList.add("btn");
-  // sortProd.classList.add("btn-sm");
-  // sortProd.classList.add("diffbar-item");
-  // sortProd.setAttribute("onclick","sort(0)");
-  //d1.insertBefore(sortProd,d1.childNodes[5]);
-
   var btn1 = document.createElement("BUTTON");
   var btn2 = document.createElement("BUTTON");
   var text1 = document.createTextNode("Production First");
@@ -167,8 +133,12 @@ function placeBtn(){
   btn1.setAttribute("class","btn btn-sm");
   btn1.setAttribute("type","submit");
   btn2.setAttribute("class","btn btn-sm");
-  btn1.setAttribute("onclick","sort(0);this.parentElement.parentElement.parentElement.removeAttribute('open');");
-  btn2.setAttribute("onclick","sort(1);this.parentElement.parentElement.parentElement.removeAttribute('open');");
+  //btn1.setAttribute("onclick","sort(0);this.parentElement.parentElement.parentElement.removeAttribute('open');");
+  btn1.addEventListener("click",productionFirst);
+  btn1.setAttribute("id","productionFirstButton");
+  btn2.setAttribute("id","testFirstButton");
+  //btn2.setAttribute("onclick","sort(1);this.parentElement.parentElement.parentElement.removeAttribute('open');");
+  btn2.addEventListener("click",testFirst);
   var div3 = document.createElement("div");
   div3.setAttribute("style","left:-83px");
   div3.setAttribute("class","Popover-message text-left p-3 mx-auto Box box-shadow-large");
@@ -196,12 +166,22 @@ function placeBtn(){
 function onloadFunc () {
   var linkurl = document.URL;
   var myRegex4 = /(.)*(github)(.)*(files)(.)*(&diff)(.)*/g;
-  console.log(linkurl);
-  console.log(myRegex4);
   if(myRegex4.test(linkurl)==true){
     toggleSide();
     placeBtn();
   }
+}
+
+function productionFirst(){
+  sort(0);
+  var idtemp = document.getElementById("productionFirstButton");
+  idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
+}
+
+function testFirst(){
+  sort(1);
+  var idtemp = document.getElementById("testFirstButton");
+  idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
 }
 
 window.onload = function () {onloadFunc()};
