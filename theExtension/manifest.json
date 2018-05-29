@@ -11,10 +11,6 @@
 },
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
-      "js": ["jumble.js","toggle.js"]
-    },
-    {
       "matches": ["*://*/*"],
       "all_frames": true,
       "run_at": "document_end",
@@ -25,6 +21,10 @@
       "css": [
         "lib/codecov.css"
       ]
+    },
+    {
+      "matches": ["https://*/*"],
+      "js": ["jumble.js","toggle.js"]
     }
   ],
   "web_accessible_resources": [

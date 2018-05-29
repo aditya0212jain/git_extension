@@ -19,8 +19,8 @@ function toggleSide(currentFile){
 function showTest(btn){
   console.log("in");
   console.log(btn.id);
-  if(btn.parentElement.parentElement.parentElement.parentElement.hasAttribute("style")==true){
-    var div = btn.parentElement.parentElement.parentElement.parentElement;
+  if(btn.parentElement.parentElement.parentElement.hasAttribute("style")==true){
+    var div = btn.parentElement.parentElement.parentElement;
     div.removeAttribute("style");
     var id = div.id;
     //console.log(id);
@@ -111,9 +111,12 @@ function showTest(btn){
 
 function addButton(index,fileName){
   var div0 = document.getElementById("diff-"+index);
+  console.log(div0.id);
   var fileAction = div0.getElementsByClassName("file-actions")[0];
+  console.log(fileAction.className);
   var btnGroup = fileAction.getElementsByClassName("BtnGroup")[0];
-  var btn = document.createElement("BUTTON");
+  //console.log(btnGroup.className);
+  var btn = document.createElement("BUTTON");;
   var t = document.createTextNode("Test");
   btn.appendChild(t);
   btn.classList.add("btn");
@@ -124,7 +127,8 @@ function addButton(index,fileName){
   btn.setAttribute("value",t);
   var text = "test"+index;
   btn.setAttribute("id",text);
-  btnGroup.appendChild(btn);
+  fileAction.insertBefore(btn,fileAction.childNodes[4])
+  //btnGroup.appendChild(btn);
   //document.getElementById("test"+index).addEventListener('click',function() { showTest(document.getElementById("test"+index)); },false);
 }
 
