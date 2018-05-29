@@ -175,7 +175,7 @@ function placeBtn(){
 
 function onloadFunc () {
   var linkurl = document.URL;
-  var myRegex4 = /(.)*(github)(.)*(files)(.)*(&diff)(.)*/g;
+  var myRegex4 = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
   if(myRegex4.test(linkurl)==true){
     toggleSide();
     placeBtn();
