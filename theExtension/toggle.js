@@ -194,12 +194,14 @@ function productionFirst(){
   sort(0);
   var idtemp = document.getElementById("productionFirstButton");
   idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
+  addClick();
 }
 
 function testFirst(){
   sort(1);
   var idtemp = document.getElementById("testFirstButton");
   idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
+  addClick();
 }
 
 window.onload = function () {onloadFunc()};
