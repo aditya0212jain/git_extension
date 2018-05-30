@@ -24,13 +24,23 @@ $(function(){
       }
 
       // start codecov
+      console.log("here");
       window.codecov = create_codecov_instance(prefs);
-
+      console.log("ho");
       // inject listener
       var s = document.createElement('script');
       s.src = chrome.extension.getURL('lib/listener.js');
       s.onload = function(){this.parentNode.removeChild(this);};
       (document.head||document.documentElement).appendChild(s);
+      console.log("hi");
+      // $('.repository-content .file').each(function() {
+      //     var file = $(this);
+      //     var button = file.find('.btn.codecov');
+      //     console.log(file);
+      //     console.log(button);
+      //     button.toggle_diff();
+      // });
+      console.log("hee");
 
     }
   });
@@ -40,7 +50,16 @@ window.addEventListener("message", (function(event) {
   if (event.source !== window) { return; }
   if (event.data.type && event.data.type === "codecov") {
     window.codecov.log('::pjax-event-received');
+    //console.log("start");
     return window.codecov._start();
+    //console.log("start done now compute");
+    // $('.repository-content .file').each(function() {
+    //     var file = $(this);
+    //     var button = file.find('.btn.codecov');
+    //     console.log(file);
+    //     console.log(button);
+    //     button.toggle_diff();
+    // });
   }
 }), false);
 
@@ -315,11 +334,11 @@ window.Codecov = (function() {
         }
       });
     }
-  };
+    };
 
-  return Codecov;
+    return Codecov;
 
-})();
+  })();
 
 window.create_codecov_instance = function(prefs, cb) {
   var ref, ref1, ref2;
@@ -401,6 +420,7 @@ window.Github = (function(superClass) {
   Github.prototype.overlay = function(res) {
     var _td, base_url, c, commits, i, len, ref, ref1, ref2, ref3, ref4, ref5, report, self, split_view, total, total_hits, total_lines;
     this.log('::overlay');
+    console.log("1");
     self = this;
     $('.codecov-removable').remove();
     if (this.page === 'commits') {
@@ -449,22 +469,28 @@ window.Github = (function(superClass) {
           }
         });
       } else {
+
         if ((ref4 = this.page) === 'commit' || ref4 === 'compare' || ref4 === 'pull') {
           $('.toc-diff-stats, .diffbar-item.diffstat, #diffstat').append("<span class=\"codecov codecov-removable\"> <strong>" + (self.format(report.totals.c)) + "%</strong></span>");
         }
         self = this;
+        console.log(self);
         total_hits = 0;
         total_lines = 0;
         split_view = $('.diff-table.file-diff-split').length > 0;
         if (self.page === 'blob') {
           _td = "td:eq(0)";
+          console.log(_td + "blob");
         } else if (split_view) {
           _td = "td:eq(2)";
+          console.log(_td+" split");
         } else {
           _td = "td:eq(1)";
+          console.log(_td+"dont");
         }
         $('.repository-content .file').each(function() {
           var button, diff, file, file_data, file_lines, fp, hits, lines, ref5, ref6, ref7, ref8, ref9;
+          console.log("repository-content");
           file = $(this);
           fp = self.file || file.find('.file-info>a[title]').attr('title');
           if (fp) {
@@ -551,21 +577,23 @@ window.Github = (function(superClass) {
       return;
     }
     file = $(this).parents('.file');
-    if ($(this).hasClass('selected')) {
-      file.removeClass('codecov-enabled');
-      $(this).removeClass('selected');
-      if (!($('.diff-table.file-diff-split').length > 0)) {
-        file.find('.blob-num-deletion').parent().show();
-      }
-      return file.find('.codecov').removeClass('codecov-on');
-    } else {
-      file.addClass('codecov-enabled');
-      $(this).addClass('selected');
+    console.log(this);
+    console.log(file);
+    // if ($(this).hasClass('selected')) {
+    //   file.removeClass('codecov-enabled');
+    //   $(this).removeClass('selected');
+    //   if (!($('.diff-table.file-diff-split').length > 0)) {
+    //     file.find('.blob-num-deletion').parent().show();
+    //   }
+    //   return file.find('.codecov').removeClass('codecov-on');
+    // } else {
+    //  file.addClass('codecov-enabled');
+    //  $(this).addClass('selected');
       if (!($('.diff-table.file-diff-split').length > 0)) {
         file.find('.blob-num-deletion').parent().hide();
       }
       return file.find('.codecov').addClass('codecov-on');
-    }
+    //}
   };
 
   Github.prototype.error = function(status, reason) {
@@ -710,5 +738,3 @@ window.Bitbucket = (function(superClass) {
   return Bitbucket;
 
 })(Codecov);
-
-
