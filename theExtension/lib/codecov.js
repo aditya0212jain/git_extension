@@ -482,6 +482,7 @@ window.Github = (function(superClass) {
               lines = 0;
               file_lines = file_data.l != null ? file_data.l : file_data.lines;
               file.find('tr').each(function() {
+                console.log(this);
                 var cov, ref8, td;
                 td = $(_td, this);
                 cov = self.color(file_lines[td.attr('data-line-number') || ((ref8 = td.attr('id')) != null ? ref8.slice(1) : void 0)]);
@@ -559,8 +560,8 @@ window.Github = (function(superClass) {
     //   }
     //   return file.find('.codecov').removeClass('codecov-on');
     // } else {
-    //  file.addClass('codecov-enabled');
-    //  $(this).addClass('selected');
+     //file.addClass('codecov-enabled');
+     $(this).addClass('selected');
       if (!($('.diff-table.file-diff-split').length > 0)) {
         file.find('.blob-num-deletion').parent().hide();
       }
