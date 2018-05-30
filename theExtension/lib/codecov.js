@@ -5,7 +5,9 @@ var storage_get = function(key, cb){
 };
 var storage_set = chrome.storage.local.set;
 
-$(function(){
+$(myCode);
+
+function myCode(){
   chrome.storage.sync.get({'overlay': true, 'enterprise': '', 'debug': false, 'hosts': ''}, function(prefs){
     var hosts = (prefs['hosts'] || '').split('\n');
     hosts.push('github.com');
@@ -32,7 +34,7 @@ $(function(){
       (document.head||document.documentElement).appendChild(s);
     }
   });
-});
+}
 
 window.addEventListener("message", (function(event) {
   if (event.source !== window) { return; }
@@ -482,6 +484,11 @@ window.Github = (function(superClass) {
               lines = 0;
               file_lines = file_data.l != null ? file_data.l : file_data.lines;
               file.find('tr').each(function() {
+                if(this.classList.contains("js-expandable-line")){
+                  console.log("1");
+                  $('a',this).click(myCode);
+                  console.log($('a',this));
+                }
                 console.log(this);
                 var cov, ref8, td;
                 td = $(_td, this);
@@ -511,7 +518,9 @@ window.Github = (function(superClass) {
                   $('a[href="#' + file.prev().attr('name') + '"]').parent().find('.diffstat').prepend("<span class=\"codecov codecov-removable\">" + total + "% <strong>(" + diff + "%)</strong></span>");
                 }
               }
-              if (self.settings.overlay && ((ref9 = self.page) === 'blob' || ref9 === 'blame' ||ref9 === 'pull')) {
+
+              ////////////////// Change below for automatic loading
+              if (self.settings.overlay && ((ref9 = self.page) === 'blob' || ref9 === 'blame' || ref9 === 'pull' )) {
                 return button.trigger('click');
               }
             } else if ((file_data != null ? file_data.ignored : void 0) === true) {
@@ -561,7 +570,8 @@ window.Github = (function(superClass) {
     //   return file.find('.codecov').removeClass('codecov-on');
     // } else {
      //file.addClass('codecov-enabled');
-     $(this).addClass('selected');
+     //$(this).addClass('selected');
+     myCode();
       if (!($('.diff-table.file-diff-split').length > 0)) {
         file.find('.blob-num-deletion').parent().hide();
       }
