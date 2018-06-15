@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "sourceMap": true
+  },
+    "files": [
+          "auto-languageclient.ts",
+          "languageclient.ts",
+          "logger.ts",
+          "server-manager.ts",
+          "utils.ts",
+          "convert.ts"
+    ],
+    "include": [
+      "../vscode-languageserver-node/*"
+    ]
+}

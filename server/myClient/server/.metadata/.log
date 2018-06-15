@@ -1,0 +1,783 @@
+!SESSION 2018-06-15 17:46:05.048 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:46:06.137
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:46:06.321
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-15 17:50:00.607 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:01.699
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:01.893
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-15 17:50:35.933 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:37.029
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:37.229
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:37.307
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:37.321
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:37.639
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:50:38.621
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2018-06-15 17:50:43.799
+!MESSAGE Initialization failed 
+!STACK 1
+Java Model Exception: Core Exception [code 0] Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:49)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:130)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	... 15 more
+!SUBENTRY 1 org.eclipse.jdt.ls.core 4 0 2018-06-15 17:50:43.801
+!MESSAGE Failed to scan F:semester 3COL106 Data structurep1assign1
+!STACK 0
+java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+!SESSION 2018-06-15 17:51:22.280 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-15 17:51:24.103
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:51:24.469
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:51:24.659
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:51:24.671
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:51:24.674
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:51:24.867
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:51:24.890
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2018-06-15 17:51:26.097
+!MESSAGE Initialization failed 
+!STACK 1
+Java Model Exception: Core Exception [code 0] Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:49)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:130)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	... 15 more
+!SUBENTRY 1 org.eclipse.jdt.ls.core 4 0 2018-06-15 17:51:26.098
+!MESSAGE Failed to scan F:semester 3COL106 Data structurep1assign1
+!STACK 0
+java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+!SESSION 2018-06-15 17:52:51.876 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-15 17:52:52.677
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:52:53.034
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:52:53.224
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:52:53.235
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:52:53.238
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:52:53.383
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:52:53.406
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2018-06-15 17:52:54.662
+!MESSAGE Initialization failed 
+!STACK 1
+Java Model Exception: Core Exception [code 0] Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:49)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:130)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	... 15 more
+!SUBENTRY 1 org.eclipse.jdt.ls.core 4 0 2018-06-15 17:52:54.664
+!MESSAGE Failed to scan F:semester 3COL106 Data structurep1assign1
+!STACK 0
+java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+!SESSION 2018-06-15 17:53:21.694 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-15 17:53:22.490
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:22.840
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:23.029
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:23.040
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:23.042
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:23.186
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:23.209
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2018-06-15 17:53:24.465
+!MESSAGE Initialization failed 
+!STACK 1
+Java Model Exception: Core Exception [code 0] Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:49)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:130)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	... 15 more
+!SUBENTRY 1 org.eclipse.jdt.ls.core 4 0 2018-06-15 17:53:24.467
+!MESSAGE Failed to scan F:semester 3COL106 Data structurep1assign1
+!STACK 0
+java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+!SESSION 2018-06-15 17:53:56.760 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-15 17:53:57.574
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:57.925
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:58.185
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:58.200
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:58.203
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:58.363
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:53:58.385
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2018-06-15 17:53:59.792
+!MESSAGE Initialization failed 
+!STACK 1
+Java Model Exception: Core Exception [code 0] Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:49)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:130)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	... 15 more
+!SUBENTRY 1 org.eclipse.jdt.ls.core 4 0 2018-06-15 17:53:59.794
+!MESSAGE Failed to scan F:semester 3COL106 Data structurep1assign1
+!STACK 0
+java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+!SESSION 2018-06-15 17:55:53.721 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-15 17:55:54.543
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:55:54.905
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:55:55.097
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:55:55.110
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:55:55.112
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:55:55.257
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-15 17:55:55.279
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 4 0 2018-06-15 17:55:56.541
+!MESSAGE Initialization failed 
+!STACK 1
+Java Model Exception: Core Exception [code 0] Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:49)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Failed to scan F:semester 3COL106 Data structurep1assign1
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:130)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+Caused by: java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	... 15 more
+!SUBENTRY 1 org.eclipse.jdt.ls.core 4 0 2018-06-15 17:55:56.543
+!MESSAGE Failed to scan F:semester 3COL106 Data structurep1assign1
+!STACK 0
+java.nio.file.NoSuchFileException: F:semester 3COL106 Data structurep1assign1
+	at sun.nio.fs.WindowsException.translateToIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileAttributeViews$Basic.readAttributes(Unknown Source)
+	at sun.nio.fs.WindowsFileSystemProvider.readAttributes(Unknown Source)
+	at java.nio.file.Files.readAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.getAttributes(Unknown Source)
+	at java.nio.file.FileTreeWalker.visit(Unknown Source)
+	at java.nio.file.FileTreeWalker.walk(Unknown Source)
+	at java.nio.file.Files.walkFileTree(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scanDir(BasicFileDetector.java:154)
+	at org.eclipse.jdt.ls.core.internal.managers.BasicFileDetector.scan(BasicFileDetector.java:128)
+	at org.eclipse.jdt.ls.core.internal.managers.GradleProjectImporter.applies(GradleProjectImporter.java:72)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.getImporter(ProjectsManager.java:222)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.importProjects(ProjectsManager.java:103)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.access$1(ProjectsManager.java:99)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager$1.run(ProjectsManager.java:93)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:38)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:732)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2214)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5676)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5633)
+	at org.eclipse.jdt.ls.core.internal.managers.ProjectsManager.initializeProjects(ProjectsManager.java:86)
+	at org.eclipse.jdt.ls.core.internal.handlers.InitHandler$1.runInWorkspace(InitHandler.java:201)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
