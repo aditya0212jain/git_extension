@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/assign1.java</name>
+			<type>1</type>
+			<location>F:/semester 3/COL106 Data structure/p1/assign1/assign1.java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

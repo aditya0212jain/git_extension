@@ -23,7 +23,6 @@ interface LanguageServerProcess extends EventEmitter {
 
 // The necessary elements for a server that has started or is starting.
 
-
 interface ActiveServer {
   projectPath: string;
   process: LanguageServerProcess;
@@ -39,7 +38,7 @@ type ReportBusyWhile = <T>(
 class myClient {
   public socket;
   protected logger!: Logger;
-
+  public _connection;
   protected getInitializeParams(projectPath: string, process: LanguageServerProcess): ls.InitializeParams {
     return {
       processId: process.pid,
@@ -78,10 +77,6 @@ class myClient {
   }
 
   public async startServer(projectPath: string): Promise<ActiveServer> {
-    // const process = await this.reportBusyWhile(
-    //   `Starting`,
-    //   async () => this.startServerProcess(),
-    // );
     console.log("its in")
     //const process = this.spawnServerWithSocket().then((result) => result );
     const process = await this.spawnServerWithSocket().then((result) => { console.log("in resolve"); return result;});;
@@ -98,6 +93,7 @@ class myClient {
     console.log("y2");
     const initializeResponse = await initialization;
     console.log("y3");
+    this._connection = connection;
     console.log(initializeResponse);
     const newServer = {
       projectPath,
@@ -107,7 +103,13 @@ class myClient {
     };
     console.log("y4");
     connection.initialized();
-    console.log("y5");
+    console.log("definition inside the server start process");
+    const def = await connection.gotoDefinition(testTextPosition);
+    console.log(testTextPosition)
+    console.log(def);
+    console.log("document Highlight");
+    const dochigh = await connection.documentHighlight(testTextPosition);
+    console.log(dochigh);
     return newServer;
   }
 
@@ -154,8 +156,8 @@ class myClient {
 
   spawnServer (extraArgs) {
     console.log("inside spawnserver");
-  const command = "java";
-  const serverHome = path.join(__dirname,'server');
+    const command = "java";
+    const serverHome = path.join(__dirname,'server');
     const args = ['-jar','plugins/org.eclipse.equinox.launcher_1.5.0.v20180119-0753.jar','-configuration','config_win','-data'];
     if (extraArgs) {
       args.push(extraArgs);
@@ -186,16 +188,31 @@ class myClient {
     return res;
   }
 
-
+  public async getDefinition(params: ls.TextDocumentPositionParams){
+    const definitionLocation = this._connection.gotoDefinition(params);
+    return definitionLocation;
+  }
 
 }
 
 console.log("Starting");
 const clientTest = new myClient();
 console.log("instance created successfully");
-console.log(clientTest.socket);
+const textidentifier = {uri :"file:///F:/semester%203/COL106%20Data%20structure/p1/assign1/assign1.java"};
+const positionTest = {line : 79,character:8};
+console.log(textidentifier);
+console.log(positionTest);
+const testTextPosition = {textDocument: textidentifier,position:positionTest};
+console.log(testTextPosition);
 async function p(){
-//var t = await clientTest.startServer('F:\semester 3\COL106 Data structure\p1\assign1');
+//  console.log(clientTest.pathToUri('F:\semester 3\COL106 Data structure\p1\assign1'));
+  // const param = { textDocument://F:\semester 3\COL106 Data structure\p1\assign1,
+  //                 position:}
+var t = await clientTest.startServer('F:\semester 3\COL106 Data structure\p1\assign1');//F:\semester 3\COL106 Data structure\p1\assign1
 console.log("server started successfully");
+//console.log("Now trying definition request");
+//const definitionAnswer = await clientTest.getDefinition(testTextPosition);
+//console.log("definiton request processed , the answer is below");
+//console.log(definitionAnswer);
 }
 p();
