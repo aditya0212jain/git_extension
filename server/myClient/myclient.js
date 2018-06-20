@@ -6,6 +6,14 @@ const path = require("path");
 // import * as Convert from '../utils';
 const net = require("net");
 const languageclient_1 = require("../languageclient");
+const readline = require("readline");
+function pathToUri(filePath) {
+    let newPath = filePath.replace(/\\/g, '/');
+    if (newPath[0] !== '/') {
+        newPath = `/${newPath}`;
+    }
+    return encodeURI(`file://${newPath}`).replace(/[?#]/g, encodeURIComponent);
+}
 class myClient {
     constructor() {
         this.reportBusyWhile = async (title, f) => {
@@ -24,7 +32,7 @@ class myClient {
         return {
             processId: process.pid,
             rootPath: projectPath,
-            rootUri: this.pathToUri(projectPath),
+            rootUri: pathToUri(projectPath),
             capabilities: {
                 workspace: {
                     applyEdit: true,
@@ -47,9 +55,56 @@ class myClient {
                 textDocument: {
                     synchronization: {
                         dynamicRegistration: false,
-                        willSave: true,
-                        willSaveWaitUntil: true,
-                        didSave: true,
+                        willSave: false,
+                        willSaveWaitUntil: false,
+                        didSave: false,
+                    },
+                    completion: {
+                        dynamicRegistration: false,
+                        completionItem: {
+                            snippetSupport: false,
+                            commitCharactersSupport: false,
+                        },
+                        contextSupport: false,
+                    },
+                    hover: {
+                        dynamicRegistration: true,
+                    },
+                    signatureHelp: {
+                        dynamicRegistration: false,
+                    },
+                    references: {
+                        dynamicRegistration: false,
+                    },
+                    documentHighlight: {
+                        dynamicRegistration: true,
+                    },
+                    documentSymbol: {
+                        dynamicRegistration: false,
+                    },
+                    formatting: {
+                        dynamicRegistration: false,
+                    },
+                    rangeFormatting: {
+                        dynamicRegistration: false,
+                    },
+                    onTypeFormatting: {
+                        dynamicRegistration: false,
+                    },
+                    definition: {
+                        dynamicRegistration: true,
+                    },
+                    codeAction: {
+                        dynamicRegistration: false,
+                    },
+                    codeLens: {
+                        dynamicRegistration: false,
+                    },
+                    documentLink: {
+                        dynamicRegistration: false,
+                    },
+                    rename: {
+                        dynamicRegistration: false,
                     }
                 },
                 experimental: {},
@@ -62,44 +117,73 @@ class myClient {
         const process = await this.spawnServerWithSocket().then((result) => { console.log("in resolve"); return result; });
         ;
         console.log("loaded process");
+        this.captureServerErrors(process, projectPath);
         //const process = this.spawnServer([`--tcp=127.0.0.1`]);
         let serverHome = path.join(__dirname, 'server');
         //const process = await async f(){ return this.startServerProcess(projectPath); }
         const connection = new languageclient_1.LanguageClientConnection(this.createRpcConnection());
         console.log("made connection");
         const initializeParams = this.getInitializeParams(projectPath, process);
-        console.log("y1");
+        //console.log("y1");
         const initialization = connection.initialize(initializeParams);
         console.log("y2");
         const initializeResponse = await initialization;
         console.log("y3");
         this._connection = connection;
         console.log(initializeResponse);
+        //console.log(process);
         const newServer = {
             projectPath,
             process,
             connection,
             capabilities: initializeResponse.capabilities,
         };
-        console.log("y4");
+        //console.log("y4");
         connection.initialized();
         console.log("definition inside the server start process");
-        const def = await connection.gotoDefinition(testTextPosition);
-        console.log(testTextPosition);
-        console.log(def);
+        try {
+            const def = await connection.gotoDefinition(testTextPosition);
+            console.log(testTextPosition);
+            console.log(def[0]);
+        }
+        catch (e) {
+            console.log("error in definition");
+        }
         console.log("document Highlight");
-        const dochigh = await connection.documentHighlight(testTextPosition);
-        console.log(dochigh);
+        try {
+            const dochigh = await connection.documentHighlight(testTextPosition);
+            console.log(dochigh);
+        }
+        catch (e) {
+            console.log("error in document highlight");
+        }
+        console.log("Hover information");
+        try {
+            const hoverinfo = await connection.hover(testTextPosition);
+            console.log(hoverinfo);
+        }
+        catch (e) {
+            console.log("error in hover info");
+        }
+        //console.log("About to shut down");
+        // var a = await newServer.connection.shutdown();
+        // console.log(a);
+        // connection.on('exit',() => console.log("exiting works"));
+        // console.log("About to exit and dispose");
+        // newServer.connection.exit();
+        // newServer.connection.dispose();
+        process.on('exit', () => { console.log("process exit"); });
+        //newServer.process.kill();
         return newServer;
     }
     createRpcConnection() {
         let reader;
         let writer;
         //console.log(this.socket);
-        console.log("r1");
+        //console.log("r1");
         reader = new rpc.SocketMessageReader(this.socket);
         writer = new rpc.SocketMessageWriter(this.socket);
-        console.log("r2");
+        //console.log("r2");
         return rpc.createMessageConnection(reader, writer);
     }
     spawnServerWithSocket() {
@@ -125,8 +209,15 @@ class myClient {
                 // Once we have a port assigned spawn the Language Server with the port
                 childProcess = this.spawnServer([``]); //--tcp=127.0.0.1:${server.address().port}
                 console.log("childProcess started");
+                childProcess.on('exit', exitCode => {
+                    if (!childProcess.killed) {
+                        console.log("childProcess exit but not killed");
+                    }
+                    console.log("childProcess exited");
+                });
                 //});
             });
+            //console.log("why did it stuck :O");
         });
     }
     spawnServer(extraArgs) {
@@ -143,36 +234,58 @@ class myClient {
         console.log("returning from spawnServer");
         return childProcess;
     }
-    pathToUri(filePath) {
-        let newPath = filePath.replace(/\\/g, '/');
-        if (newPath[0] !== '/') {
-            newPath = `/${newPath}`;
-        }
-        return encodeURI(`file://${newPath}`).replace(/[?#]/g, encodeURIComponent);
-    }
     async getDefinition(params) {
         const definitionLocation = this._connection.gotoDefinition(params);
         return definitionLocation;
+    }
+    captureServerErrors(childProcess, projectPath) {
+        childProcess.on('error', (err) => console.log("o1"));
+        childProcess.on('exit', (code, signal) => console.log("o2"));
+        childProcess.stderr.setEncoding('utf8');
+        childProcess.stderr.on('data', (chunk) => {
+            const errorString = chunk.toString();
+            console.log("o3");
+        });
     }
 }
 console.log("Starting");
 const clientTest = new myClient();
 console.log("instance created successfully");
-const textidentifier = { uri: "file:///F:/semester%203/COL106%20Data%20structure/p1/assign1/assign1.java" };
-const positionTest = { line: 79, character: 8 };
-console.log(textidentifier);
-console.log(positionTest);
+const textidentifier = { uri: "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java" };
+const positionTest = { line: 13, character: 10 };
+//console.log(textidentifier);
+//console.log(positionTest);
 const testTextPosition = { textDocument: textidentifier, position: positionTest };
-console.log(testTextPosition);
+//console.log(testTextPosition);
 async function p() {
-    //  console.log(clientTest.pathToUri('F:\semester 3\COL106 Data structure\p1\assign1'));
-    // const param = { textDocument://F:\semester 3\COL106 Data structure\p1\assign1,
-    //                 position:}
-    var t = await clientTest.startServer('F:\semester 3\COL106 Data structure\p1\assign1'); //F:\semester 3\COL106 Data structure\p1\assign1
+    var t = await clientTest.startServer("G:/lsp/myServerSide/myClient/repodriller"); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
+    try {
+        const def = await t.connection.gotoDefinition(testTextPosition);
+        console.log(testTextPosition);
+        console.log(def[0]);
+    }
+    catch (e) {
+        console.log(e);
+    }
     console.log("server started successfully");
-    //console.log("Now trying definition request");
-    //const definitionAnswer = await clientTest.getDefinition(testTextPosition);
-    //console.log("definiton request processed , the answer is below");
-    //console.log(definitionAnswer);
+    console.log("write the line and character no. with space: ");
+    var rl = readline.createInterface(process.stdin, process.stdout);
+    rl.prompt();
+    rl.on('line', async function (line) {
+        var num = line.split(" ");
+        var pos = { line: parseInt(num[0]), character: parseInt(num[1]) };
+        var test = { textDocument: textidentifier, position: pos };
+        try {
+            console.log("Definition");
+            const def = await t.connection.gotoDefinition(test);
+            console.log(def[0]);
+            console.log("Hover tip");
+            const hoverinfo = await t.connection.hover(test);
+            console.log(hoverinfo);
+        }
+        catch (e) {
+            console.log(e);
+        }
+    });
 }
 p();
