@@ -6,7 +6,6 @@ const path = require("path");
 // import * as Convert from '../utils';
 const net = require("net");
 const languageclient_1 = require("../languageclient");
-const readline = require("readline");
 function pathToUri(filePath) {
     let newPath = filePath.replace(/\\/g, '/');
     if (newPath[0] !== '/') {
@@ -267,25 +266,66 @@ async function p() {
     catch (e) {
         console.log(e);
     }
-    console.log("server started successfully");
+    console.log("server started successfully, now starting second server");
+    var http = require('http');
+    http.createServer(async function (request, response) {
+        var body = [];
+        request.on('error', (err) => {
+            console.error(err);
+        }).on('data', (chunk) => {
+            body.push(chunk);
+        }).on('end', async () => {
+            var result = Buffer.concat(body).toString();
+            // BEGINNING OF NEW STUFF
+            response.on('error', (err) => {
+                console.error(err);
+            });
+            var obj = JSON.parse(result);
+            console.log("QUeRY BELOW: ");
+            console.log(obj);
+            response.statusCode = 200;
+            response.setHeader('Content-Type', 'application/json');
+            var resultToBrowser;
+            try {
+                var test = { textDocument: textidentifier, position: obj };
+                const def = await t.connection.gotoDefinition(test);
+                console.log("ANSWER BELOW");
+                //console.log(test)
+                console.log(def[0]);
+                resultToBrowser = def;
+            }
+            catch (e) {
+                console.log(e);
+            }
+            // console.log(result);
+            // console.log("result above");
+            response.write("Is this right?");
+            response.write(result);
+            response.end();
+            // Note: the 2 lines above could be replaced with this next one:
+            // response.end(JSON.stringify(responseBody))
+            // END OF NEW STUFF
+        });
+    }).listen(8080); //the server object listens on port 8080
     console.log("write the line and character no. with space: ");
-    var rl = readline.createInterface(process.stdin, process.stdout);
-    rl.prompt();
-    rl.on('line', async function (line) {
-        var num = line.split(" ");
-        var pos = { line: parseInt(num[0]), character: parseInt(num[1]) };
-        var test = { textDocument: textidentifier, position: pos };
-        try {
-            console.log("Definition");
-            const def = await t.connection.gotoDefinition(test);
-            console.log(def[0]);
-            console.log("Hover tip");
-            const hoverinfo = await t.connection.hover(test);
-            console.log(hoverinfo);
-        }
-        catch (e) {
-            console.log(e);
-        }
-    });
+    // var rl = readline.createInterface(process.stdin, process.stdout);
+    // rl.prompt();
+    // rl.on('line', async function(line) {
+    //     var num = line.split(" ");
+    //     var pos = {line : parseInt(num[0]),character : parseInt(num[1])};
+    //     var test = {textDocument: textidentifier,position : pos};
+    //     try{
+    //       console.log("Definition");
+    //       const def = await t.connection.gotoDefinition(test);
+    //       console.log(def[0]);
+    //       console.log("Hover tip");
+    //       const hoverinfo = await t.connection.hover(test);
+    //       console.log(hoverinfo);
+    //     }
+    //     catch(e){
+    //       console.log(e);
+    //     }
+    //
+    // });
 }
 p();
