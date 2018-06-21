@@ -17,11 +17,36 @@ function addSpans(){
           if(children[i].tagName==undefined){
             var span1 = document.createElement('span');
             span1.innerHTML = children[i].textContent;
+            //span1.addEventListener('click',getLineAndCharacter(this));
             outSpan[j].replaceChild(span1,children[i]);
-            //console.log(span1.tagName);
-            //console.log(children[i]);
           }
-          //document.getElementById("tag").innerHTML += "tag: " + children[i].tagName + "<br/>";
+          children[i].addEventListener("mouseover", function( event ) {event.target.style.color = "orange";}, false);
+          children[i].addEventListener('mouseout', function(event){event.target.style.color=""},false);
+          children[i].addEventListener("click",function(){console.log(this);getLineAndCharacter(this.parentElement);},false);
       }
   }
+}
+
+function getLineAndCharacter(element){
+  console.log("clicked");
+  console.log(element);
+  //console.log(element);
+  if(element.parentElement!=undefined || element.parentElement!=null){
+    //console.log("p1");
+  var tdabove = element.parentElement.previousSibling;
+  if(tdabove!=null){
+    //console.log("p2");
+    var td = tdabove.previousSibling;
+    //console.log("p3");
+    //console.log(td.tagName);
+    if(td.tagName=="TD"){
+    console.log(td);
+    console.log(td.getAttribute('data-line-number'));
+  }else if (td.tagName=="TR"){
+    console.log(td);
+    var td1 = td.getElementsByClassName("js-line-number")[0];
+    console.log(td1.getAttribute('data-line-number'));
+  }
+  }
+}
 }
