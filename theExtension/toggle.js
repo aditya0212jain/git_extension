@@ -208,4 +208,4 @@ function testFirst(){
   addClick();
 }
 
-window.onload = function () {onloadFunc()};
+window.onload = function () {onloadFunc();addSpans()};

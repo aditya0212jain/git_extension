@@ -485,11 +485,11 @@ window.Github = (function(superClass) {
               file_lines = file_data.l != null ? file_data.l : file_data.lines;
               file.find('tr').each(function() {
                 if(this.classList.contains("js-expandable-line")){
-                  console.log("1");
+                  //console.log("1");
                   $('a',this).click(myCode);
-                  console.log($('a',this));
+                  //console.log($('a',this));
                 }
-                console.log(this);
+                //console.log(this);
                 var cov, ref8, td;
                 td = $(_td, this);
                 cov = self.color(file_lines[td.attr('data-line-number') || ((ref8 = td.attr('id')) != null ? ref8.slice(1) : void 0)]);

@@ -1,23 +1,23 @@
 function sort(pattern){
 
 
-var tab_counter = document.getElementById("files_tab_counter");
-var fileinfo = document.getElementsByClassName("file-info");
-//var filePath = []function sort(pattern){
+  var tab_counter = document.getElementById("files_tab_counter");
+  var fileinfo = document.getElementsByClassName("file-info");
+  //var filePath = []function sort(pattern){
 
-var tab_counter = document.getElementById("files_tab_counter");
-var fileinfo = document.getElementsByClassName("file-info");
-//var filePath = []
-var fileName = [];
-var prodFile = [];
-var testFile = [];
-var divContainer = [];
+  var tab_counter = document.getElementById("files_tab_counter");
+  var fileinfo = document.getElementsByClassName("file-info");
+  //var filePath = []
+  var fileName = [];
+  var prodFile = [];
+  var testFile = [];
+  var divContainer = [];
 
-getNames(tab_counter,fileName,prodFile,testFile,fileinfo);
+  getNames(tab_counter,fileName,prodFile,testFile,fileinfo);
 
-sortDiv(prodFile,fileName,pattern,divContainer,testFile);
+  sortDiv(prodFile,fileName,pattern,divContainer,testFile);
 
-show(parseInt(tab_counter.innerHTML),divContainer);
+  show(parseInt(tab_counter.innerHTML),divContainer);
 
 }
 

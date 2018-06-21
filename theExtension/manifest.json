@@ -24,7 +24,7 @@
     },
     {
       "matches": ["https://*/*"],
-      "js": ["jumble.js","toggle.js"]
+      "js": ["jumble.js","toggle.js","clienttest.js"]
     }
   ],
   "web_accessible_resources": [
