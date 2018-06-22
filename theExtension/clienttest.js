@@ -12,31 +12,59 @@ oReq.send(JSON.stringify({ line :11,character: 24 }));
 function addSpans(){
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
-      var children = outSpan[j].childNodes;
-      for (var i = 0; i < children.length; i++) {
-        if(children.textContent!=undefined ||children.textContent != null){
-        children[i].textContent = children.textContent.replace(/\t/g,'    ');
+    var tag = outSpan[j];
+    //var t = document.getElementById('output');
+    var children = tag.childNodes;
+    var n = children.length;
+    for(i=0;i<n;i++){
+      //console.log(children);
+      var te = children[i].textContent;
+      //console.log(children[i].tagName);
+      var tn = children[i].tagName;
+      //te = te.replace(/\t/g,"    ");
+      var re = te.replace(/( )+|([a-zA-Z$_]+)|(((\()*(\))*(;)*)+)|(\t)+/g,"<span>$1$2$3$4<\/span>");
+      //children[i].textContent = re;
+      if(children[i].tagName==undefined){
+        var y = document.createElement("span");
+        y.innerHTML = re;
+        tag.replaceChild(y,children[i]);
+      }else{
+        children[i].innerHTML = re;
       }
-          if(children[i].tagName==undefined){
-            var span1 = document.createElement('span');
-            span1.innerHTML = children[i].textContent;
-            //span1.addEventListener('click',getLine(this));
-            outSpan[j].replaceChild(span1,children[i]);
-          }
-          children[i].addEventListener("mouseover", function( event ) {event.target.style.color = "orange";}, false);
-          children[i].addEventListener('mouseout', function(event){event.target.style.color=""},false);
-          children[i].addEventListener("click",function(){
-            //console.log(this);
-            var linet = getLine(this.parentElement);
-            var chart = getChar(this);
-            console.log("sending to server");
-            var pReq = new XMLHttpRequest();
-            pReq.addEventListener("load", reqListener);
-            pReq.open("POST", "http://localhost:8080");
-            pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            pReq.send(JSON.stringify({ line : linet,character: chart }));
-          },false);
+      var childOfChild = children[i].childNodes;
+      // console.log(childOfChild);
+      for(o=0;o<childOfChild.length;o++){
+        childOfChild[o].addEventListener("mouseover", function(event){event.target.style.color = "orange";},false);
+        childOfChild[o].addEventListener("mouseout", function(event){ event.target.style.color=""},false);
+        //childOfChild[o]
       }
+    }
+
+      // var children = outSpan[j].childNodes;
+      // for (var i = 0; i < children.length; i++) {
+      //   if(children.textContent!=undefined ||children.textContent != null){
+      //   children[i].textContent = children.textContent.replace(/\t/g,'    ');
+      // }
+      //     if(children[i].tagName==undefined){
+      //       var span1 = document.createElement('span');
+      //       span1.innerHTML = children[i].textContent;
+      //       //span1.addEventListener('click',getLine(this));
+      //       outSpan[j].replaceChild(span1,children[i]);
+      //     }
+      //     children[i].addEventListener("mouseover", function( event ) {event.target.style.color = "orange";}, false);
+      //     children[i].addEventListener('mouseout', function(event){event.target.style.color=""},false);
+      //     children[i].addEventListener("click",function(){
+      //       //console.log(this);
+      //       var linet = getLine(this.parentElement);
+      //       var chart = getChar(this);
+      //       console.log("sending to server");
+      //       var pReq = new XMLHttpRequest();
+      //       pReq.addEventListener("load", reqListener);
+      //       pReq.open("POST", "http://localhost:8080");
+      //       pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      //       pReq.send(JSON.stringify({ line : linet,character: chart }));
+      //     },false);
+      // }
   }
 }
 
