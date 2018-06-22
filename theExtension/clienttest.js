@@ -1,6 +1,15 @@
 console.log("this is client test");
 function reqListener () {
-  console.log(this.responseText);
+  var obj = JSON.parse(this.responseText);
+  console.log("Result is: ");
+  console.log(obj);
+  console.log(obj.range.start.line);
+  var line = obj.range.start.line +1;
+  var ct = document.getElementById("L"+line);
+  if(ct!=undefined||ct !=null){
+    ct.scrollIntoView();
+    //ct.style.color="blue";
+  }
 }
 
 var oReq = new XMLHttpRequest();
@@ -52,32 +61,6 @@ function addSpans(){
         },false)
       }
     }
-
-      // var children = outSpan[j].childNodes;
-      // for (var i = 0; i < children.length; i++) {
-      //   if(children.textContent!=undefined ||children.textContent != null){
-      //   children[i].textContent = children.textContent.replace(/\t/g,'    ');
-      // }
-      //     if(children[i].tagName==undefined){
-      //       var span1 = document.createElement('span');
-      //       span1.innerHTML = children[i].textContent;
-      //       //span1.addEventListener('click',getLine(this));
-      //       outSpan[j].replaceChild(span1,children[i]);
-      //     }
-      //     children[i].addEventListener("mouseover", function( event ) {event.target.style.color = "orange";}, false);
-      //     children[i].addEventListener('mouseout', function(event){event.target.style.color=""},false);
-      //     children[i].addEventListener("click",function(){
-      //       //console.log(this);
-      //       var linet = getLine(this.parentElement);
-      //       var chart = getChar(this);
-      //       console.log("sending to server");
-      //       var pReq = new XMLHttpRequest();
-      //       pReq.addEventListener("load", reqListener);
-      //       pReq.open("POST", "http://localhost:8080");
-      //       pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-      //       pReq.send(JSON.stringify({ line : linet,character: chart }));
-      //     },false);
-      // }
   }
 }
 
@@ -114,18 +97,6 @@ function getLine(element){
   }
 }
 
-function getChar(element){
-  var index = $(element).index();
-  //console.log(index);
-  var children = element.parentElement.childNodes;
-  var co=0;
-  for(var i=0;i<index;i++){
-    co += children[i].textContent.replace(/\t/g, '    ').length;
-  }
-  console.log(co);
-  return co;
-}
-
 function getCharacter(element){
   var count1 = getCharacterTill(element);
   var parent = element.parentElement;
@@ -135,6 +106,7 @@ function getCharacter(element){
   }
   return count1+count2;//+element.textContent.replace(/\t/g,"    ").length
 }
+
 function getCharacterTill(element){
   var index = $(element).index();
   var count=0;
