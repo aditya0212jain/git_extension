@@ -14,6 +14,9 @@ function addSpans(){
   for(j=0;j<outSpan.length;j++){
       var children = outSpan[j].childNodes;
       for (var i = 0; i < children.length; i++) {
+        if(children.textContent!=undefined ||children.textContent != null){
+        children[i].textContent = children.textContent.replace(/\t/g,'    ');
+      }
           if(children[i].tagName==undefined){
             var span1 = document.createElement('span');
             span1.innerHTML = children[i].textContent;
@@ -76,7 +79,7 @@ function getChar(element){
   var children = element.parentElement.childNodes;
   var co=0;
   for(var i=0;i<index;i++){
-    co += children[i].textContent.length;
+    co += children[i].textContent.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;').length;
   }
   console.log(co);
   return co;
