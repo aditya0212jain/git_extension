@@ -111,9 +111,9 @@ function showTest(btn){
 
 function addButton(index,fileName){
   var div0 = document.getElementById("diff-"+index);
-  console.log(div0.id);
+  //console.log(div0.id);
   var fileAction = div0.getElementsByClassName("file-actions")[0];
-  console.log(fileAction.className);
+  //console.log(fileAction.className);
   var btnGroup = fileAction.getElementsByClassName("BtnGroup")[0];
   //console.log(btnGroup.className);
   var btn = document.createElement("BUTTON");;
@@ -208,4 +208,4 @@ function testFirst(){
   addClick();
 }
 
-window.onload = function () {onloadFunc();addSpans()};
+window.onload = function () {onloadFunc();addSpans();};

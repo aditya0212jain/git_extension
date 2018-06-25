@@ -52,6 +52,7 @@ function addSpans(){
           console.log("the line is: "+ linet);
           var chart = getCharacter(this);
           console.log("the character no. is: " + chart);
+          var path = getFilePath(this);
           var pReq = new XMLHttpRequest();
           pReq.addEventListener("load", reqListener);
           pReq.open("POST", "http://localhost:8080");
@@ -118,4 +119,18 @@ function getCharacterTill(element){
     }
   }
   return count;
+}
+
+function getFilePath(element){
+  var href = window.location.href;
+  var myRegexPull = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
+  var myRegexBlob = /(.)*(github)(.)*(blob)(.)*/g;
+  if(myRegexBlob.test(href)==true){
+    console.log("its working");
+    var blob = document.getElementById('blob-path');
+    return blob.textContent;
+  }else if (myRegexPull.test(href)==true){
+    console.log("Pull working");
+    
+  }
 }

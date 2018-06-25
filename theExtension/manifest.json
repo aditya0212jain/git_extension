@@ -16,7 +16,8 @@
       "run_at": "document_end",
       "js": [
         "lib/jquery-2.1.3.min.js",
-        "lib/codecov.js"
+        "lib/codecov.js",
+        "lib/listener.js"
       ],
       "css": [
         "lib/codecov.css"
@@ -24,12 +25,14 @@
     },
     {
       "matches": ["https://*/*"],
+      "run_at": "document_end",
       "js": ["jumble.js","toggle.js","clienttest.js"]
     }
   ],
   "web_accessible_resources": [
   "lib/jquery-2.1.3.min.js",
   "lib/codecov.js",
-  "lib/codecov.css"
+  "lib/codecov.css",
+  "lib/listener.js"
 ]
 }

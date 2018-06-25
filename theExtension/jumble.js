@@ -28,9 +28,13 @@ function toggle_inFileOrder(adi){
 }
 
 function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
+  //console.log(parseInt(tab_counter.innerHTML));
   for(i=0;i<parseInt(tab_counter.innerHTML);i++){
     var myRegex = /(.*)(<a)(.*)(>)(.*)(<\/a>)(.*)/g;
+    console.log("index is: "+i+" and the fileinfo:" + fileinfo[i]);
+    if(fileinfo[i]!=undefined){
     let str = fileinfo[i].innerHTML;
+    //console.log(fileinfo[i].innerHTML);
     let path = myRegex.exec(str);
     fileName.push(path[5].split('\\').pop().split('/').pop())
     var testornot = fileName[i].toLowerCase();
@@ -40,6 +44,7 @@ function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
       testFile.push(i);
     }
     //filePath.push(path[5]);
+  }
   }
 }
 

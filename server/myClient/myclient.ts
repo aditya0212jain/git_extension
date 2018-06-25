@@ -10,6 +10,7 @@ import {NullLogger,ConsoleLogger,Logger} from '../logger';
 import {EventEmitter} from 'events';
 import * as stream from 'stream';
 import * as readline from 'readline';
+import * as os from 'os';
 
 interface LanguageServerProcess extends EventEmitter {
   stdin: stream.Writable;
@@ -250,7 +251,19 @@ class myClient {
     console.log("inside spawnserver");
     const command = "java";
     const serverHome = path.join(__dirname,'server');
-    const args = ['-jar','plugins/org.eclipse.equinox.launcher_1.5.0.v20180119-0753.jar','-configuration','config_win','-data'];
+    var platform = os.platform();
+    var variable;
+    console.log("platform: " + platform);
+    if(platform=="linux"){
+      variable= "linux"
+    }else if(platform=="win32"){
+      variable = "win";
+    }else if(platform=="darwin"){
+      variable = "mac";
+    }
+    variable = "config_" + variable;
+    console.log("variable platform: " + variable);
+    const args = ['-jar','plugins/org.eclipse.equinox.launcher_1.5.0.v20180119-0753.jar','-configuration',variable,'-data'];
     if (extraArgs) {
       args.push(extraArgs);
     }
@@ -301,7 +314,7 @@ const positionTest = {line :13,character:10};
 const testTextPosition = {textDocument: textidentifier,position:positionTest};
 //console.log(testTextPosition);
 async function p(){
-var t = await clientTest.startServer("G:/lsp/myServerSide/myClient/repodriller"); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
+var t = await clientTest.startServer("G:/lsp/myServerSide/myClient"); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
 try{
   const def = await t.connection.gotoDefinition(testTextPosition);
   console.log(testTextPosition)
@@ -340,6 +353,7 @@ http.createServer(async function (request, response) {
     //console.log(test)
     console.log(def[0]);
     resultToBrowser = def;
+    result = JSON.stringify(def[0]);
   }
   catch(e){
     console.log(e);
@@ -348,7 +362,7 @@ http.createServer(async function (request, response) {
 
   // console.log(result);
   // console.log("result above");
-  response.write("Is this right?");
+  //response.write("Result: ");
   response.write(result);
   response.end();
   // Note: the 2 lines above could be replaced with this next one:
@@ -358,24 +372,24 @@ http.createServer(async function (request, response) {
 });
 }).listen(8080); //the server object listens on port 8080
 console.log("write the line and character no. with space: ");
-// var rl = readline.createInterface(process.stdin, process.stdout);
-// rl.prompt();
-// rl.on('line', async function(line) {
-//     var num = line.split(" ");
-//     var pos = {line : parseInt(num[0]),character : parseInt(num[1])};
-//     var test = {textDocument: textidentifier,position : pos};
-//     try{
-//       console.log("Definition");
-//       const def = await t.connection.gotoDefinition(test);
-//       console.log(def[0]);
-//       console.log("Hover tip");
-//       const hoverinfo = await t.connection.hover(test);
-//       console.log(hoverinfo);
-//     }
-//     catch(e){
-//       console.log(e);
-//     }
-//
-// });
+var rl = readline.createInterface(process.stdin, process.stdout);
+rl.prompt();
+rl.on('line', async function(line) {
+    var num = line.split(" ");
+    var pos = {line : parseInt(num[0]),character : parseInt(num[1])};
+    var test = {textDocument: textidentifier,position : pos};
+    try{
+      console.log("Definition");
+      const def = await t.connection.gotoDefinition(test);
+      console.log(def[0]);
+      console.log("Hover tip");
+      const hoverinfo = await t.connection.hover(test);
+      console.log(hoverinfo);
+    }
+    catch(e){
+      console.log(e);
+    }
+
+});
 }
 p();
