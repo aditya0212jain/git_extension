@@ -3,7 +3,7 @@ function reqListener () {
   var obj = JSON.parse(this.responseText);
   console.log("Result is: ");
   console.log(obj);
-  console.log(obj.range.start.line);
+  console.log(obj.range.start.line+1);
   var line = obj.range.start.line +1;
   var ct = document.getElementById("L"+line);
   if(ct!=undefined||ct !=null){
@@ -53,11 +53,16 @@ function addSpans(){
           var chart = getCharacter(this);
           console.log("the character no. is: " + chart);
           var path = getFilePath(this);
+          path = path.replace(/\r?\n|\r|\s/g,"");
+          var positiont = { line : linet,character : chart};
+          var argpass = {textDocument : path , position : positiont };
+          //console.log("argpass: ");
+          //console.log(argpass);
           var pReq = new XMLHttpRequest();
           pReq.addEventListener("load", reqListener);
           pReq.open("POST", "http://localhost:8080");
           pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-          pReq.send(JSON.stringify({ line : linet,character: chart }));
+          pReq.send(JSON.stringify(argpass));
 
         },false)
       }
@@ -130,7 +135,15 @@ function getFilePath(element){
     var blob = document.getElementById('blob-path');
     return blob.textContent;
   }else if (myRegexPull.test(href)==true){
-    console.log("Pull working");
-    
+    //console.log("Pull working");
+    var jsfile = element.closest(".js-file");
+    var fileinfo = jsfile.getElementsByClassName('file-info')[0];
+    var a2 = fileinfo.getElementsByTagName('a')[0];
+    var pathdir = a2.textContent;
+    var href = window.location.href;
+    var repository = href.split('/');
+    var pullindex = repository.indexOf('pull');
+    //console.log(repository[pullindex-1] +'/' + pathdir);
+    return repository[pullindex-1] +'/' + pathdir;
   }
 }

@@ -12,6 +12,8 @@ import * as stream from 'stream';
 import * as readline from 'readline';
 import * as os from 'os';
 
+var globalFilePath= "G:/lsp/myServerSide/myClient";
+
 interface LanguageServerProcess extends EventEmitter {
   stdin: stream.Writable;
   stdout: stream.Readable;
@@ -314,7 +316,8 @@ const positionTest = {line :13,character:10};
 const testTextPosition = {textDocument: textidentifier,position:positionTest};
 //console.log(testTextPosition);
 async function p(){
-var t = await clientTest.startServer("G:/lsp/myServerSide/myClient"); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
+var startServerPath = globalFilePath;
+var t = await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
 try{
   const def = await t.connection.gotoDefinition(testTextPosition);
   console.log(testTextPosition)
@@ -347,7 +350,7 @@ http.createServer(async function (request, response) {
   response.setHeader('Content-Type', 'application/json');
   var resultToBrowser;
   try{
-    var test = {textDocument: textidentifier,position : obj};
+    var test = {textDocument: {uri : pathToUri(globalFilePath)+"/"+obj.textDocument},position : obj.position};//{textDocument: textidentifier,position : obj}
     const def = await t.connection.gotoDefinition(test);
     console.log("ANSWER BELOW");
     //console.log(test)
