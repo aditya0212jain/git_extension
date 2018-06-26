@@ -14475,3 +14475,2967 @@ java.net.ConnectException: Connection refused: connect
 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:47.426
 !MESSAGE >> document/definition
+!SESSION 2018-06-26 15:22:16.263 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:22:17.109
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:17.692
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:17.878
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:17.893
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:17.895
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:18.108
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:22:18.194 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:22:19.713
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:20.661
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:20.850
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:21.037
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:21.522
+!MESSAGE Workspace initialized in 3618ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:22:21.906
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:22:21.921
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 15:25:05.744 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:25:06.623
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:07.223
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:07.405
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:07.418
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:07.421
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:07.626
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:25:07.720 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:25:09.735
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:10.409
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:10.838
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:10.855
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:11.486
+!MESSAGE Workspace initialized in 4046ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:25:11.915
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:25:11.961
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 15:27:03.638 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:27:04.879
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:27:03.645 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:27:04.890
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:05.610
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:05.622
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:05.840
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:05.856
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:05.858
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:06.080
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:27:06.672
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:06.683
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 15:27:06.173 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:27:07.695
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:08.712
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:08.865
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:09.168
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:09.770
+!MESSAGE Workspace initialized in 3907ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:27:09.937
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:27:09.966
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:12.173
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:12.191
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:12.196
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:12.200
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:31:18.942 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:31:20.145
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:31:18.947 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:31:20.161
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:20.950
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:20.953
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:21.178
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:21.182
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 15:31:55.199 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:31:56.424
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:31:55.205 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:31:56.472
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:57.275
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:57.311
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:57.573
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:31:57.611
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 15:36:41.220 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:36:42.479
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:36:41.210 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:36:42.511
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:43.347
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:43.384
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:43.668
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:43.690
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:43.693
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:43.964
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:36:44.459
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:44.510
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 15:36:44.102 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:36:45.748
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:46.443
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:46.731
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:46.870
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:47.438
+!MESSAGE Workspace initialized in 3736ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:36:47.790
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:47.818
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:36:57.366
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:37:18.626 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:37:19.762
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:37:18.634 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:37:20.158
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:20.620
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:20.888
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:20.905
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:20.909
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:21.057
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:21.282
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:21.394
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 15:37:21.411 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:37:23.175
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:23.856
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:24.318
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:24.340
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:24.527
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:37:24.672
+!MESSAGE Workspace initialized in 3753ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:38:26.456
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:38:30.174
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:43:33.237 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:43:34.482
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:43:33.246 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:43:34.544
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.298
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.350
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.627
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.645
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.649
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.671
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:35.950
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:43:36.080 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:43:37.574
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:38.457
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:38.623
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:38.920
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:38.944
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:39.625
+!MESSAGE Workspace initialized in 3963ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:43:42.495
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:44:16.899 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:44:18.105
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:44:16.910 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:44:18.128
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:18.889
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:18.933
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:19.185
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:19.209
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:19.213
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:19.221
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:19.471
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:44:19.570 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:44:21.310
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:21.964
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:22.447
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:22.628
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:22.948
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:22.998
+!MESSAGE Workspace initialized in 3758ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:23.129
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:44:50.655 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:44:51.879
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:44:50.641 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:44:52.159
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:52.760
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:53.025
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:53.037
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:53.048
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:53.061
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:53.325
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:53.402
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 15:44:53.517 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:44:55.019
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:55.557
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:56.095
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:56.162
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:56.397
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:44:56.517
+!MESSAGE Workspace initialized in 3464ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:45:00.582
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:46:12.114
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:46:40.418
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:46:46.410
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:48:18.912 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:48:20.220
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:48:18.922 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:48:20.434
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:48:21.236
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:48:21.401
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:48:21.495
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:48:21.630
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 15:52:58.587 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:52:59.680
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:52:58.575 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:52:59.952
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:00.550
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:00.793
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:00.811
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:00.813
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:00.857
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:01.088
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:01.145
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 15:53:01.288 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:53:02.915
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:03.456
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:03.942
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:03.947
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:04.251
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:04.432
+!MESSAGE Workspace initialized in 3614ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:53:08.071
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:55:31.791 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:55:32.964
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 15:55:31.796 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:55:33.274
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:55:33.818
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:55:34.063
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:55:34.099
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:55:34.292
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 16:04:46.769 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:04:47.975
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:04:46.772 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:04:47.978
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:48.657
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:48.690
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:48.945
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:48.966
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:48.969
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:48.971
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:49.251
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:04:49.370 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:04:50.947
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:51.960
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:52.332
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:52.540
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:52.809
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:04:53.205
+!MESSAGE Workspace initialized in 4208ms
+!SESSION 2018-06-26 16:05:50.167 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:05:51.251
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:05:50.178 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:05:51.563
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.124
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.405
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.422
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.426
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.448
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.703
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:52.754
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 16:05:52.856 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:05:54.532
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:55.326
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:55.528
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:55.773
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:55.878
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:05:56.349
+!MESSAGE Workspace initialized in 3913ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:07:02.983
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 16:09:51.298 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:09:52.438
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:09:51.307 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:09:52.700
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.257
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.528
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.544
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.549
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.549
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.881
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:53.888
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 16:09:53.987 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:09:55.431
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:55.960
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:56.453
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:56.541
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:56.853
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:09:57.189
+!MESSAGE Workspace initialized in 3615ms
+!SESSION 2018-06-26 16:15:20.367 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:15:21.607
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:15:20.376 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:15:21.640
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:22.389
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:22.426
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:22.651
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:22.664
+!MESSAGE Main thread is waiting
+!SESSION 2018-06-26 16:15:39.471 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:15:40.705
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:15:39.466 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:15:40.719
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:41.539
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:41.549
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:41.803
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:41.813
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:41.822
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:41.825
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:42.047
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:15:42.172 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:15:43.840
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:44.382
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:44.838
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:45.045
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:45.351
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:45.429
+!MESSAGE Workspace initialized in 3600ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:15:58.634
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 16:16:42.198 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:16:43.447
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:16:42.187 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:16:43.450
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.194
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.209
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.471
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.480
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.487
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.489
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:44.744
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:16:44.831 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:16:46.496
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:47.638
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:47.877
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:48.186
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:48.324
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:16:48.858
+!MESSAGE Workspace initialized in 4358ms
+!SESSION 2018-06-26 16:21:56.479 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:21:57.405
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:21:58.007
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:21:58.218
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:21:58.230
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:21:58.232
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:21:58.436
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:21:58.559 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:22:00.224
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:22:01.356
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:22:01.525
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:22:01.883
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:22:02.000
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:22:02.523
+!MESSAGE Workspace initialized in 4287ms
+!SESSION 2018-06-26 16:23:27.525 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:23:28.432
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:29.015
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:29.196
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:29.209
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:29.212
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:29.408
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:23:29.537 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:23:31.121
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:32.222
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:32.697
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:32.829
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:33.223
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:23:33.631
+!MESSAGE Workspace initialized in 4414ms
+!SESSION 2018-06-26 16:24:38.177 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:24:39.074
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:39.656
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:39.855
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:39.866
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:39.869
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:40.098
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:24:39.923 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:24:42.005
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:24:40.240 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:24:42.485
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:43.458
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:43.488
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:43.817
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:43.883
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:43.931
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:44.201
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:24:44.611
+!MESSAGE Workspace initialized in 4716ms
+!SESSION 2018-06-26 16:25:56.177 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:25:57.096
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:25:57.665
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:25:57.867
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:25:57.880
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:25:57.883
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:25:58.127
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:25:57.922 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:26:00.029
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:25:58.260 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:26:00.250
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:01.244
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:01.307
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:01.617
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:01.654
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:01.750
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:01.967
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:26:02.364
+!MESSAGE Workspace initialized in 4477ms
+!SESSION 2018-06-26 16:27:15.434 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:27:16.280
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:16.853
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:17.043
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:17.057
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:17.059
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:17.303
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:27:17.116 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:27:19.139
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:27:17.383 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:27:19.649
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:21.003
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:21.058
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:21.507
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:21.626
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:21.829
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:22.240
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:27:22.469
+!MESSAGE Workspace initialized in 5374ms
+!SESSION 2018-06-26 16:28:10.791 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:28:11.646
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:12.199
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:12.391
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:12.403
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:12.405
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:12.617
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:28:12.444 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:28:14.323
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:28:12.708 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:28:14.785
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:15.541
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:15.625
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:15.836
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:16.017
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:16.023
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:16.285
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:28:16.592
+!MESSAGE Workspace initialized in 4173ms
+!SESSION 2018-06-26 16:34:30.133 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:34:31.050
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:31.643
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:31.812
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:31.825
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:31.827
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:32.024
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:34:32.124 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:34:33.597
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:34.131
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:34.541
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:34.778
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:34.988
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:34:34.993
+!MESSAGE Workspace initialized in 3161ms
+!SESSION 2018-06-26 16:35:23.548 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:35:24.406
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:24.949
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:25.119
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:25.131
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:25.134
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:25.329
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:35:25.423 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:35:26.859
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:27.715
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:27.932
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:28.164
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:28.252
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:35:28.720
+!MESSAGE Workspace initialized in 3568ms
+!SESSION 2018-06-26 16:38:42.338 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:38:43.256
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:43.908
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:44.107
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:44.122
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:44.126
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:44.344
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:38:44.436 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:38:45.870
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:46.483
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:46.837
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:46.991
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:47.132
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:38:47.596
+!MESSAGE Workspace initialized in 3458ms
+!SESSION 2018-06-26 16:39:48.524 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:39:49.431
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:50.006
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:50.163
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:50.174
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:50.176
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:50.391
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:39:50.518 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:39:52.405
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:39:50.450 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:39:52.465
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:53.565
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:53.578
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:53.630
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:53.879
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:53.914
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:53.992
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:39:54.493
+!MESSAGE Workspace initialized in 4285ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:40:54.688
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:40:59.151
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:41:12.748
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:41:20.839
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:41:25.664
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 16:42:56.132 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:42:57.021
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:42:57.563
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:42:57.749
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:42:57.765
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:42:57.770
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:42:57.977
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:42:58.081 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:42:59.993
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:42:58.076 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:43:00.075
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:01.213
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:01.264
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:01.397
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:01.580
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:01.612
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:01.680
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:02.101
+!MESSAGE Workspace initialized in 4325ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:21.234
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:25.661
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:43:32.553
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 16:53:55.264 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:53:56.443
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 16:53:55.275 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:53:56.451
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.122
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.138
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.381
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.393
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.397
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.400
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:53:57.603
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 16:53:57.716 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 16:53:59.271
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:54:00.064
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:54:00.397
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:54:00.530
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:54:00.784
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 16:54:01.193
+!MESSAGE Workspace initialized in 3786ms
+!SESSION 2018-06-26 17:07:11.318 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:07:12.457
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:07:11.288 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:07:12.460
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.086
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.096
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.321
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.322
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.334
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.334
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.337
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.337
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.547
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:13.570
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:16.349
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:16.378
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:16.760
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:16.810
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:17.387
+!MESSAGE Workspace initialized in 4006ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:07:17.461
+!MESSAGE Workspace initialized in 4109ms
+!SESSION 2018-06-26 17:10:44.386 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:10:45.486
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:10:44.405 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:10:45.493
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.144
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.144
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.374
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.376
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.390
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.393
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.394
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.397
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.609
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:46.617
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:49.509
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:49.657
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:50.020
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:50.170
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:50.846
+!MESSAGE Workspace initialized in 4444ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:10:51.018
+!MESSAGE Workspace initialized in 4604ms
+!SESSION 2018-06-26 17:13:20.528 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:13:21.727
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:13:20.551 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:13:21.748
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.440
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.445
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.676
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.679
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.698
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.708
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.719
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.722
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.930
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:22.937
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:26.003
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:26.112
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:26.378
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:26.440
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:26.777
+!MESSAGE Workspace initialized in 4055ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:13:27.054
+!MESSAGE Workspace initialized in 4298ms
+!SESSION 2018-06-26 17:18:37.693 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:18:38.848
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:18:37.672 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:18:38.855
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.533
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.579
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.782
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.802
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.806
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.829
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.856
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:39.862
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:40.048
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:40.104
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:42.710
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:42.836
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:43.119
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:43.190
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:43.553
+!MESSAGE Workspace initialized in 3680ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:18:43.773
+!MESSAGE Workspace initialized in 3960ms
+!SESSION 2018-06-26 17:20:50.569 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:20:51.485
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:52.031
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:52.199
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:52.215
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:52.217
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:52.411
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 17:20:52.502 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:20:53.861
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:54.540
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:54.864
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:54.953
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:55.137
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:55.167
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:55.171
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:55.423
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:55.642
+!MESSAGE Workspace initialized in 3407ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:58.449
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:58.864
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:20:59.230
+!MESSAGE Workspace initialized in 4053ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:21:03.643
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 17:28:35.905 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:28:36.818
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:37.402
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:37.575
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:37.590
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:37.593
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:37.802
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 17:28:37.885 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:28:39.381
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:40.291
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:40.450
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:40.674
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:40.723
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:40.759
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:40.764
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:41.121
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:41.306
+!MESSAGE Workspace initialized in 3688ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:44.261
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:44.640
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:28:44.998
+!MESSAGE Workspace initialized in 4229ms
+!SESSION 2018-06-26 17:29:33.708 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:29:34.585
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:35.155
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:35.319
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:35.330
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:35.332
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:35.537
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:37.104
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:37.382
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:29:37.697
+!MESSAGE Workspace initialized in 2327ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:40.914
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 17:31:56.475 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:31:57.333
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:57.862
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:58.037
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:58.049
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:58.051
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:58.240
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:31:59.748
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:32:00.071
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:32:00.412
+!MESSAGE Workspace initialized in 2355ms
+!SESSION 2018-06-26 17:33:07.460 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:33:08.325
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:08.872
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:09.056
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:09.066
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:09.069
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:09.265
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:10.801
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:11.107
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:11.468
+!MESSAGE Workspace initialized in 2391ms
+!SESSION 2018-06-26 17:33:45.844 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:33:46.722
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:47.265
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:47.431
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:47.443
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:33:47.445
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+!SESSION 2018-06-26 17:35:14.466 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:35:15.379
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:15.944
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:16.119
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:16.130
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:16.133
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:16.312
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:17.718
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:17.974
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:35:18.302
+!MESSAGE Workspace initialized in 2164ms
+!SESSION 2018-06-26 17:36:25.495 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:36:26.382
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:26.993
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:27.178
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:27.194
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:27.197
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:27.413
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:28.893
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:29.222
+!MESSAGE Importing Maven project(s)
+!SESSION 2018-06-26 17:36:44.990 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:36:45.853
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:46.404
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:46.575
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:46.587
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:46.589
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:46.784
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:48.243
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:48.486
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:36:48.755
+!MESSAGE Workspace initialized in 2129ms
+!SESSION 2018-06-26 17:39:30.749 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:39:31.631
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:32.280
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:32.486
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:32.503
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:32.505
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:32.703
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:34.184
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:34.495
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:39:34.805
+!MESSAGE Workspace initialized in 2294ms
+!SESSION 2018-06-26 17:44:32.559 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:44:33.417
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:34.025
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:34.191
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:34.203
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:34.205
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:34.403
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:35.956
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:36.282
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:44:36.809
+!MESSAGE Workspace initialized in 2599ms
+!SESSION 2018-06-26 17:45:56.528 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:45:57.649
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:45:56.513 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:45:57.698
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.349
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.405
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.626
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.643
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.646
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.671
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.696
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.700
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.886
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:45:58.942
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:01.562
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:01.749
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:01.908
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:02.064
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:02.586
+!MESSAGE Workspace initialized in 3935ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:02.726
+!MESSAGE Workspace initialized in 4020ms
+!SESSION 2018-06-26 17:46:54.577 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:46:55.799
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:46:54.587 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:46:55.846
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.520
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.576
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.760
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.777
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.780
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.828
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.856
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:56.860
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:57.028
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:57.101
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:46:59.931
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:47:00.093
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:47:00.436
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:47:00.653
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:47:01.269
+!MESSAGE Workspace initialized in 4399ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:47:01.608
+!MESSAGE Workspace initialized in 4818ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:47:05.311
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 17:58:32.094 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:58:33.159
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 17:58:32.084 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 17:58:33.163
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:33.816
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:33.847
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.016
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.029
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.031
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.046
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.058
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.060
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:34.218
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:35.896
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:36.200
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:36.576
+!MESSAGE Workspace initialized in 2539ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:37.191
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:37.316
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:37.501
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 17:58:37.847
+!MESSAGE Workspace initialized in 1254ms
+!SESSION 2018-06-26 18:00:16.775 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 18:00:17.898
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 18:00:16.782 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 18:00:17.916
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.554
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.597
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.790
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.809
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.812
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.843
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.849
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:18.852
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:19.061
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:20.949
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:21.213
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:21.578
+!MESSAGE Workspace initialized in 2747ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:22.344
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:22.446
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:22.650
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:00:23.116
+!MESSAGE Workspace initialized in 1525ms
+!SESSION 2018-06-26 18:02:16.968 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 18:02:18.125
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2018-06-26 18:02:16.977 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 18:02:18.139
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:18.830
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:18.850
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.071
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.088
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.088
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.092
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.126
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.128
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:19.301
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 18:02:20.972
+!MESSAGE Finished creating the default Java project
