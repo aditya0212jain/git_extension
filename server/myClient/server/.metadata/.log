@@ -13650,3 +13650,828 @@ Command-line arguments:  -data
 
 !ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 13:08:12.649
 !MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:32:59.839
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:04.296
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:20.042
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:23.972
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:26.635
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 14:33:38.144 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:33:39.070
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:39.704
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:39.909
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:39.925
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:39.929
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:39.966
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:40.109
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:41.553
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:41.917
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:42.380
+!MESSAGE Workspace initialized in 2446ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:42.621
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:42.639
+!MESSAGE Creating uncached AST for /repodriller/src/main/java/org/repodriller/RepositoryMining.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:43.195
+!MESSAGE >> document/hover
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:43.262
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:46.603
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:54.032
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:33:58.217
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:34:26.078
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:34:28.436
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:34:37.709
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 14:37:04.945 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:37:05.808
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:06.363
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:06.534
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:06.546
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:06.548
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:06.579
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:06.727
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:08.073
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:08.445
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:08.913
+!MESSAGE Workspace initialized in 2360ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:09.269
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:09.286
+!MESSAGE Creating uncached AST for /repodriller/src/main/java/org/repodriller/RepositoryMining.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:37:09.787
+!MESSAGE >> document/hover
+!SESSION 2018-06-26 14:38:11.418 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:38:12.248
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:12.789
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:12.957
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:12.970
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:12.974
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:13.154
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:14.677
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:14.938
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:15.215
+!MESSAGE Workspace initialized in 2235ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:23.301
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:38:26.034
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 14:41:10.705 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:41:11.599
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:12.178
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:12.335
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:12.348
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:12.350
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:12.541
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:14.205
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:14.532
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:15.042
+!MESSAGE Workspace initialized in 2688ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:20.009
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:23.455
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:27.886
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:41:30.783
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 14:42:07.418 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:42:08.296
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:08.886
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:09.069
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:09.083
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:09.086
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:09.267
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:10.754
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:11.052
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:11.366
+!MESSAGE Workspace initialized in 2275ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:17.959
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:20.596
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:42:23.326
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 14:43:07.198 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:43:08.059
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:08.737
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:08.932
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:08.944
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:08.946
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:09.101
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:10.639
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:10.957
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:11.386
+!MESSAGE Workspace initialized in 2437ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:12.686
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 14:43:57.847 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:43:58.728
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:43:59.268
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 14:44:00.333
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:44:00.339
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 14:46:28.724 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:46:29.538
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:46:30.074
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 14:46:31.108
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:46:31.115
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 14:46:48.737 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:46:49.585
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:46:50.140
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 14:46:50.164
+!MESSAGE Application error
+!STACK 1
+java.lang.NumberFormatException: For input string: "5000;3000"
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.createProvider(ConnectionStreamFactory.java:105)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getSelectedStream(ConnectionStreamFactory.java:96)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:46:50.171
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 14:48:35.539 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:48:36.446
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:36.993
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:37.169
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:37.185
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:37.188
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:37.374
+!MESSAGE Creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:38.799
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:39.078
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:48:39.382
+!MESSAGE Workspace initialized in 2187ms
+!SESSION 2018-06-26 14:49:07.894 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 14:49:08.729
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:49:09.282
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:49:09.441
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:49:09.452
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 14:49:09.454
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+!SESSION 2018-06-26 15:06:01.192 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:06:02.062
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:02.618
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:02.820
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:02.833
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:02.836
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:03.083
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:06:03.159 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:06:04.744
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:05.574
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:05.811
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:05.991
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:06.671
+!MESSAGE Workspace initialized in 3791ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:06:06.899
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:06:06.912
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:10:18.677
+!MESSAGE >> document/definition
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:11:01.205
+!MESSAGE >> document/definition
+!SESSION 2018-06-26 15:12:34.492 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:12:35.418
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:35.982
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:36.157
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:36.169
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:36.172
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:36.382
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:12:36.472 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:12:38.131
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:38.906
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:39.123
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:39.283
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:39.848
+!MESSAGE Workspace initialized in 3671ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:12:40.184
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:12:40.199
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 15:14:06.817 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:14:07.674
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:08.259
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:08.449
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:08.461
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:08.463
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:08.656
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:14:08.765 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:14:10.223
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:11.114
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:11.305
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:11.498
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:11.969
+!MESSAGE Workspace initialized in 3500ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:14:12.374
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:14:12.396
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+!SESSION 2018-06-26 15:16:36.459 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:16:37.332
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:37.866
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:38.061
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:38.073
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:38.075
+!MESSAGE Initializing Java Language Server 0.14.0.201802282111
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:38.269
+!MESSAGE Creating the default Java project
+!SESSION 2018-06-26 15:16:38.358 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_171
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Command-line arguments:  -data 
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-26 15:16:39.788
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:40.717
+!MESSAGE Finished creating the default Java project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:41.095
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:41.254
+!MESSAGE Importing Maven project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:41.995
+!MESSAGE Workspace initialized in 3910ms
+
+!ENTRY org.eclipse.osgi 4 0 2018-06-26 15:16:42.221
+!MESSAGE Application error
+!STACK 1
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.initializeConnection(ConnectionStreamFactory.java:46)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory$SocketStreamProvider.getInputStream(ConnectionStreamFactory.java:54)
+	at org.eclipse.jdt.ls.core.internal.ConnectionStreamFactory.getInputStream(ConnectionStreamFactory.java:111)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startConnection(JavaLanguageServerPlugin.java:233)
+	at org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin.startLanguageServer(JavaLanguageServerPlugin.java:300)
+	at org.eclipse.jdt.ls.core.internal.LanguageServer.start(LanguageServer.java:25)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1471)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:42.247
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is stopping:
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2018-06-26 15:16:47.426
+!MESSAGE >> document/definition

@@ -142,31 +142,6 @@ class myClient {
         };
         //console.log("y4");
         connection.initialized();
-        console.log("definition inside the server start process");
-        try {
-            const def = await connection.gotoDefinition(testTextPosition);
-            console.log(testTextPosition);
-            console.log(def[0]);
-        }
-        catch (e) {
-            console.log("error in definition");
-        }
-        console.log("document Highlight");
-        try {
-            const dochigh = await connection.documentHighlight(testTextPosition);
-            console.log(dochigh);
-        }
-        catch (e) {
-            console.log("error in document highlight");
-        }
-        console.log("Hover information");
-        try {
-            const hoverinfo = await connection.hover(testTextPosition);
-            console.log(hoverinfo);
-        }
-        catch (e) {
-            console.log("error in hover info");
-        }
         //console.log("About to shut down");
         // var a = await newServer.connection.shutdown();
         // console.log(a);
@@ -181,7 +156,9 @@ class myClient {
     createRpcConnection() {
         let reader;
         let writer;
-        //console.log(this.socket);
+        console.log("RPC");
+        console.log(this.socket);
+        console.log(this);
         //console.log("r1");
         reader = new rpc.SocketMessageReader(this.socket);
         writer = new rpc.SocketMessageWriter(this.socket);
@@ -193,18 +170,18 @@ class myClient {
             console.log("inside spawn with socket");
             let childProcess;
             let server;
-            const pro1 = new Promise((resolve1, reject) => {
-                server = net.createServer(socket => {
-                    // When the language server connects, grab socket, stop listening and resolve
-                    console.log("inside net.createServer");
-                    this.socket = socket;
-                    server.close();
-                    console.log("about to resolve childProcess");
-                    // console.log(this.socket);
-                    resolve(childProcess);
-                    //console.log("after resolve command");
-                }).listen(3000);
-            });
+            //const pro1 = new Promise((resolve1,reject) => {
+            server = net.createServer(socket => {
+                // When the language server connects, grab socket, stop listening and resolve
+                console.log("inside net.createServer");
+                this.socket = socket;
+                server.close();
+                console.log("about to resolve childProcess");
+                // console.log(this.socket);
+                resolve(childProcess);
+                //console.log("after resolve command");
+            }).listen(3000);
+            //});
             const pro2 = new Promise((resolve2, reject) => {
                 //server.listen(3000, '127.0.0.1', () => {
                 console.log(server.address());
@@ -245,9 +222,9 @@ class myClient {
             args.push(extraArgs);
         }
         //this.logger.debug(`starting "${command} ${args.join(' ')}"`)
-        console.log("about to start childprocess");
+        //console.log("about to start childprocess");
         const childProcess = cp.spawn(command, args, { cwd: serverHome });
-        console.log("returning from spawnServer");
+        //console.log("returning from spawnServer");
         return childProcess;
     }
     async getDefinition(params) {
@@ -276,15 +253,6 @@ const testTextPosition = { textDocument: textidentifier, position: positionTest 
 async function p() {
     var startServerPath = globalFilePath;
     var t = await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
-    try {
-        const def = await t.connection.gotoDefinition(testTextPosition);
-        console.log(testTextPosition);
-        console.log(def[0]);
-    }
-    catch (e) {
-        console.log(e);
-    }
-    console.log("server started successfully, now starting second server");
     var http = require('http');
     http.createServer(async function (request, response) {
         var body = [];
@@ -299,7 +267,6 @@ async function p() {
                 console.error(err);
             });
             var obj = JSON.parse(result);
-            console.log("QUeRY BELOW: ");
             console.log("obj below");
             console.log(obj);
             response.statusCode = 200;
@@ -317,16 +284,13 @@ async function p() {
             catch (e) {
                 console.log(e);
             }
-            // console.log(result);
-            // console.log("result above");
-            //response.write("Result: ");
             response.write(result);
             response.end();
-            // Note: the 2 lines above could be replaced with this next one:
-            // response.end(JSON.stringify(responseBody))
-            // END OF NEW STUFF
         });
     }).listen(8080); //the server object listens on port 8080
+    console.log("trying another language server");
+    var chp = clientTest.spawnServer(['']);
+    console.log("successful");
     console.log("write the line and character no. with space: ");
     var rl = readline.createInterface(process.stdin, process.stdout);
     rl.prompt();
