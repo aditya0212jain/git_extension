@@ -345,6 +345,7 @@ http.createServer(async function (request, response) {
   });
   var obj = JSON.parse(result);
   console.log("QUeRY BELOW: ");
+  console.log("obj below");
   console.log(obj);
   response.statusCode = 200;
   response.setHeader('Content-Type', 'application/json');

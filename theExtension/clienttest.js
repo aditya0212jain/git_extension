@@ -58,16 +58,22 @@ function addSpans(){
           var argpass = {textDocument : path , position : positiont };
           //console.log("argpass: ");
           //console.log(argpass);
+          //chrome.tabs.create({windowId :7,active :true},somefunction);
           var pReq = new XMLHttpRequest();
           pReq.addEventListener("load", reqListener);
           pReq.open("POST", "http://localhost:8080");
           pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
           pReq.send(JSON.stringify(argpass));
-
+          // chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+          //     console.log(response.farewell);
+          // });
         },false)
       }
     }
   }
+}
+function somefunction(){
+  chrome.tabs.create({url : "http://www.google.com"});
 }
 
 function getLine(element){
@@ -133,6 +139,7 @@ function getFilePath(element){
   if(myRegexBlob.test(href)==true){
     console.log("its working");
     var blob = document.getElementById('blob-path');
+    console.log(blob.textContent);
     return blob.textContent;
   }else if (myRegexPull.test(href)==true){
     //console.log("Pull working");
