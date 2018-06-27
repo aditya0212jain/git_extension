@@ -13,7 +13,7 @@
     {
       "matches": ["https://*/*"],
       "run_at": "document_end",
-      "js": ["jumble.js","toggle.js","clienttest.js","lib/jquery-2.1.3.min.js"]
+      "js": ["jumble.js","toggle.js","clienttest.js","lib/jquery-2.1.3.min.js","onload.js"]
     },
     {
       "matches": ["*://*/*"],

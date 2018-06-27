@@ -6,9 +6,8 @@ const path = require("path");
 // import * as Convert from '../utils';
 const net = require("net");
 const languageclient_1 = require("../languageclient");
-const readline = require("readline");
 const os = require("os");
-var globalFilePath = "G:/lsp/myServerSide/myClient";
+exports.globalFilePath = "G:/Repos/server";
 function pathToUri(filePath) {
     let newPath = filePath.replace(/\\/g, '/');
     if (newPath[0] !== '/') {
@@ -16,6 +15,7 @@ function pathToUri(filePath) {
     }
     return encodeURI(`file://${newPath}`).replace(/[?#]/g, encodeURIComponent);
 }
+exports.pathToUri = pathToUri;
 class myClient {
     constructor() {
         this.reportBusyWhile = async (title, f) => {
@@ -156,9 +156,9 @@ class myClient {
     createRpcConnection() {
         let reader;
         let writer;
-        console.log("RPC");
-        console.log(this.socket);
-        console.log(this);
+        //console.log("RPC");
+        //console.log(this.socket);
+        //console.log(this);
         //console.log("r1");
         reader = new rpc.SocketMessageReader(this.socket);
         writer = new rpc.SocketMessageWriter(this.socket);
@@ -241,74 +241,4 @@ class myClient {
         });
     }
 }
-console.log("Starting");
-const clientTest = new myClient();
-console.log("instance created successfully");
-const textidentifier = { uri: "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java" };
-const positionTest = { line: 13, character: 10 };
-//console.log(textidentifier);
-//console.log(positionTest);
-const testTextPosition = { textDocument: textidentifier, position: positionTest };
-//console.log(testTextPosition);
-async function p() {
-    var startServerPath = globalFilePath;
-    var t = await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
-    var http = require('http');
-    http.createServer(async function (request, response) {
-        var body = [];
-        request.on('error', (err) => {
-            console.error(err);
-        }).on('data', (chunk) => {
-            body.push(chunk);
-        }).on('end', async () => {
-            var result = Buffer.concat(body).toString();
-            // BEGINNING OF NEW STUFF
-            response.on('error', (err) => {
-                console.error(err);
-            });
-            var obj = JSON.parse(result);
-            console.log("obj below");
-            console.log(obj);
-            response.statusCode = 200;
-            response.setHeader('Content-Type', 'application/json');
-            var resultToBrowser;
-            try {
-                var test = { textDocument: { uri: pathToUri(globalFilePath) + "/" + obj.textDocument }, position: obj.position }; //{textDocument: textidentifier,position : obj}
-                const def = await t.connection.gotoDefinition(test);
-                console.log("ANSWER BELOW");
-                //console.log(test)
-                console.log(def[0]);
-                resultToBrowser = def;
-                result = JSON.stringify(def[0]);
-            }
-            catch (e) {
-                console.log(e);
-            }
-            response.write(result);
-            response.end();
-        });
-    }).listen(8080); //the server object listens on port 8080
-    console.log("trying another language server");
-    var chp = clientTest.spawnServer(['']);
-    console.log("successful");
-    console.log("write the line and character no. with space: ");
-    var rl = readline.createInterface(process.stdin, process.stdout);
-    rl.prompt();
-    rl.on('line', async function (line) {
-        var num = line.split(" ");
-        var pos = { line: parseInt(num[0]), character: parseInt(num[1]) };
-        var test = { textDocument: textidentifier, position: pos };
-        try {
-            console.log("Definition");
-            const def = await t.connection.gotoDefinition(test);
-            console.log(def[0]);
-            console.log("Hover tip");
-            const hoverinfo = await t.connection.hover(test);
-            console.log(hoverinfo);
-        }
-        catch (e) {
-            console.log(e);
-        }
-    });
-}
-p();
+exports.myClient = myClient;

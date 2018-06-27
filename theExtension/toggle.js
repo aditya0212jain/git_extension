@@ -207,5 +207,3 @@ function testFirst(){
   idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
   addClick();
 }
-
-window.onload = function () {onloadFunc();addSpans();};

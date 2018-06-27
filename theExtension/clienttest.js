@@ -12,29 +12,17 @@ function reqListener () {
   // }
 }
 
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", reqListener);
-oReq.open("POST", "http://localhost:8080");
-oReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-oReq.send(JSON.stringify({ line :11,character: 24 }));
-
-function addSpans(){
+function addSpans(type,repo,branchList){
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
     var tag = outSpan[j];
-    //var t = document.getElementById('output');
     var children = tag.childNodes;
     var n = children.length;
     for(i=0;i<n;i++){
-      //console.log(children);
       var te = children[i].textContent;
-      //console.log(children[i].tagName);
       var tn = children[i].tagName;
-      //te = te.replace(/\t/g,"    ");
       var re = te.replace(/( )+|([a-zA-Z$_]+)|(\()/g,"<span>$1$2$3<\/span>");
       re = re.replace(/(\t)/g,"<span>$1</span>");
-      //re = re.replace(/((\()*(\))*(;)*)+/g,"<span>$1<\/span>");
-      //children[i].textContent = re;    (((\()*(\))*(;)*)+)
       if(children[i].tagName==undefined){
         var y = document.createElement("span");
         y.innerHTML = re;
@@ -43,27 +31,16 @@ function addSpans(){
         children[i].innerHTML = re;
       }
       var childOfChild = children[i].childNodes;
-      // console.log(childOfChild);
       for(o=0;o<childOfChild.length;o++){
         childOfChild[o].addEventListener("mouseover", function(event){event.target.style.color = "orange";},false);
         childOfChild[o].addEventListener("mouseout", function(event){ event.target.style.color=""},false);
         childOfChild[o].addEventListener("click", function(){
-          var linet = getLine(this.parentElement.parentElement);
-          console.log("the line is: "+ linet);
-          var chart = getCharacter(this);
-          console.log("the character no. is: " + chart);
-          var path = getFilePath(this);
-          path = path.replace(/\r?\n|\r|\s/g,"");
-          var positiont = { line : linet,character : chart};
-          var argpass = {textDocument : path , position : positiont };
-          //console.log("argpass: ");
-          //console.log(argpass);
-          //chrome.tabs.create({windowId :7,active :true},somefunction);
-          var pReq = new XMLHttpRequest();
-          pReq.addEventListener("load", reqListener);
-          pReq.open("POST", "http://localhost:8080");
-          pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-          pReq.send(JSON.stringify(argpass));
+          var queryObject = getQueryObject(this,type,repo,branchList);
+          console.log(queryObject);
+          var objRequest = {method:"query",query:queryObject};
+          console.log("objRequest is :");
+          console.log(objRequest);
+            sendToServer(objRequest);
           // chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
           //     console.log(response.farewell);
           // });
@@ -71,9 +48,6 @@ function addSpans(){
       }
     }
   }
-}
-function somefunction(){
-  chrome.tabs.create({url : "http://www.google.com"});
 }
 
 function getLine(element){
@@ -137,10 +111,12 @@ function getFilePath(element){
   var myRegexPull = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
   var myRegexBlob = /(.)*(github)(.)*(blob)(.)*/g;
   if(myRegexBlob.test(href)==true){
-    console.log("its working");
-    var blob = document.getElementById('blob-path');
-    console.log(blob.textContent);
-    return blob.textContent;
+    var blobpath = document.getElementById('blob-path');
+    var path = blobpath.textContent.split('/');
+    path.splice(0,1);
+    var final = path.join('/');
+    final = final.replace(/\r?\n|\r|\s/g,"");
+    return final;
   }else if (myRegexPull.test(href)==true){
     //console.log("Pull working");
     var jsfile = element.closest(".js-file");
@@ -151,6 +127,37 @@ function getFilePath(element){
     var repository = href.split('/');
     var pullindex = repository.indexOf('pull');
     //console.log(repository[pullindex-1] +'/' + pathdir);
-    return repository[pullindex-1] +'/' + pathdir;
+    return pathdir;
   }
+}
+
+function getQueryObject(element,type,repo,branchList){
+  var linet = getLine(element.parentElement.parentElement);
+  console.log("the line is: "+ linet);
+  var chart = getCharacter(element);
+  console.log("the character no. is: " + chart);
+  var path = getFilePath(element);
+  path = path.replace(/\r?\n|\r|\s/g,"");
+  var positiont = { line : linet,character : chart};
+  var argpass;
+  if(type=="blob"){
+    console.log("branch is "+branchList[0]);
+    argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
+  }
+  else if (type=="pull"){
+    console.log("pull type request in getting query object");
+    var td = element.closest("td");
+    var i = $(td).index();
+    console.log("i: "+i);
+    if(i==1){
+      console.log("branch is "+branchList[0]);
+      argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
+    }
+    else if(i==3){
+      console.log("branch is "+branchList[1]);
+      argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
+    }
+  }
+  console.log(argpass);
+  return argpass;
 }
