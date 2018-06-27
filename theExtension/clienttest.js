@@ -6,10 +6,10 @@ function reqListener () {
   console.log(obj.range.start.line+1);
   var line = obj.range.start.line +1;
   var ct = document.getElementById("L"+line);
-  if(ct!=undefined||ct !=null){
-    ct.scrollIntoView();
-    //ct.style.color="blue";
-  }
+  // if(ct!=undefined||ct !=null){
+  //   ct.scrollIntoView();
+  //   //ct.style.color="blue";
+  // }
 }
 
 var oReq = new XMLHttpRequest();
@@ -126,7 +126,7 @@ function getCharacterTill(element){
   if(parent!=undefined||parent!=null){
     var children = parent.childNodes;
     for(i=0;i<index;i++){
-      count += children[i].textContent.replace(/\t/g,"    ").length;
+      count += children[i].textContent.replace(/\t/g," ").length;
     }
   }
   return count;

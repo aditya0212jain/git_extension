@@ -6,6 +6,7 @@ const path = require("path");
 // import * as Convert from '../utils';
 const net = require("net");
 const languageclient_1 = require("../languageclient");
+const readline = require("readline");
 const os = require("os");
 var globalFilePath = "G:/lsp/myServerSide/myClient";
 function pathToUri(filePath) {
@@ -198,8 +199,8 @@ class myClient {
                     resolve();
                 }
             }).listen(3000);
-            childProcess = this.spawnServer([``]);
-            this.cplist.push(childProcess);
+            //childProcess = this.spawnServer([``]);
+            //this.cplist.push(childProcess);
             this.childProcessCreator = this.spawnServer([``]);
             this.cplist.push(this.childProcessCreator);
             this.childProcessCreator.on('exit', exitCode => {
@@ -268,7 +269,7 @@ async function p() {
     //var t = await clientTest.startServer(startServerPath,0); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
     //await clientTest.spawnServerWithSocket(1);
     await clientTest.activate();
-    var t = clientTest.serverlist[1];
+    var t = clientTest.serverlist[0];
     var http = require('http');
     console.log("the cplist length is: " + clientTest.cplist.length);
     http.createServer(async function (request, response) {
@@ -308,25 +309,24 @@ async function p() {
     console.log("trying another language server");
     //var chp = clientTest.spawnServer(['']);
     console.log("successful");
-    //console.log("write the line and character no. with space: ");
-    //var rl = readline.createInterface(process.stdin, process.stdout);
-    //rl.prompt();
-    //rl.on('line', async function(line) {
-    //     var num = line.split(" ");
-    //     var pos = {line : parseInt(num[0]),character : parseInt(num[1])};
-    //     var test = {textDocument: textidentifier,position : pos};
-    //     try{
-    //       console.log("Definition");
-    //       const def = await t.connection.gotoDefinition(test);
-    //       console.log(def[0]);
-    //       console.log("Hover tip");
-    //       const hoverinfo = await t.connection.hover(test);
-    //       console.log(hoverinfo);
-    //     }
-    //     catch(e){
-    //       console.log(e);
-    //     }
-    //
-    // });
+    console.log("write the line and character no. with space: ");
+    var rl = readline.createInterface(process.stdin, process.stdout);
+    rl.prompt();
+    rl.on('line', async function (line) {
+        var num = line.split(" ");
+        var pos = { line: parseInt(num[0]), character: parseInt(num[1]) };
+        var test = { textDocument: textidentifier, position: pos };
+        try {
+            console.log("Definition");
+            const def = await t.connection.gotoDefinition(test);
+            console.log(def[0]);
+            console.log("Hover tip");
+            const hoverinfo = await t.connection.hover(test);
+            console.log(hoverinfo);
+        }
+        catch (e) {
+            console.log(e);
+        }
+    });
 }
 p();
