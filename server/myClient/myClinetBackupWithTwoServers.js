@@ -18,6 +18,9 @@ function pathToUri(filePath) {
 }
 class myClient {
     constructor() {
+        this.cplist = [];
+        this.socketlist = [];
+        this.serverlist = [];
         this.reportBusyWhile = async (title, f) => {
             this.logger.info(`[Started] ${title}`);
             let res;
@@ -113,24 +116,41 @@ class myClient {
             },
         };
     }
-    async startServer(projectPath) {
+    tempPromise(index) {
+        return new Promise((resolve, reject) => {
+            resolve(this.cplist[index]);
+        });
+    }
+    async activate() {
+        //await this.spawnServerWithSocket();
+        //var t = await this.startServer(globalFilePath,0);
+        return new Promise(async (resolve, reject) => {
+            await this.spawnServerWithSocket(1);
+            //console.log(this.server.getConnections());
+            resolve();
+            console.log("Activate Ended");
+            //this.childProcessCreator = await this.spawnServer([``]);
+            //console.log("Ended for sure");
+            //return t;
+        });
+    }
+    async startServer(projectPath, indexOfServer) {
         console.log("its in");
+        //await this.spawnServerWithSocket();
+        //console.log("Now hajime");
         //const process = this.spawnServerWithSocket().then((result) => result );
-        const process = await this.spawnServerWithSocket().then((result) => { console.log("in resolve"); return result; });
-        ;
+        const process = await this.tempPromise(indexOfServer); //await this.spawnServerWithSocket();//.then((result) => { return result;});
         console.log("loaded process");
         this.captureServerErrors(process, projectPath);
-        //const process = this.spawnServer([`--tcp=127.0.0.1`]);
         let serverHome = path.join(__dirname, 'server');
-        //const process = await async f(){ return this.startServerProcess(projectPath); }
-        const connection = new languageclient_1.LanguageClientConnection(this.createRpcConnection());
-        console.log("made connection");
+        const connection = new languageclient_1.LanguageClientConnection(this.createRpcConnection(indexOfServer));
+        //console.log("made connection");
         const initializeParams = this.getInitializeParams(projectPath, process);
         //console.log("y1");
         const initialization = connection.initialize(initializeParams);
-        console.log("y2");
+        //console.log("y2");
         const initializeResponse = await initialization;
-        console.log("y3");
+        //console.log("y3");
         this._connection = connection;
         console.log(initializeResponse);
         //console.log(process);
@@ -153,49 +173,44 @@ class myClient {
         //newServer.process.kill();
         return newServer;
     }
-    createRpcConnection() {
+    createRpcConnection(indexOfServer) {
         let reader;
         let writer;
-        console.log("RPC");
-        console.log(this.socket);
-        console.log(this);
         //console.log("r1");
-        reader = new rpc.SocketMessageReader(this.socket);
-        writer = new rpc.SocketMessageWriter(this.socket);
+        reader = new rpc.SocketMessageReader(this.socketlist[indexOfServer]);
+        writer = new rpc.SocketMessageWriter(this.socketlist[indexOfServer]);
         //console.log("r2");
         return rpc.createMessageConnection(reader, writer);
     }
-    spawnServerWithSocket() {
+    async spawnServerWithSocket(index) {
         return new Promise((resolve, reject) => {
             console.log("inside spawn with socket");
             let childProcess;
-            let server;
-            //const pro1 = new Promise((resolve1,reject) => {
-            server = net.createServer(socket => {
-                // When the language server connects, grab socket, stop listening and resolve
-                console.log("inside net.createServer");
+            let cp2;
+            this.server = net.createServer(async (socket) => {
+                console.log("in server listen");
                 this.socket = socket;
-                server.close();
-                console.log("about to resolve childProcess");
-                // console.log(this.socket);
-                resolve(childProcess);
-                //console.log("after resolve command");
+                //server.close();
+                this.socketlist.push(socket);
+                var ser = await this.startServer(globalFilePath, this.serverlist.length);
+                console.log("ser complete");
+                this.serverlist.push(ser);
+                if (this.serverlist.length == index) {
+                    resolve();
+                }
             }).listen(3000);
-            //});
-            const pro2 = new Promise((resolve2, reject) => {
-                //server.listen(3000, '127.0.0.1', () => {
-                console.log(server.address());
-                // Once we have a port assigned spawn the Language Server with the port
-                childProcess = this.spawnServer([``]); //--tcp=127.0.0.1:${server.address().port}
-                console.log("childProcess started");
-                childProcess.on('exit', exitCode => {
-                    if (!childProcess.killed) {
-                        console.log("childProcess exit but not killed");
-                    }
-                    console.log("childProcess exited");
-                });
-                //});
+            //childProcess = this.spawnServer([``]);
+            //this.cplist.push(childProcess);
+            this.childProcessCreator = this.spawnServer([``]);
+            this.cplist.push(this.childProcessCreator);
+            this.childProcessCreator.on('exit', exitCode => {
+                if (!this.childProcessCreator.killed) {
+                    console.log("childProcess exit but not killed");
+                }
+                //console.log("childProcess exited");
             });
+            //});
+            //});
             //console.log("why did it stuck :O");
         });
     }
@@ -243,7 +258,6 @@ class myClient {
 }
 console.log("Starting");
 const clientTest = new myClient();
-console.log("instance created successfully");
 const textidentifier = { uri: "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java" };
 const positionTest = { line: 13, character: 10 };
 //console.log(textidentifier);
@@ -252,8 +266,12 @@ const testTextPosition = { textDocument: textidentifier, position: positionTest 
 //console.log(testTextPosition);
 async function p() {
     var startServerPath = globalFilePath;
-    var t = await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
+    //var t = await clientTest.startServer(startServerPath,0); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
+    //await clientTest.spawnServerWithSocket(1);
+    await clientTest.activate();
+    var t = clientTest.serverlist[0];
     var http = require('http');
+    console.log("the cplist length is: " + clientTest.cplist.length);
     http.createServer(async function (request, response) {
         var body = [];
         request.on('error', (err) => {
@@ -289,7 +307,7 @@ async function p() {
         });
     }).listen(8080); //the server object listens on port 8080
     console.log("trying another language server");
-    var chp = clientTest.spawnServer(['']);
+    //var chp = clientTest.spawnServer(['']);
     console.log("successful");
     console.log("write the line and character no. with space: ");
     var rl = readline.createInterface(process.stdin, process.stdout);
