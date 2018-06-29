@@ -23,7 +23,7 @@ function prepareExpanders(obj){
   for(i=0;i<expanders.length;i++){
     expanders[i].addEventListener("click",function(){
       console.log("expander clicked");
-      addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);
+      setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);console.log("Spans added now");},600);
     });
   }
 }

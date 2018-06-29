@@ -29,6 +29,17 @@ function showBlobResult(result){
   }
 }
 
+
+function showPullResult(result){
+  if(result.same==true){
+    showSamePullResult(result);
+  }else{
+    showDiffPullResult(result);
+  }
+}
+
+
+
 function showSameBlobResult(result){
   var obj = result.definition;
   var line = obj.range.start.line +1;
@@ -62,4 +73,30 @@ function showDiffBlobResult(result){
   //     console.log(newBranch);
   //   }
   // }
+}
+
+function showSamePullResult(result){
+  var srcPath = result.query.textDocument;
+  var pathArray = srcPath.split('/');
+  pathArray = pathArray.slice(1,pathArray.length);
+  var finalPath = pathArray.join('/');
+  var element = "a[title$=\'"+finalPath+"\']";
+  var diff = $(element).attr('href');
+  var line = result.definition.range.start.line+1;
+  var old = location.href;
+  var removehash = old.indexOf("#");
+  if(removehash==-1){
+    if(result.branchType=="base"){
+      location.href = old +diff+ "L" + line;
+    }else{
+      location.href = old +diff+ "R" + line;
+    }
+  }else{
+    var h = old.substring(0,removehash);
+    if(result.branchType=="base"){
+      location.href = h +diff+ "L" + line;
+    }else{
+      location.href = h +diff+ "R" + line;
+    }
+  }
 }

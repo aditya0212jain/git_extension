@@ -60,13 +60,17 @@ function addSpans(type,repo,branchList){
 
 function getLine(element){
   //console.log("clicked");
-  //console.log(element);
-  //console.log(element);
+  console.log(element);
   if(element.parentElement!=undefined || element.parentElement!=null){
     if(element.parentElement.tagName=="TR"){
       var td2 = element.parentElement.getElementsByClassName("js-line-number")[0];
       //console.log(td2.getAttribute("data-line-number"));
-      return td2.getAttribute('data-line-number')-1;
+      if(td2!=undefined){
+        return td2.getAttribute('data-line-number')-1;
+      }else{
+        var prev = element.previousSibling.previousSibling;
+        return prev.getAttribute('data-line-number')-1;               //for expandable line
+      }
     }
     else{
       //console.log("p1");
