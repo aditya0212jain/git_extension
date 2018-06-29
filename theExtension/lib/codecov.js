@@ -487,7 +487,7 @@ window.Github = (function(superClass) {
               file.find('tr').each(function() {
                 if(this.classList.contains("js-expandable-line")){
                   console.log(this);
-                  $('a',this).click(function() { console.log("h"); myCode();});
+                  $('a',this).click(function() { console.log("h"); setTimeout(function(){myCode();console.log("codecov added");},600);});
                   //console.log($('a',this));
                 }
                 //console.log(this);
