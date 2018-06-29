@@ -14,6 +14,17 @@ function onloadFunc () {
     console.log(typeObject);
     sendToServer(typeObject);
     preparePage(typeObject);
+    prepareExpanders(typeObject);
+  }
+}
+
+function prepareExpanders(obj){
+  var expanders = document.getElementsByClassName('diff-expander');
+  for(i=0;i<expanders.length;i++){
+    expanders[i].addEventListener("click",function(){
+      console.log("expander clicked");
+      addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);
+    });
   }
 }
 

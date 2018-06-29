@@ -5,6 +5,10 @@ const myclient_1 = require("./myclient");
 const shell = require('shelljs');
 const clientTest = new myclient_1.myClient();
 var t;
+var globalRepo;
+var globalBranch;
+var globalBranchBase;
+var globalBranchHead;
 // const textidentifier = {uri : "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java"};
 // const positionTest = {line :13,character:10};
 //console.log(textidentifier);
@@ -16,21 +20,35 @@ async function handleRequest(obj) {
         if (obj.method == "blob") {
             console.log("blob request");
             runShellBlob(obj.repo, obj.branch);
+            globalRepo = obj.repo;
+            globalBranch = obj.branch;
             t = await clientTest.startServer(myclient_1.globalFilePath);
             resolve();
         }
         else if (obj.method == "pull") {
             console.log("pull request");
             runShellPull(obj.repo, obj.branchBase, obj.branchHead);
+            globalRepo = obj.repo;
+            globalBranchHead = obj.branchHead;
+            globalBranchBase = obj.branchBase;
             t = await clientTest.startServer(myclient_1.globalFilePath);
             resolve();
         }
         else if (obj.method == "query") {
             console.log("query request");
             var resultForQuery = await handleQuery(obj.query);
-            console.log("the returning value of result:");
-            console.log(resultForQuery);
-            resolve(resultForQuery);
+            var returningObject;
+            var same = false;
+            if (resultForQuery.uri == myclient_1.pathToUri(myclient_1.globalFilePath) + "/" + obj.query.textDocument) {
+                same = true;
+            }
+            if (obj.type == "blob") {
+                returningObject = { method: obj.type, query: obj.query, definition: resultForQuery, same: same, repo: globalRepo, branch: globalBranch };
+            }
+            else if (obj.type == "pull") {
+                returningObject = { method: obj.type, query: obj.query, definition: resultForQuery, branchType: obj.branchType, same: same, repo: globalRepo };
+            }
+            resolve(JSON.stringify(returningObject));
         }
         else if (obj.method == "startServer") {
             console.log("startServer request");
@@ -47,10 +65,10 @@ async function handleQuery(obj) {
         console.log(obj);
         var test = { textDocument: { uri: myclient_1.pathToUri(myclient_1.globalFilePath) + "/" + obj.textDocument }, position: obj.position }; //{textDocument: textidentifier,position : obj}
         const def = await t.connection.gotoDefinition(test);
-        console.log("ANSWER BELOW");
+        //console.log("ANSWER BELOW");
         //console.log(test)
-        console.log(def[0]);
-        return JSON.stringify(def[0]);
+        //console.log(def);
+        return def[0];
     }
     catch (e) {
         console.log(e);

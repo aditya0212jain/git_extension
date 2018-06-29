@@ -1,15 +1,12 @@
 console.log("this is client test");
 function reqListener () {
-  var obj = JSON.parse(this.responseText);
-  console.log("Result is: ");
-  console.log(obj);
-  console.log(obj.range.start.line+1);
-  var line = obj.range.start.line +1;
-  var ct = document.getElementById("L"+line);
-  // if(ct!=undefined||ct !=null){
-  //   ct.scrollIntoView();
-  //   //ct.style.color="blue";
-  // }
+  var result = JSON.parse(this.responseText);
+
+  if(result.method=="blob"){
+    showBlobResult(result);
+  }else if(result.method=="pull"){
+    showPullResult(result);
+  }
 }
 
 function addSpans(type,repo,branchList){
@@ -37,7 +34,18 @@ function addSpans(type,repo,branchList){
         childOfChild[o].addEventListener("click", function(){
           var queryObject = getQueryObject(this,type,repo,branchList);
           console.log(queryObject);
-          var objRequest = {method:"query",query:queryObject};
+          var objRequest ;
+          if(type=="blob"){
+            objRequest = {method:"query",query:queryObject,type:type};
+          }else {
+            var td = this.closest("td");
+            var i = $(td).index();
+            if(i==1){
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"base"};
+            }else if(i==3){
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"head"};
+            }
+          }
           console.log("objRequest is :");
           console.log(objRequest);
             sendToServer(objRequest);
