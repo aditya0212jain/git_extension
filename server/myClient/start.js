@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const readline = require("readline");
 const os = require("os");
 const myclient_1 = require("./myclient");
 const shell = require('shelljs');
@@ -9,6 +10,8 @@ var globalRepo;
 var globalBranch;
 var globalBranchBase;
 var globalBranchHead;
+var serverDirectory = "G:/Repos/server";
+var workingDirectory = "G:/Repos/working";
 // const textidentifier = {uri : "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java"};
 // const positionTest = {line :13,character:10};
 //console.log(textidentifier);
@@ -22,7 +25,7 @@ async function handleRequest(obj) {
             runShellBlob(obj.repo, obj.branch);
             globalRepo = obj.repo;
             globalBranch = obj.branch;
-            t = await clientTest.startServer(myclient_1.globalFilePath);
+            t = await clientTest.startServer(serverDirectory);
             resolve();
         }
         else if (obj.method == "pull") {
@@ -31,7 +34,7 @@ async function handleRequest(obj) {
             globalRepo = obj.repo;
             globalBranchHead = obj.branchHead;
             globalBranchBase = obj.branchBase;
-            t = await clientTest.startServer(myclient_1.globalFilePath);
+            t = await clientTest.startServer(serverDirectory);
             resolve();
         }
         else if (obj.method == "query") {
@@ -39,7 +42,7 @@ async function handleRequest(obj) {
             var resultForQuery = await handleQuery(obj.query);
             var returningObject;
             var same = false;
-            if (resultForQuery.uri == myclient_1.pathToUri(myclient_1.globalFilePath) + "/" + obj.query.textDocument) {
+            if (resultForQuery.uri == myclient_1.pathToUri(serverDirectory) + "/" + obj.query.textDocument) {
                 same = true;
             }
             if (obj.type == "blob") {
@@ -63,7 +66,7 @@ async function handleRequest(obj) {
 async function handleQuery(obj) {
     try {
         console.log(obj);
-        var test = { textDocument: { uri: myclient_1.pathToUri(myclient_1.globalFilePath) + "/" + obj.textDocument }, position: obj.position }; //{textDocument: textidentifier,position : obj}
+        var test = { textDocument: { uri: myclient_1.pathToUri(serverDirectory) + "/" + obj.textDocument }, position: obj.position }; //{textDocument: textidentifier,position : obj}
         const def = await t.connection.gotoDefinition(test);
         //console.log("ANSWER BELOW");
         //console.log(test)
@@ -75,7 +78,7 @@ async function handleQuery(obj) {
     }
 }
 async function p() {
-    var startServerPath = myclient_1.globalFilePath;
+    var startServerPath = serverDirectory;
     //t= await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
     var http = require('http');
     http.createServer(async function (request, response) {
@@ -108,6 +111,51 @@ async function p() {
     console.log("trying another language server");
     //var chp = clientTest.spawnServer(['']);
     console.log("successful");
+    var rl = readline.createInterface(process.stdin, process.stdout);
+    var whichDir = 0; // 1 for w and 2 for s
+    var prefix = 'Enter w for working and s for server> ';
+    var afterPrefix = '>';
+    rl.on('line', function (line) {
+        switch (line.trim()) {
+            case 'hello':
+                console.log('world!');
+                break;
+            case 'w':
+                afterPrefix = 'Enter working Directory or b for back>';
+                whichDir = 1;
+                break;
+            case 's':
+                afterPrefix = 'Enter server Directory or b for back>';
+                whichDir = 2;
+                break;
+            case 'b':
+                afterPrefix = "Enter w for working and s for server>";
+                whichDir = 0;
+                break;
+            default:
+                afterPrefix = "Enter w for working and s for server>";
+                if (whichDir == 1) {
+                    workingDirectory = line;
+                    whichDir = 0;
+                }
+                else if (whichDir == 2) {
+                    serverDirectory = line;
+                    whichDir = 0;
+                }
+                else {
+                    console.log('Say what? I might have heard `' + line.trim() + '`');
+                }
+                break;
+        }
+        rl.setPrompt(afterPrefix);
+        rl.prompt();
+    }).on('close', function () {
+        console.log('Have a great day!');
+        process.exit(0);
+    });
+    console.log(prefix + 'Good to see you. Try typing stuff.');
+    rl.setPrompt(prefix);
+    rl.prompt();
 }
 function runShellBlob(repo, branch) {
     var workingDir;
@@ -117,7 +165,7 @@ function runShellBlob(repo, branch) {
         shell.exec('./runShellBlob.sh');
     }
     else if (platform == "win32") {
-        var text = 'console.log("G:/Repos/working");console.log("G:/Repos/server");console.log("' + repo + '");console.log("' + branch + '");';
+        var text = 'console.log("' + workingDirectory + '");console.log("' + serverDirectory + '");console.log("' + repo + '");console.log("' + branch + '");';
         var command = "echo " + text + " > " + "argShellBlob.js";
         console.log(command);
         shell.exec(command);
@@ -128,7 +176,8 @@ function runShellPull(repo, branch1, branch2) {
     var workingDir;
     var serverDir;
     var platform = os.platform();
-    var text = 'console.log("G:/Repos/working");console.log("G:/Repos/server");console.log("' + repo + '");console.log("' + branch1 + '");' + 'console.log("' + branch2 + '");';
+    var text = 'console.log("' + workingDirectory + '");console.log("' + serverDirectory + '");console.log("' + repo + '");console.log("' + branch1 + '");' + 'console.log("' + branch2 + '");';
+    //var text = 'console.log("G:/Repos/working");console.log("G:/Repos/server");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
     var command = "echo " + text + " > " + "argShellPull.js";
     console.log(command);
     shell.exec(command);

@@ -7,7 +7,6 @@ const path = require("path");
 const net = require("net");
 const languageclient_1 = require("../languageclient");
 const os = require("os");
-exports.globalFilePath = "G:/Repos/server";
 function pathToUri(filePath) {
     let newPath = filePath.replace(/\\/g, '/');
     if (newPath[0] !== '/') {

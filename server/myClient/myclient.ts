@@ -12,8 +12,6 @@ import * as stream from 'stream';
 import * as readline from 'readline';
 import * as os from 'os';
 
-export var globalFilePath= "G:/Repos/server";
-
 interface LanguageServerProcess extends EventEmitter {
   stdin: stream.Writable;
   stdout: stream.Readable;
