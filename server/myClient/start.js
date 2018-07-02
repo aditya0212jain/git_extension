@@ -161,6 +161,7 @@ function runShellBlob(repo, branch) {
     var workingDir;
     var serverDir;
     var platform = os.platform();
+    shell.exec('chmod +x runShellBlob.sh');
     if (platform == "linux" || platform == "darwin") {
         shell.exec('./runShellBlob.sh');
     }
@@ -181,6 +182,7 @@ function runShellPull(repo, branch1, branch2) {
     var command = "echo " + text + " > " + "argShellPull.js";
     console.log(command);
     shell.exec(command);
+    shell.exec('chmod +x runShellPull.sh');
     if (platform == "linux" || platform == "darwin") {
         shell.exec('./runShellPull.sh');
     }
