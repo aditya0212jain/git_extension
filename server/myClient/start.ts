@@ -172,25 +172,21 @@ async function p(){
 }
 
 function runShellBlob(repo,branch){
-  var workingDir;
-  var serverDir;
   var platform = os.platform();
-      shell.exec('chmod +x runShellBlob.sh');
+  shell.exec('chmod +x runShellBlob.sh');
+  var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");';
+  var command = "echo "+text+" > "+"argShellBlob.js";
+  console.log(command);
+  shell.exec(command);
   if(platform=="linux" || platform =="darwin"){
     shell.exec('./runShellBlob.sh');
   }else if(platform=="win32"){
-    var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");';
-    var command = "echo "+text+" > "+"argShellBlob.js";
-    console.log(command);
-    shell.exec(command);
     shell.exec('sh runShellBlob.sh');
   }
 
 }
 
 function runShellPull(repo,branch1,branch2){
-  var workingDir;
-  var serverDir;
   var platform = os.platform();
   var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
   //var text = 'console.log("G:/Repos/working");console.log("G:/Repos/server");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
