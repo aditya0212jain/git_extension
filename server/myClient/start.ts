@@ -174,13 +174,15 @@ async function p(){
 function runShellBlob(repo,branch){
   var platform = os.platform();
   shell.exec('chmod +x runShellBlob.sh');
-  var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");';
-  var command = "echo "+text+" > "+"argShellBlob.js";
-  console.log(command);
-  shell.exec(command);
   if(platform=="linux" || platform =="darwin"){
-    shell.exec('./runShellBlob.sh');
+    var text = '\'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");\'';
+    var command = "echo "+text+" > "+"argShellBlob.js";
+    shell.exec(command);
+    shell.exec('./runShellBlobLinux.sh');
   }else if(platform=="win32"){
+    var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");';
+    var command = "echo "+text+" > "+"argShellBlob.js";
+    shell.exec(command);
     shell.exec('sh runShellBlob.sh');
   }
 
@@ -188,16 +190,16 @@ function runShellBlob(repo,branch){
 
 function runShellPull(repo,branch1,branch2){
   var platform = os.platform();
-  var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
-  //var text = 'console.log("G:/Repos/working");console.log("G:/Repos/server");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
-  var command = "echo "+text+" > "+"argShellPull.js";
-  console.log(command);
-  shell.exec(command);
   shell.exec('chmod +x runShellPull.sh');
   if(platform=="linux" || platform =="darwin"){
-
-    shell.exec('./runShellPull.sh');
+    var text = '\'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");\'';
+    var command = "echo "+text+" > "+"argShellPull.js";
+    shell.exec(command);
+    shell.exec('./runShellPullLinux.sh');
   }else if(platform=="win32"){
+    var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
+    var command = "echo "+text+" > "+"argShellPull.js";
+    shell.exec(command);
     shell.exec('sh runShellPull.sh');
   }
 }
