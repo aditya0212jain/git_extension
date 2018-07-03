@@ -1,0 +1,35 @@
+FOR UBUNTU
+
+Requirements:
+java
+nodejs
+tsc
+Steps:
+1)Set environment variable as
+	a) CLIENT_PORT : 3000
+	b) CLIENT_HOST : 127.0.0.1
+use vim .bashrc from terminal and set them as follows
+
+CLIENT_PORT="3000"
+export CLIENT_PORT
+CLIENT_HOST="127.0.0.1"
+export CLIENT_HOST
+
+exit by saving (esc then :wq)
+
+2)git clone the repo git_extension (https://github.com/aditya0212jain/git_extension.git)
+3)enable developers mode from extension menu in chrome (chrome://extensions)
+4)click on load unpacked and select git_extension/theExtension
+5)To start server:
+	go to git_extension/server/myClient
+	and use the command : node start.js
+6)now you can set your working directory of repo by pressing w and the server directory by pressing s
+7)example  :
+w
+/home/aditya/git_files
+In this case your repo should be inside the git_files directory
+As for the server directory just create any empty directory and give its path like:
+
+s
+/home/aditya/server
+
