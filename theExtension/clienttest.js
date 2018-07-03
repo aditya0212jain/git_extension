@@ -1,7 +1,8 @@
 console.log("this is client test");
 function reqListener () {
   var result = JSON.parse(this.responseText);
-
+  console.log("the result is:");
+  console.log(result);
   if(result.method=="blob"){
     showBlobResult(result);
   }else if(result.method=="pull"){
@@ -10,6 +11,7 @@ function reqListener () {
 }
 
 function addSpans(type,repo,branchList){
+  //console.log("in addSpans");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
     var tag = outSpan[j];
@@ -33,7 +35,7 @@ function addSpans(type,repo,branchList){
         childOfChild[o].addEventListener("mouseout", function(event){ event.target.style.color=""},false);
         childOfChild[o].addEventListener("click", function(){
           var queryObject = getQueryObject(this,type,repo,branchList);
-          console.log(queryObject);
+          //console.log(queryObject);
           var objRequest ;
           if(type=="blob"){
             objRequest = {method:"query",query:queryObject,type:type};
@@ -46,8 +48,8 @@ function addSpans(type,repo,branchList){
               objRequest = {method:"query",query:queryObject,type:type,branchType:"head"};
             }
           }
-          console.log("objRequest is :");
-          console.log(objRequest);
+          //console.log("objRequest is :");
+          //console.log(objRequest);
             sendToServer(objRequest);
           // chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
           //     console.log(response.farewell);
@@ -60,7 +62,7 @@ function addSpans(type,repo,branchList){
 
 function getLine(element){
   //console.log("clicked");
-  console.log(element);
+  //console.log(element);
   if(element.parentElement!=undefined || element.parentElement!=null){
     if(element.parentElement.tagName=="TR"){
       var td2 = element.parentElement.getElementsByClassName("js-line-number")[0];

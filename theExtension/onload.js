@@ -83,8 +83,8 @@ function preparePage(obj){
     addSpans(obj.method,obj.repo,[obj.branch]);
   }else if (obj.method=="pull"){
     toggleSide();
-    placeBtn();
-    addClick();
-    addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);
+    placeBtn(obj);
+    addClick(obj);
+    //addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);
   }
 }

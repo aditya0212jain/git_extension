@@ -50,5 +50,15 @@
 			<type>1</type>
 			<location>G:/lsp/myServerSide/myClient/repodriller/util/PathUtils.java</location>
 		</link>
+		<link>
+			<name>src/org/repodriller/filter/range/Commits.java</name>
+			<type>1</type>
+			<location>G:/Repos/server/repodriller_num_commits/src/main/java/org/repodriller/filter/range/Commits.java</location>
+		</link>
+		<link>
+			<name>src/org/repodriller/filter/range/NumOfCommitsTest.java</name>
+			<type>1</type>
+			<location>G:/Repos/server/repodriller_num_commits/src/test/java/org/repodriller/filter/range/NumOfCommitsTest.java</location>
+		</link>
 	</linkedResources>
 </projectDescription>

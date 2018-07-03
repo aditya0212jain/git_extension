@@ -16,7 +16,7 @@ function toggleSide(currentFile){
 
 }
 
-function showTest(btn){
+function showTest(btn,objectForSpan){
   console.log("in");
   console.log(btn.id);
   if(btn.parentElement.parentElement.parentElement.hasAttribute("style")==true){
@@ -106,7 +106,7 @@ function showTest(btn){
 
   var tu = document.getElementById(btn.id);
   //tu.addEventListener('click',function() {showTest(this)});
-  addClick();
+  addClick(objectForSpan);
 }
 
 function addButton(index,fileName){
@@ -132,7 +132,8 @@ function addButton(index,fileName){
   //document.getElementById("test"+index).addEventListener('click',function() { showTest(document.getElementById("test"+index)); },false);
 }
 
-function placeBtn(){
+function placeBtn(objectForSpan){
+  //console.log("in placeBTN");
   var d1 = document.getElementsByClassName("diffbar")[0];
   var btn1 = document.createElement("BUTTON");
   var btn2 = document.createElement("BUTTON");
@@ -144,11 +145,11 @@ function placeBtn(){
   btn1.setAttribute("type","submit");
   btn2.setAttribute("class","btn btn-sm");
   //btn1.setAttribute("onclick","sort(0);this.parentElement.parentElement.parentElement.removeAttribute('open');");
-  btn1.addEventListener("click",productionFirst,false);
+  btn1.addEventListener("click",function(){productionFirst(objectForSpan);},false);
   btn1.setAttribute("id","productionFirstButton");
   btn2.setAttribute("id","testFirstButton");
   //btn2.setAttribute("onclick","sort(1);this.parentElement.parentElement.parentElement.removeAttribute('open');");
-  btn2.addEventListener("click",testFirst,false);
+  btn2.addEventListener("click",function(){testFirst(objectForSpan);},false);
   var div3 = document.createElement("div");
   div3.setAttribute("style","left:-83px");
   div3.setAttribute("class","Popover-message text-left p-3 mx-auto Box box-shadow-large");
@@ -183,27 +184,27 @@ function onloadFunc () {
   }
 }
 
-function addClick() {
+function addClick(objectForSpan) {
   var n = document.getElementById("files_tab_counter");
   for(i=0;i<parseInt(n.innerHTML);i++){
     var t = document.getElementById("test"+i);
     if(t!=null){
-      t.addEventListener('click',function() {showTest(this)});
+      t.addEventListener('click',function() {showTest(this,objectForSpan)});
     }
   }
-
+  addSpans(objectForSpan.method,objectForSpan.repo,[objectForSpan.branchBase,objectForSpan.branchHead]);
 }
 
-function productionFirst(){
+function productionFirst(objectForSpan){
   sort(0);
   var idtemp = document.getElementById("productionFirstButton");
   idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
-  addClick();
+  addClick(objectForSpan);
 }
 
-function testFirst(){
+function testFirst(objectForSpan){
   sort(1);
   var idtemp = document.getElementById("testFirstButton");
   idtemp.parentElement.parentElement.parentElement.removeAttribute('open');
-  addClick();
+  addClick(objectForSpan);
 }
