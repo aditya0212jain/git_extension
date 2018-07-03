@@ -1,4 +1,4 @@
-window.onload = function () {console.log("HAHAHAHA ONLOaD");onloadFunc();};
+window.onload = function () {onloadFunc();};
 
 function onloadFunc () {
   var type = getPageType();
