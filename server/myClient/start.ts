@@ -22,6 +22,7 @@ var globalBranchBase;
 var globalBranchHead;
 var serverDirectory= "G:/Repos/server";
 var workingDirectory= "G:/Repos/working";
+var globalCurrentWorkspace;
 // const textidentifier = {uri : "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java"};
 // const positionTest = {line :13,character:10};
 //console.log(textidentifier);
@@ -45,14 +46,41 @@ var workingDirectory= "G:/Repos/working";
       globalBranchHead = obj.branchHead;
       globalBranchBase = obj.branchBase;
       t = await clientTest.startServer(serverDirectory);
+      console.log("Check if it works now");
+      //t.connection._rpc.onRequest('workspace/workspaceFolders',(value)=>{console.log("on request of server");console.log(value)});
       resolve();
     }else if(obj.method =="query"){
-      console.log("query request");
+      //console.log("query request");
+      try{
+        if(obj.type=="pull"){
+          if(obj.branchType=="head"){
+            if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchHead){
+                t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase}]}});
+              console.log("inside the head part");
+              globalCurrentWorkspace = globalRepo+"_"+globalBranchHead;
+            }
+          }
+          else{
+            if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
+              t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase}]}});
+              globalCurrentWorkspace==globalRepo+"_"+globalBranchBase
+            }
+          }
+        }
+      }catch(e){
+        console.log(e);
+      }
       var resultForQuery = await handleQuery(obj.query);
+      // console.log("the query is");
+      // console.log(obj);
+      console.log("result of query:");
+      console.log(resultForQuery);
       var returningObject;
       var same=false;
-      if(resultForQuery.uri==pathToUri(serverDirectory)+"/"+obj.query.textDocument){
-        same=true;
+      if(resultForQuery!=undefined||resultForQuery!=null){
+        if(resultForQuery.uri==pathToUri(serverDirectory)+"/"+obj.query.textDocument){
+          same=true;
+        }
       }
       if(obj.type=="blob"){
         returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:globalRepo,branch:globalBranch}
@@ -73,13 +101,16 @@ var workingDirectory= "G:/Repos/working";
 
 async function handleQuery(obj){
   try{
-    console.log(obj);
+
+    //console.log(obj);
     var test = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.textDocument},position : obj.position};//{textDocument: textidentifier,position : obj}
     const def = await t.connection.gotoDefinition(test);
     //console.log("ANSWER BELOW");
     //console.log(test)
     //console.log(def);
-    return def[0];
+    if(def!=null||def!=undefined){
+      return def[0];
+    }
   }
   catch(e){
     console.log(e);
@@ -124,50 +155,77 @@ async function p(){
   //var chp = clientTest.spawnServer(['']);
   console.log("successful");
 
-  var rl = readline.createInterface(process.stdin, process.stdout);
-  var whichDir=0;// 1 for w and 2 for s
-  var prefix = 'Enter w for working and s for server> ';
-  var afterPrefix ='>';
-  rl.on('line', function(line) {
-    switch(line.trim()) {
-      case 'hello':
-      console.log('world!');
-      break;
-      case 'w':
-      afterPrefix ='Enter working Directory or b for back>';
-      whichDir = 1;
-      break;
-      case 's':
-      afterPrefix ='Enter server Directory or b for back>';
-      whichDir = 2;
-      break;
-      case 'b':
-      afterPrefix = "Enter w for working and s for server>";
-      whichDir = 0;
-      break;
-      default:
-      afterPrefix = "Enter w for working and s for server>";
-      if(whichDir==1){
-        workingDirectory = line;
-        whichDir = 0;
-      }
-      else if(whichDir==2) {
-        serverDirectory = line;
-        whichDir =0;
-      }else{
-        console.log('Say what? I might have heard `' + line.trim() + '`');
-      }
-      break;
-    }
-    rl.setPrompt(afterPrefix);
-    rl.prompt();
-  }).on('close', function() {
-    console.log('Have a great day!');
-    process.exit(0);
-  });
-  console.log(prefix + 'Good to see you. Try typing stuff.');
-  rl.setPrompt(prefix);
-  rl.prompt();
+  // var rl = readline.createInterface(process.stdin, process.stdout);
+  // var whichDir=0;// 1 for w and 2 for s
+  // var prefix = 'Enter w for working and s for server> ';
+  // var afterPrefix ='>';
+  // rl.on('line', function(line) {
+  //   switch(line.trim()) {
+  //     case 'hello':
+  //     console.log('world!');
+  //     break;
+  //     case 'w':
+  //     afterPrefix ='Enter working Directory or b for back>';
+  //     whichDir = 1;
+  //     break;
+  //     case 's':
+  //     afterPrefix ='Enter server Directory or b for back>';
+  //     whichDir = 2;
+  //     break;
+  //     case 'b':
+  //     afterPrefix = "Enter w for working and s for server>";
+  //     whichDir = 0;
+  //     break;
+  //     default:
+  //     afterPrefix = "Enter w for working and s for server>";
+  //     if(whichDir==1){
+  //       workingDirectory = line;
+  //       whichDir = 0;
+  //     }
+  //     else if(whichDir==2) {
+  //       serverDirectory = line;
+  //       whichDir =0;
+  //     }else{
+  //       console.log('Say what? I might have heard `' + line.trim() + '`');
+  //     }
+  //     break;
+  //   }
+  //   rl.setPrompt(afterPrefix);
+  //   rl.prompt();
+  // }).on('close', function() {
+  //   console.log('Have a great day!');
+  //   process.exit(0);
+  // });
+  // console.log(prefix + 'Good to see you. Try typing stuff.');
+  // rl.setPrompt(prefix);
+  // rl.prompt();
+
+  // t = await clientTest.startServer(serverDirectory);
+  //
+  // var r2 = readline.createInterface(process.stdin, process.stdout);
+  // r2.on('line',async function(line){
+  //   var po = line.split(' ');
+  //   var test;
+  //   switch(parseInt(po[2])){
+  //     case 1:
+  //     test = {textDocument: {uri : "file:///G:/Repos/server/repodriller_num_commits/src/main/java/org/repodriller/filter/range/Commits.java"},position :{line: parseInt(po[0]), character: parseInt(po[1])} };//{textDocument: textidentifier,position : obj}
+  //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:"file:///G:/Repos/server/repodriller_num_commits",name:"num_commits"}],removed:[{uri:"file:///G:/Repos/server/repodriller_master",name:"master"}]}});
+  //     break;
+  //     case 2:
+  //     test = {textDocument: {uri : "file:///G:/Repos/server/repodriller_master/src/main/java/org/repodriller/filter/range/Commits.java"},position :{line: parseInt(po[0]), character: parseInt(po[1])} };//{textDocument: textidentifier,position : obj}
+  //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:"file:///G:/Repos/server/repodriller_num_commits",name:"num_commits"}],added:[{uri:"file:///G:/Repos/server/repodriller_master",name:"master"}]}});
+  //     break;
+  //   }
+  //   const def = await t.connection.gotoDefinition(test);
+  //   console.log("test is: ");
+  //   console.log(test);
+  //   console.log("result is ");
+  //   console.log(def);
+  //   r2.setPrompt("Enter line and char>");
+  //   r2.prompt();
+  // });
+  // r2.setPrompt("Enter line and char>");
+  // r2.prompt();
 
 }
 

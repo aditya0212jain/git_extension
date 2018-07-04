@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>jdt.ls-java-project</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>src/org/repodriller/filter/range/NumOfCommits.java</name>
+			<type>1</type>
+			<location>G:/Repos/server/repodriller_num_commits/src/main/java/org/repodriller/filter/range/NumOfCommits.java</location>
+		</link>
+		<link>
+			<name>src/org/repodriller/filter/range/NumOfCommitsTest.java</name>
+			<type>1</type>
+			<location>G:/Repos/server/repodriller_num_commits/src/test/java/org/repodriller/filter/range/NumOfCommitsTest.java</location>
+		</link>
+	</linkedResources>
+</projectDescription>

@@ -72,6 +72,8 @@ export class myClient {
           executeCommand: {
             dynamicRegistration: false,
           },
+          workspaceFolders:true,
+          configuration:false,
         },
         textDocument: {
           synchronization: {
@@ -126,10 +128,20 @@ export class myClient {
           },
           rename: {
             dynamicRegistration: false,
+          },
+          implementation: {
+            dynamicRegistration: false,
+          },
+          typeDefinition: {
+            dynamicRegistration:false,
+          },
+          colorProvider: {
+            dynamicRegistration:false,
           }
         },
         experimental: {},
       },
+      workspaceFolders:null,
     };
   }
 
@@ -153,6 +165,7 @@ export class myClient {
     console.log("y3");
     this._connection = connection;
     console.log(initializeResponse);
+    console.log(initializeResponse.capabilities.workspace);
     //console.log(process);
     const newServer = {
       projectPath,
@@ -215,6 +228,7 @@ export class myClient {
           if (!childProcess.killed) {
               console.log("childProcess exit but not killed");
           }
+          console.log(exitCode);
           console.log("childProcess exited");
         });
         //});
@@ -227,7 +241,8 @@ export class myClient {
   spawnServer (extraArgs) {
     console.log("inside spawnserver");
     const command = "java";
-    const serverHome = path.join(__dirname,'server');
+    //const serverHome = path.join(__dirname,'server');
+    const serverHome = path.join(__dirname,'server_0.9');
     var platform = os.platform();
     var variable;
     console.log("platform: " + platform);
@@ -240,7 +255,7 @@ export class myClient {
     }
     variable = "config_" + variable;
     console.log("variable platform: " + variable);
-    const args = ['-jar','plugins/org.eclipse.equinox.launcher_1.5.0.v20180119-0753.jar','-configuration',variable,'-data'];
+    const args = ['-jar','plugins/org.eclipse.equinox.launcher_1.5.100.v20180611-1436.jar','-configuration',variable,'-data'];//launcher_1.5.0.v20180119-0753.jar for old server
     if (extraArgs) {
       args.push(extraArgs);
     }
