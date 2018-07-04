@@ -36,22 +36,32 @@ function addSpans(type,repo,branchList){
         childOfChild[o].addEventListener("mouseover", function(event){event.target.style.color = "orange";},false);
         childOfChild[o].addEventListener("mouseout", function(event){ event.target.style.color=""},false);
         childOfChild[o].addEventListener("click", function(){
-          var queryObject = getQueryObject(this,type,repo,branchList);
-          //console.log(queryObject);
+          //var queryObject = getQueryObject(this,type,repo,branchList);
           var objRequest ;
           if(type=="blob"){
+            var queryObject = getQueryObject(this,type,repo,branchList);
             objRequest = {method:"query",query:queryObject,type:type};
           }else {
+            //var queryObject = getQueryObject(this,type,repo,branchList);
             var td = this.closest("td");
             var i = $(td).index();
             if(i==1){
+              var queryObject = getQueryObject(this,type,repo,branchList);
               objRequest = {method:"query",query:queryObject,type:type,branchType:"base"};
-            }else if(i==3||i==2){
+            }else if(i==3){
+              var queryObject = getQueryObject(this,type,repo,branchList);
               objRequest = {method:"query",query:queryObject,type:type,branchType:"head"};
+            }else if(i==2){
+              var argumentForUnified = getBranchUnified(td);
+              console.log(argumentForUnified);
+              var queryObject = getQueryObject(this,type,repo,branchList,argumentForUnified);
+              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch};//for unified view
+              //getBranchUnified(td);
+
             }
           }
-          //console.log("objRequest is :");
-          //console.log(objRequest);
+          console.log("objRequest is :");
+          console.log(objRequest);
             sendToServer(objRequest);
           // chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
           //     console.log(response.farewell);
@@ -147,8 +157,13 @@ function getFilePath(element){
   }
 }
 
-function getQueryObject(element,type,repo,branchList){
-  var linet = getLine(element.parentElement.parentElement);
+function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
+  var linet;
+  if(ifViewIsUnified){
+    linet = ifViewIsUnified.line-1;
+  }else{
+    linet = getLine(element.parentElement.parentElement);
+  }
   console.log("the line is: "+ linet);
   var chart = getCharacter(element);
   console.log("the character no. is: " + chart);
@@ -164,16 +179,31 @@ function getQueryObject(element,type,repo,branchList){
     console.log("pull type request in getting query object");
     var td = element.closest("td");
     var i = $(td).index();
-    console.log("i: "+i);
-    if(i==1){
+  //  console.log("i: "+i);
+    if(i==1||ifViewIsUnified.branch=="base"){
       console.log("branch is "+branchList[0]);
       argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
     }
-    else if(i==3||i==2){
+    else if(i==3||ifViewIsUnified.branch=="head"){
       console.log("branch is "+branchList[1]);
       argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
   }
-  //console.log(argpass);
+  console.log(argpass);
   return argpass;
+}
+
+function getBranchUnified(element){
+  //element is jquery use as $(element)
+  var parent = $(element).parent();
+  var children = $(parent).find("td");
+//  console.log(parent);
+//  console.log(children);
+  var firstline = $(children[0]).attr('data-line-number');
+  var secondline = $(children[1]).attr('data-line-number');
+  if(secondline==undefined){
+    return {branch:"base",line:firstline};
+  }else{
+    return {branch:"head",line:secondline};
+  }
 }

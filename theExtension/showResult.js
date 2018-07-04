@@ -100,7 +100,7 @@ function showSamePullResult(result){
     }
   }
   var objData = getPullObject();
-  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead]);console.log("now spans added")},600);
+  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead]);console.log("now spans added")},1000);
 
 }
 
