@@ -102,6 +102,7 @@ function showSamePullResult(result){
 }
 
 function showDiffPullResult(result){
+  console.log("in diff pull result");
   var branch;
   if(result.branchType=="base"){
     branch = document.getElementsByClassName('base-ref')[0].textContent;
@@ -112,7 +113,9 @@ function showDiffPullResult(result){
   var resultPath = result.definition.uri;
   var resultArray = resultPath.split('/');
   if(r==-1){
+    console.log("result path: "+resultPath);
     var index = resultArray.indexOf(result.repo+"_"+branch);
+    console.log(index);
     var resultFile = resultArray.slice(index+1,resultArray.length);
     var olduri = location.href;
     var oldarray = olduri.split('/');
@@ -125,6 +128,9 @@ function showDiffPullResult(result){
     var line = result.definition.range.start.line+1;
     newurl+= "#L" + line;
     location.href = newurl;//or chrome.tabs.create from background
+    // chrome.runtime.sendMessage({newLocation: newurl}, function(response) {
+    //     console.log(response.farewell);
+    // });
   }else {
     var branchArray = branch.split('/');
     var index = resultArray.indexOf(result.repo+"_"+branchArray[0]);
@@ -148,6 +154,10 @@ function showDiffPullResult(result){
       var line = result.definition.range.start.line+1;
       newurl+= "#L" + line;
       location.href = newurl;//or chrome.tabs.create from background
+      // chrome.runtime.sendMessage({newLocation: newurl}, function(response) {
+      //     console.log(response.farewell);
+      // });
+
     }
   }
 }

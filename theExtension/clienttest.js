@@ -20,8 +20,10 @@ function addSpans(type,repo,branchList){
     for(i=0;i<n;i++){
       var te = children[i].textContent;
       var tn = children[i].tagName;
-      var re = te.replace(/( )+|([a-zA-Z$_]+)|(\()/g,"<span>$1$2$3<\/span>");
+      //var re = te.replace(/( )+|([a-zA-Z$_]+)|(\()/g,"<span>$1$2$3<\/span>");
+      var re = te.replace(/([a-zA-Z$_]+)|(\()/g,"<span>$1$2<\/span>");
       re = re.replace(/(\t)/g,"<span>$1</span>");
+      re = re.replace(/( )/g,"<span>&nbsp;</span>");
       if(children[i].tagName==undefined){
         var y = document.createElement("span");
         y.innerHTML = re;
@@ -172,6 +174,6 @@ function getQueryObject(element,type,repo,branchList){
       argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
   }
-  console.log(argpass);
+  //console.log(argpass);
   return argpass;
 }
