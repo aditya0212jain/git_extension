@@ -1,4 +1,4 @@
-console.log("this is client test");
+//console.log("this is client test");
 function reqListener () {
   var result = JSON.parse(this.responseText);
   console.log("the result is:");
@@ -46,7 +46,7 @@ function addSpans(type,repo,branchList){
             var i = $(td).index();
             if(i==1){
               objRequest = {method:"query",query:queryObject,type:type,branchType:"base"};
-            }else if(i==3){
+            }else if(i==3||i==2){
               objRequest = {method:"query",query:queryObject,type:type,branchType:"head"};
             }
           }
@@ -169,7 +169,7 @@ function getQueryObject(element,type,repo,branchList){
       console.log("branch is "+branchList[0]);
       argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
     }
-    else if(i==3){
+    else if(i==3||i==2){
       console.log("branch is "+branchList[1]);
       argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
