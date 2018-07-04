@@ -99,6 +99,9 @@ function showSamePullResult(result){
       location.href = h +diff+ "R" + line;
     }
   }
+  var objData = getPullObject();
+  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead]);console.log("now spans added")},600);
+
 }
 
 function showDiffPullResult(result){
