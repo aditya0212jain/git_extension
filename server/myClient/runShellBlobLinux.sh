@@ -21,7 +21,7 @@ if [ -d $SERVERFOLDER/$REPO$SP$BRANCH ]   # for file "if [-f /home/rama/file]"
       echo "now check out"
    else
       echo "dir not present"
-      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER/
+      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER
       cd $SERVERFOLDER/$REPO
       git checkout $BRANCH
       cd ..

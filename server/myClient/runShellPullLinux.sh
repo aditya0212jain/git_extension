@@ -18,7 +18,7 @@ if [ -d $SERVERFOLDER/$REPO$SP$BRANCH1 ]   # for file "if [-f /home/rama/file]"
       echo "now check out"
    else
       echo "dir not present"
-      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER/
+      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER
       cd $SERVERFOLDER/$REPO
       git checkout $BRANCH1
       cd ..
@@ -32,7 +32,7 @@ if [ -d $SERVERFOLDER/$REPO$SP$BRANCH2 ]   # for file "if [-f /home/rama/file]"
       echo "now check out"
    else
       echo "dir not present"
-      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER/
+      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER
       cd $SERVERFOLDER/$REPO
       git checkout $BRANCH2
       cd ..
