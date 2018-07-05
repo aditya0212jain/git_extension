@@ -68,9 +68,15 @@ var globalCurrentWorkspace;
           }
         }else if(obj.type=="blob"){
           if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
-            t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalBranch}],removed:[]}});
+            console.log(globalCurrentWorkspace);
+            if(globalCurrentWorkspace){
+              t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+            }else{
+              t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
+            }
             globalCurrentWorkspace=globalRepo+"_"+globalBranch;
             console.log("changing");
+            console.log(globalCurrentWorkspace);
           }
         }
       }catch(e){
@@ -232,6 +238,7 @@ async function p(){
   // });
   // r2.setPrompt("Enter line and char>");
   // r2.prompt();
+  console.log(os.tmpdir());
 
 }
 
