@@ -83,6 +83,7 @@ function sendToServer(obj){
   pReq.open("POST", "http://localhost:8080");
   pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   pReq.send(JSON.stringify(obj));
+  console.log("sent to server");
 }
 
 function preparePage(obj){

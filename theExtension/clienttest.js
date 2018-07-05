@@ -180,6 +180,7 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
     var td = element.closest("td");
     var i = $(td).index();
   //  console.log("i: "+i);
+  if(ifViewIsUnified){
     if(i==1||ifViewIsUnified.branch=="base"){
       console.log("branch is "+branchList[0]);
       argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
@@ -188,6 +189,18 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
       console.log("branch is "+branchList[1]);
       argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
+  }else{
+    if(i==1){
+      console.log("branch is "+branchList[0]);
+      argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
+    }
+    else if(i==3){
+      console.log("branch is "+branchList[1]);
+      argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
+    }
+
+  }
+
   }
   console.log(argpass);
   return argpass;

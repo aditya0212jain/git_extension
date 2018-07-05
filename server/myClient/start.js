@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const readline = require("readline");
 const os = require("os");
 const myclient_1 = require("./myclient");
 const shell = require('shelljs');
@@ -98,7 +99,7 @@ async function handleQuery(obj) {
         const def = await t.connection.gotoDefinition(test);
         //console.log("ANSWER BELOW");
         //console.log(test)
-        //console.log(def);
+        console.log(def);
         if (def != null || def != undefined) {
             return def[0];
         }
@@ -124,9 +125,9 @@ async function p() {
                 console.error(err);
             });
             var obj = JSON.parse(result);
-            var answer = await handleRequest(obj);
             console.log("obj below");
             console.log(obj);
+            var answer = await handleRequest(obj);
             response.statusCode = 200;
             response.setHeader('Content-Type', 'application/json');
             if (obj.method == "query") {
@@ -141,50 +142,51 @@ async function p() {
     console.log("trying another language server");
     //var chp = clientTest.spawnServer(['']);
     console.log("successful");
-    // var rl = readline.createInterface(process.stdin, process.stdout);
-    // var whichDir=0;// 1 for w and 2 for s
-    // var prefix = 'Enter w for working and s for server> ';
-    // var afterPrefix ='>';
-    // rl.on('line', function(line) {
-    //   switch(line.trim()) {
-    //     case 'hello':
-    //     console.log('world!');
-    //     break;
-    //     case 'w':
-    //     afterPrefix ='Enter working Directory or b for back>';
-    //     whichDir = 1;
-    //     break;
-    //     case 's':
-    //     afterPrefix ='Enter server Directory or b for back>';
-    //     whichDir = 2;
-    //     break;
-    //     case 'b':
-    //     afterPrefix = "Enter w for working and s for server>";
-    //     whichDir = 0;
-    //     break;
-    //     default:
-    //     afterPrefix = "Enter w for working and s for server>";
-    //     if(whichDir==1){
-    //       workingDirectory = line;
-    //       whichDir = 0;
-    //     }
-    //     else if(whichDir==2) {
-    //       serverDirectory = line;
-    //       whichDir =0;
-    //     }else{
-    //       console.log('Say what? I might have heard `' + line.trim() + '`');
-    //     }
-    //     break;
-    //   }
-    //   rl.setPrompt(afterPrefix);
-    //   rl.prompt();
-    // }).on('close', function() {
-    //   console.log('Have a great day!');
-    //   process.exit(0);
-    // });
-    // console.log(prefix + 'Good to see you. Try typing stuff.');
-    // rl.setPrompt(prefix);
-    // rl.prompt();
+    var rl = readline.createInterface(process.stdin, process.stdout);
+    var whichDir = 0; // 1 for w and 2 for s
+    var prefix = 'Enter w for working and s for server> ';
+    var afterPrefix = '>';
+    rl.on('line', function (line) {
+        switch (line.trim()) {
+            case 'hello':
+                console.log('world!');
+                break;
+            case 'w':
+                afterPrefix = 'Enter working Directory or b for back>';
+                whichDir = 1;
+                break;
+            case 's':
+                afterPrefix = 'Enter server Directory or b for back>';
+                whichDir = 2;
+                break;
+            case 'b':
+                afterPrefix = "Enter w for working and s for server>";
+                whichDir = 0;
+                break;
+            default:
+                afterPrefix = "Enter w for working and s for server>";
+                if (whichDir == 1) {
+                    workingDirectory = line;
+                    whichDir = 0;
+                }
+                else if (whichDir == 2) {
+                    serverDirectory = line;
+                    whichDir = 0;
+                }
+                else {
+                    console.log('Say what? I might have heard `' + line.trim() + '`');
+                }
+                break;
+        }
+        rl.setPrompt(afterPrefix);
+        rl.prompt();
+    }).on('close', function () {
+        console.log('Have a great day!');
+        process.exit(0);
+    });
+    console.log(prefix + 'Good to see you. Try typing stuff.');
+    rl.setPrompt(prefix);
+    rl.prompt();
     // t = await clientTest.startServer(serverDirectory);
     //
     // var r2 = readline.createInterface(process.stdin, process.stdout);
