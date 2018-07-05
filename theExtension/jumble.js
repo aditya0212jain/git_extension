@@ -54,7 +54,7 @@ function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
     var hasTest=false;
     var testIndex;
     var pf = fileName[index].substring(0,fileName[index].lastIndexOf('.'));
-    var myRegex3 = new RegExp((pf)+'(_)*(t|T)(e|E)(s|S)(t|T)|(t|T)(e|E)(s|S)(t|T)(_)*'+pf);
+    var myRegex3 = new RegExp('^'+(pf)+'(_)*(t|T)(e|E)(s|S)(t|T)$|^(t|T)(e|E)(s|S)(t|T)(_)*'+pf+'$');
     //var repo = "repodriller-1.5.0-HEADTest";
     //var s = myRegex3.test(repo);
     //console.log(s);
@@ -64,6 +64,7 @@ function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
     for(j=0;j<testFile.length;j++){
       var index2 = testFile[j];
       var testTemp = fileName[index2];
+      testTemp = testTemp.substring(0,testTemp.lastIndexOf('.'));
       if(myRegex3.test(testTemp)==true){
         testIndex = index2;
         hasTest = true;
