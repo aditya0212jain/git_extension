@@ -62,10 +62,10 @@ async function handleRequest(obj) {
                     if (globalCurrentWorkspace != globalRepo + "_" + globalBranch) {
                         console.log(globalCurrentWorkspace);
                         if (globalCurrentWorkspace) {
-                            t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalRepo + "_" + globalBranch }], removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalCurrentWorkspace, name: globalCurrentWorkspace }] } });
+                            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalRepo + "_" + globalBranch }], removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalCurrentWorkspace, name: globalCurrentWorkspace }] } });
                         }
                         else {
-                            t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalRepo + "_" + globalBranch }], removed: [] } });
+                            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalRepo + "_" + globalBranch }], removed: [] } });
                         }
                         globalCurrentWorkspace = globalRepo + "_" + globalBranch;
                         console.log("changing");

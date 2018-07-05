@@ -7,7 +7,7 @@ REPO=${ARG1[2]}
 BRANCH1=${ARG1[3]}
 BRANCH2=${ARG1[4]}
 SP="_"
-rm -r -f $SERVERFOLDER/$REPO*
+#rm -r -f $SERVERFOLDER/$REPO*
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH1
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH2
 if [ -d $SERVERFOLDER/$REPO$SP$BRANCH1 ]   # for file "if [-f /home/rama/file]"
