@@ -9,6 +9,12 @@ SP="_"
 #rm -r -f $SERVERFOLDER/$REPO*
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH1
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH2
+if [ -d $SERVERFOLDER ]
+   then
+      echo "serverRepos exist"
+   else
+      mkdir $SERVERFOLDER
+fi
 if [ -d $SERVERFOLDER/$REPO$SP$BRANCH1 ]   # for file "if [-f /home/rama/file]"
    then
       echo "dir present"
