@@ -20,7 +20,11 @@ var globalRepo;
 var globalBranch;
 var globalBranchBase;
 var globalBranchHead;
-var serverDirectory= "G:/Repos/server";
+var serverDirectory= path.join(__dirname,'serverRepos');
+// console.log("serverDire");
+// console.log(serverDirectory);
+serverDirectory = serverDirectory.replace(/\\/g,'/');
+//console.log(serverDirectory);
 var workingDirectory= "G:/Repos/working";
 var globalCurrentWorkspace;
 // const textidentifier = {uri : "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java"};
@@ -46,7 +50,7 @@ var globalCurrentWorkspace;
       globalBranchHead = obj.branchHead;
       globalBranchBase = obj.branchBase;
       t = await clientTest.startServer(serverDirectory);
-      console.log("Check if it works now");
+      //console.log("Check if it works now");
       //t.connection._rpc.onRequest('workspace/workspaceFolders',(value)=>{console.log("on request of server");console.log(value)});
       resolve();
     }else if(obj.method =="query"){
@@ -163,52 +167,48 @@ async function p(){
 
     });
   }).listen(8080); //the server object listens on port 8080
-  console.log("trying another language server")
+  //console.log("trying another language server")
   //var chp = clientTest.spawnServer(['']);
-  console.log("successful");
-
+  //console.log("successful");
+  console.log("w to set workingDirectory");
+  console.log("c to clear temp files");
   var rl = readline.createInterface(process.stdin, process.stdout);
   var whichDir=0;// 1 for w and 2 for s
-  var prefix = 'Enter w for working and s for server> ';
+  var prefix = '>';
   var afterPrefix ='>';
   rl.on('line', function(line) {
-    switch(line.trim()) {
-      case 'hello':
-      console.log('world!');
-      break;
+    switch(line.trim()){
       case 'w':
-      afterPrefix ='Enter working Directory or b for back>';
-      whichDir = 1;
+      whichDir=1;
+      prefix="Enter working directory";
       break;
-      case 's':
-      afterPrefix ='Enter server Directory or b for back>';
-      whichDir = 2;
-      break;
-      case 'b':
-      afterPrefix = "Enter w for working and s for server>";
-      whichDir = 0;
+      case 'c':
+      whichDir=0;
+      //console.log("rm -r -f "+serverDirectory+"/*");
+      shell.exec("rm -r -f "+serverDirectory+"/*");
+      shell.exec("rm -r -f ./server_0.9/.metadata");
+      shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
+      console.log("done");
       break;
       default:
-      afterPrefix = "Enter w for working and s for server>";
       if(whichDir==1){
-        workingDirectory = line;
-        whichDir = 0;
-      }
-      else if(whichDir==2) {
-        serverDirectory = line;
-        whichDir =0;
+        workingDirectory=line;
+        console.log('workingDirectory set as '+workingDirectory);
+        workingDirectory=workingDirectory.replace(/\\/g,'/');
+        prefix = ">"
+        break
       }else{
-        console.log('Say what? I might have heard `' + line.trim() + '`');
+        console.log("wrong input");
+        break;
       }
-      break;
     }
-    rl.setPrompt(afterPrefix);
-    rl.prompt();
+    this.setPrompt(prefix);
+   this.prompt();
   }).on('close', function() {
-    console.log('Have a great day!');
-    process.exit(0);
+    // console.log('workingDirectory set as :'+workingDirectory);
+    // workingDirectory=workingDirectory.replace(/\\/g,'/');
+    //process.exit(0);
   });
-  console.log(prefix + 'Good to see you. Try typing stuff.');
   rl.setPrompt(prefix);
   rl.prompt();
 
@@ -238,7 +238,8 @@ async function p(){
   // });
   // r2.setPrompt("Enter line and char>");
   // r2.prompt();
-  console.log(os.tmpdir());
+  //console.log(os.tmpdir());
+  //console.log(__dirname);
 
 }
 
@@ -253,6 +254,7 @@ function runShellBlob(repo,branch){
   }else if(platform=="win32"){
     var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");';
     var command = "echo "+text+" > "+"argShellBlob.js";
+    console.log(command);
     shell.exec(command);
     shell.exec('chmod +x runShellBlob.sh');
     shell.exec('sh runShellBlob.sh');
