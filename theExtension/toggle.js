@@ -53,14 +53,19 @@ function showTest(btn,objectForSpan){
   var testIndex;
   var testInner;
   var pf = btnValue.substring(0,btnValue.lastIndexOf('.'));
-  var myRegex3 = new RegExp((pf)+'(_)*(t|T)(e|E)(s|S)(t|T)|(t|T)(e|E)(s|S)(t|T)(_)*'+pf);
-
+  //console.log("btnValue");
+  //console.log(btnValue);
+  //console.log(pf);
+  var myRegex3 = new RegExp('^'+(pf)+'(_)*(t|T)(e|E)(s|S)(t|T)$|^(t|T)(e|E)(s|S)(t|T)(_)*'+pf+'$');
+  //console.log(myRegex3);
   for(j=0;j<testFile.length;j++){
     var index2 = testFile[j];
     var testTemp = fileName[index2];
+    testTemp = testTemp.substring(0,testTemp.lastIndexOf('.'));
     if(myRegex3.test(testTemp)==true){
       testIndex = index2;
       hasTest = true;
+      //console.log(testIndex);
       var div = document.getElementById("diff-"+testIndex);
       testInner = div.innerHTML;
       testFile.splice(j,1);
