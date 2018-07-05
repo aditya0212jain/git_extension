@@ -16,14 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>src/org/repodriller/RepositoryMining.java</name>
-			<type>1</type>
-			<location>G:/Repos/server/repodriller_master/src/main/java/org/repodriller/RepositoryMining.java</location>
-		</link>
-		<link>
 			<name>src/org/repodriller/domain/Commit.java</name>
 			<type>1</type>
-			<location>G:/Repos/server/repodriller_master/src/main/java/org/repodriller/domain/Commit.java</location>
+			<location>G:/Repos/server/repodriller_temp_branch/src/main/java/org/repodriller/domain/Commit.java</location>
 		</link>
 	</linkedResources>
 </projectDescription>

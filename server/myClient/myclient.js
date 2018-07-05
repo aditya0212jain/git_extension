@@ -231,7 +231,7 @@ class myClient {
         }
         variable = "config_" + variable;
         console.log("variable platform: " + variable);
-        const args = ['-jar', 'plugins/org.eclipse.equinox.launcher_1.5.100.v20180611-1436.jar', '-configuration', variable, '-data']; //launcher_1.5.0.v20180119-0753.jar for old server
+        const args = ['-jar', 'plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar', '-configuration', variable, '-data']; //launcher_1.5.0.v20180119-0753.jar for old server
         if (extraArgs) {
             args.push(extraArgs);
         }

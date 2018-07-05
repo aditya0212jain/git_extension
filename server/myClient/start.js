@@ -54,8 +54,15 @@ async function handleRequest(obj) {
                     else {
                         if (globalCurrentWorkspace != globalRepo + "_" + globalBranchBase) {
                             t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalBranchHead }], added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalBranchBase }] } });
-                            globalCurrentWorkspace == globalRepo + "_" + globalBranchBase;
+                            globalCurrentWorkspace = globalRepo + "_" + globalBranchBase;
                         }
+                    }
+                }
+                else if (obj.type == "blob") {
+                    if (globalCurrentWorkspace != globalRepo + "_" + globalBranch) {
+                        t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalBranch }], removed: [] } });
+                        globalCurrentWorkspace = globalRepo + "_" + globalBranch;
+                        console.log("changing");
                     }
                 }
             }
@@ -199,7 +206,7 @@ async function p() {
     //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:"file:///G:/Repos/server/repodriller_num_commits",name:"num_commits"}],removed:[{uri:"file:///G:/Repos/server/repodriller_master",name:"master"}]}});
     //     break;
     //     case 2:
-    //     test = {textDocument: {uri : "file:///G:/Repos/server/repodriller_master/src/main/java/org/repodriller/filter/range/Commits.java"},position :{line: parseInt(po[0]), character: parseInt(po[1])} };//{textDocument: textidentifier,position : obj}
+    //     test = {textDocument: {uri : "file:///G:/Repos/server/repodriller_master/src/main/java/org/repodriller/RepositoryMining.java"},position :{line: parseInt(po[0]), character: parseInt(po[1])} };//{textDocument: textidentifier,position : obj}
     //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:"file:///G:/Repos/server/repodriller_num_commits",name:"num_commits"}],added:[{uri:"file:///G:/Repos/server/repodriller_master",name:"master"}]}});
     //     break;
     //   }
