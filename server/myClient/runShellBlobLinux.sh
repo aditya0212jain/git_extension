@@ -13,6 +13,12 @@ echo $BRANCH
 echo "Hello World"
 #rm -r -f $SERVERFOLDER/$REPO*
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH
+if [ -d $SERVERFOLDER ]
+   then
+      echo "serverRepos exist"
+   else
+      mkdir $SERVERFOLDER
+fi
 if [ -d $SERVERFOLDER/$REPO$SP$BRANCH ]   # for file "if [-f /home/rama/file]"
    then
       echo "dir present"
