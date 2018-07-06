@@ -4,3 +4,5 @@ server/myClient/server_0.9/config_win/*
 server/myClient/server_0.9/config_linux/*
 server/myClient/server_0.9/jdt.ls-java-project/*
 server/myClient/serverRepos/*
+server/myClient/argShellBlob.js
+server/myClient/argShellPull.js
