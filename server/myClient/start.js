@@ -53,7 +53,14 @@ async function handleRequest(obj) {
             globalBranchHead = obj.branchHead;
             globalBranchBase = obj.branchBase;
             t = await clientTest.startServer(serverDirectory);
-            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { removed: [], added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalBranchBase }, { uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalBranchHead }] } });
+            if (globalCurrentWorkspace) {
+                await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalCurrentWorkspace, name: globalCurrentWorkspace }] } });
+            }
+            else {
+                await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], removed: [] } });
+            }
+            globalCurrentWorkspace = globalRepo + "_" + globalBranchHead;
+            //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
             resolve(JSON.stringify({ method: "serverStarted" }));
         }
         else if (obj.method == "query") {
@@ -62,14 +69,14 @@ async function handleRequest(obj) {
                 if (obj.type == "pull") {
                     if (obj.branchType == "head") {
                         if (globalCurrentWorkspace != globalRepo + "_" + globalBranchHead) {
-                            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalBranchBase }] } });
+                            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalRepo + "_" + globalBranchBase }] } });
                             console.log("inside the head part");
                             globalCurrentWorkspace = globalRepo + "_" + globalBranchHead;
                         }
                     }
                     else {
                         if (globalCurrentWorkspace != globalRepo + "_" + globalBranchBase) {
-                            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalBranchHead }], added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalBranchBase }] } });
+                            await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalRepo + "_" + globalBranchBase }] } });
                             globalCurrentWorkspace = globalRepo + "_" + globalBranchBase;
                         }
                     }

@@ -30,7 +30,8 @@ function addSpans(type,repo,branchList){
       //console.log(te);
       var re = te.replace(/([a-zA-Z$_][a-zA-Z$_0-9]*)|(\()|(<|>)/g,"<span>$1$2$3<\/span>");
       re = re.replace(/(\t)/g,"<span>$1</span>");
-      re = re.replace(/( )/g,"<span>&nbsp;</span>");
+      //re = re.replace(//g)
+      re = re.replace(/( )/g,"<span> </span>");
       if(children[i].tagName==undefined){
         var y = document.createElement("span");
         y.innerHTML = re;
