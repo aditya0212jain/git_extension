@@ -51,8 +51,8 @@ function showDiffBlobResult(result){
   var resultArray = resultPath.split('/');
   var index = resultArray.indexOf(result.repo+"_"+result.branch);
   var resultFile = resultArray.slice(index+1,resultArray.length);
-  console.log(resultFile);
-  console.log("THE AbOVE is the new file path");
+  //console.log(resultFile);
+  //console.log("THE AbOVE is the new file path");
   var olduri = location.href;
   var oldarray = olduri.split('/');
   var index2 = oldarray.indexOf(result.branch);
@@ -62,7 +62,7 @@ function showDiffBlobResult(result){
   var line = result.definition.range.start.line+1;
   newurl+= "#L" + line;
   chrome.runtime.sendMessage({newLocation: newurl}, function(response) {
-      console.log(response.farewell);
+      //console.log(response.farewell);
   });
   //var regex = new RegExp((result.repo+"_")((.)*));
   // var newBranch;
@@ -105,7 +105,7 @@ function showSamePullResult(result){
 }
 
 function showDiffPullResult(result){
-  console.log("in diff pull result");
+  //console.log("in diff pull result");
   var branch;
   if(result.branchType=="base"){
     branch = document.getElementsByClassName('base-ref')[0].textContent;
@@ -116,9 +116,9 @@ function showDiffPullResult(result){
   var resultPath = result.definition.uri;
   var resultArray = resultPath.split('/');
   if(r==-1){
-    console.log("result path: "+resultPath);
+    //console.log("result path: "+resultPath);
     var index = resultArray.indexOf(result.repo+"_"+branch);
-    console.log(index);
+  //  console.log(index);
     var resultFile = resultArray.slice(index+1,resultArray.length);
     var olduri = location.href;
     var oldarray = olduri.split('/');

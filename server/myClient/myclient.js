@@ -127,7 +127,7 @@ class myClient {
     async startServer(projectPath) {
         //console.log("its in")
         //const process = this.spawnServerWithSocket().then((result) => result );
-        const process = await this.spawnServerWithSocket().then((result) => { console.log("in resolve"); return result; });
+        const process = await this.spawnServerWithSocket().then((result) => { return result; });
         ;
         //console.log("loaded process");
         this.captureServerErrors(process, projectPath);
@@ -143,7 +143,7 @@ class myClient {
         const initializeResponse = await initialization;
         //console.log("y3");
         this._connection = connection;
-        console.log(initializeResponse);
+        //console.log(initializeResponse);
         //console.log(initializeResponse.capabilities.workspace);
         //console.log(process);
         const newServer = {
@@ -163,6 +163,7 @@ class myClient {
         // newServer.connection.dispose();
         process.on('exit', () => { console.log("process exit"); });
         //newServer.process.kill();
+        console.log("server started");
         return newServer;
     }
     createRpcConnection() {
@@ -196,10 +197,10 @@ class myClient {
             //});
             const pro2 = new Promise((resolve2, reject) => {
                 //server.listen(3000, '127.0.0.1', () => {
-                console.log(server.address());
+                //console.log(server.address());
                 // Once we have a port assigned spawn the Language Server with the port
                 childProcess = this.spawnServer([``]); //--tcp=127.0.0.1:${server.address().port}
-                console.log("childProcess started");
+                //  console.log("childProcess started");
                 childProcess.on('exit', exitCode => {
                     if (!childProcess.killed) {
                         console.log("childProcess exit but not killed");

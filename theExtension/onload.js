@@ -29,7 +29,7 @@ function prepareExpanders(obj){
   var expanders = document.getElementsByClassName('diff-expander');
   for(i=0;i<expanders.length;i++){
     expanders[i].addEventListener("click",function(){
-      console.log("expander clicked");
+      //console.log("expander clicked");
       setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);console.log("Spans added now");prepareExpanders(obj);},600);
     });
   }
@@ -83,7 +83,7 @@ function sendToServer(obj){
   pReq.open("POST", "http://localhost:8080");
   pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   pReq.send(JSON.stringify(obj));
-  console.log("sent to server");
+  //console.log("sent to server");
 }
 
 function preparePage(obj){

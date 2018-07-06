@@ -139,7 +139,7 @@ async function handleQuery(obj){
     const def = await t.connection.gotoDefinition(test);
     //console.log("ANSWER BELOW");
     //console.log(test)
-    console.log(def);
+    //console.log(def);
     if(def!=null||def!=undefined){
       return def[0];
     }

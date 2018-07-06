@@ -17,8 +17,8 @@ function toggleSide(currentFile){
 }
 
 function showTest(btn,objectForSpan){
-  console.log("in");
-  console.log(btn.id);
+  //console.log("in");
+  //console.log(btn.id);
   if(btn.parentElement.parentElement.parentElement.hasAttribute("style")==true){
     var div = btn.parentElement.parentElement.parentElement;
     div.removeAttribute("style");
@@ -107,7 +107,7 @@ function showTest(btn,objectForSpan){
   }
 
   }
-  console.log(btn.id);
+  //console.log(btn.id);
 
   var tu = document.getElementById(btn.id);
   //tu.addEventListener('click',function() {showTest(this)});

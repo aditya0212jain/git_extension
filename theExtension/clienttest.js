@@ -8,9 +8,9 @@ function reqListener () {
   }else if(result.method=="pull"){
     showPullResult(result);
   }else if(result.method=="serverStarted"){
-    console.log("Now show notification");
+    //console.log("Now show notification");
     chrome.runtime.sendMessage({method: "showNotification"}, function(response) {
-        console.log("notification showing");
+        //console.log("notification showing");
     });
   }
 }
@@ -61,7 +61,7 @@ function addSpans(type,repo,branchList){
               objRequest = {method:"query",query:queryObject,type:type,branchType:"head"};
             }else if(i==2){
               var argumentForUnified = getBranchUnified(td);
-              console.log(argumentForUnified);
+              //console.log(argumentForUnified);
               var queryObject = getQueryObject(this,type,repo,branchList,argumentForUnified);
               objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch};//for unified view
               //getBranchUnified(td);
@@ -180,30 +180,30 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   var positiont = { line : linet,character : chart};
   var argpass;
   if(type=="blob"){
-    console.log("branch is "+branchList[0]);
+    //console.log("branch is "+branchList[0]);
     argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
   }
   else if (type=="pull"){
-    console.log("pull type request in getting query object");
+    //console.log("pull type request in getting query object");
     var td = element.closest("td");
     var i = $(td).index();
   //  console.log("i: "+i);
   if(ifViewIsUnified){
     if(i==1||ifViewIsUnified.branch=="base"){
-      console.log("branch is "+branchList[0]);
+      //console.log("branch is "+branchList[0]);
       argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
     }
     else if(i==3||ifViewIsUnified.branch=="head"){
-      console.log("branch is "+branchList[1]);
+    //  console.log("branch is "+branchList[1]);
       argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
   }else{
     if(i==1){
-      console.log("branch is "+branchList[0]);
+      //console.log("branch is "+branchList[0]);
       argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
     }
     else if(i==3){
-      console.log("branch is "+branchList[1]);
+      //console.log("branch is "+branchList[1]);
       argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
 
