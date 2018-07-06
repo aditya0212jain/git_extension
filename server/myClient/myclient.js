@@ -125,26 +125,26 @@ class myClient {
         };
     }
     async startServer(projectPath) {
-        console.log("its in");
+        //console.log("its in")
         //const process = this.spawnServerWithSocket().then((result) => result );
         const process = await this.spawnServerWithSocket().then((result) => { console.log("in resolve"); return result; });
         ;
-        console.log("loaded process");
+        //console.log("loaded process");
         this.captureServerErrors(process, projectPath);
         //const process = this.spawnServer([`--tcp=127.0.0.1`]);
         let serverHome = path.join(__dirname, 'server');
         //const process = await async f(){ return this.startServerProcess(projectPath); }
         const connection = new languageclient_1.LanguageClientConnection(this.createRpcConnection());
-        console.log("made connection");
+        //console.log("made connection");
         const initializeParams = this.getInitializeParams(projectPath, process);
         //console.log("y1");
         const initialization = connection.initialize(initializeParams);
-        console.log("y2");
+        //console.log("y2");
         const initializeResponse = await initialization;
-        console.log("y3");
+        //console.log("y3");
         this._connection = connection;
         console.log(initializeResponse);
-        console.log(initializeResponse.capabilities.workspace);
+        //console.log(initializeResponse.capabilities.workspace);
         //console.log(process);
         const newServer = {
             projectPath,
@@ -179,16 +179,16 @@ class myClient {
     }
     spawnServerWithSocket() {
         return new Promise((resolve, reject) => {
-            console.log("inside spawn with socket");
+            //console.log("inside spawn with socket");
             let childProcess;
             let server;
             //const pro1 = new Promise((resolve1,reject) => {
             server = net.createServer(socket => {
                 // When the language server connects, grab socket, stop listening and resolve
-                console.log("inside net.createServer");
+                //console.log("inside net.createServer");
                 this.socket = socket;
                 server.close();
-                console.log("about to resolve childProcess");
+                //console.log("about to resolve childProcess");
                 // console.log(this.socket);
                 resolve(childProcess);
                 //console.log("after resolve command");
@@ -213,7 +213,7 @@ class myClient {
         });
     }
     spawnServer(extraArgs) {
-        console.log("inside spawnserver");
+        //console.log("inside spawnserver");
         const command = "java";
         //const serverHome = path.join(__dirname,'server');
         const serverHome = path.join(__dirname, 'server_0.9');
@@ -230,7 +230,7 @@ class myClient {
             variable = "mac";
         }
         variable = "config_" + variable;
-        console.log("variable platform: " + variable);
+        //console.log("variable platform: " + variable);
         const args = ['-jar', 'plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar', '-configuration', variable, '-data']; //launcher_1.5.0.v20180119-0753.jar for old server
         if (extraArgs) {
             args.push(extraArgs);
@@ -251,7 +251,7 @@ class myClient {
         childProcess.stderr.setEncoding('utf8');
         childProcess.stderr.on('data', (chunk) => {
             const errorString = chunk.toString();
-            console.log("o3");
+            //console.log("o3");
         });
     }
 }

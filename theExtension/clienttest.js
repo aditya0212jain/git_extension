@@ -7,20 +7,27 @@ function reqListener () {
     showBlobResult(result);
   }else if(result.method=="pull"){
     showPullResult(result);
+  }else if(result.method=="serverStarted"){
+    console.log("Now show notification");
+    chrome.runtime.sendMessage({method: "showNotification"}, function(response) {
+        console.log("notification showing");
+    });
   }
 }
 
 function addSpans(type,repo,branchList){
-  //console.log("in addSpans");
+  console.log("in addSpans");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
     var tag = outSpan[j];
     var children = tag.childNodes;
     var n = children.length;
+    //console.log(tag.textContent);
     for(i=0;i<n;i++){
       var te = children[i].textContent;
       var tn = children[i].tagName;
       //var re = te.replace(/( )+|([a-zA-Z$_]+)|(\()/g,"<span>$1$2$3<\/span>");
+      //console.log(te);
       var re = te.replace(/([a-zA-Z$_][a-zA-Z$_0-9]*)|(\()|(<|>)/g,"<span>$1$2$3<\/span>");
       re = re.replace(/(\t)/g,"<span>$1</span>");
       re = re.replace(/( )/g,"<span>&nbsp;</span>");
@@ -164,9 +171,9 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   }else{
     linet = getLine(element.parentElement.parentElement);
   }
-  console.log("the line is: "+ linet);
+  //console.log("the line is: "+ linet);
   var chart = getCharacter(element);
-  console.log("the character no. is: " + chart);
+  //console.log("the character no. is: " + chart);
   var path = getFilePath(element);
   path = path.replace(/\r?\n|\r|\s/g,"");
   var positiont = { line : linet,character : chart};
@@ -202,7 +209,7 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   }
 
   }
-  console.log(argpass);
+  //console.log(argpass);
   return argpass;
 }
 

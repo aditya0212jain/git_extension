@@ -3,7 +3,7 @@
   "manifest_version":2,
   "version":"1.0",
   "description": "Test code reviewer",
-  "permissions": ["tabs","activeTab", "*://*.google.com/*","storage","*://*/*"],
+  "permissions": ["tabs","activeTab", "*://*.google.com/*","storage","*://*/*","notifications"],
   "author":"Aditya Jain",
   "options_ui": {
   "page": "lib/options.html",

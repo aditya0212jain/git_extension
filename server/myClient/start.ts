@@ -42,7 +42,18 @@ var globalCurrentWorkspace;
       globalRepo = obj.repo;
       globalBranch = obj.branch;
       t = await clientTest.startServer(serverDirectory);
-      resolve();
+      if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
+        console.log(globalCurrentWorkspace);
+        if(globalCurrentWorkspace){
+          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+        }else{
+          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
+        }
+        globalCurrentWorkspace=globalRepo+"_"+globalBranch;
+        console.log("changing");
+        console.log(globalCurrentWorkspace);
+      }
+      resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method == "pull"){
       console.log("pull request");
       runShellPull(obj.repo,obj.branchBase,obj.branchHead);
@@ -50,23 +61,22 @@ var globalCurrentWorkspace;
       globalBranchHead = obj.branchHead;
       globalBranchBase = obj.branchBase;
       t = await clientTest.startServer(serverDirectory);
-      //console.log("Check if it works now");
-      //t.connection._rpc.onRequest('workspace/workspaceFolders',(value)=>{console.log("on request of server");console.log(value)});
-      resolve();
+      await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
+      resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method =="query"){
       //console.log("query request");
       try{
         if(obj.type=="pull"){
           if(obj.branchType=="head"){
             if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchHead){
-                t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase}]}});
+                await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase}]}});
               console.log("inside the head part");
               globalCurrentWorkspace = globalRepo+"_"+globalBranchHead;
             }
           }
           else{
             if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
-              t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase}]}});
+              await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase}]}});
               globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
             }
           }
@@ -158,7 +168,7 @@ async function p(){
     var answer =await handleRequest(obj);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
-    if(obj.method=="query"){
+    if(obj.method=="query"||obj.method=="pull"||obj.method=="blob"){
       response.write(answer);
     }else{
       response.write(obj.method);
