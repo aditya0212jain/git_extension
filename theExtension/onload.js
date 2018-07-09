@@ -1,5 +1,4 @@
 window.onload = function () {onloadFunc();};
-$(document).ready(function(){console.log("document.ready")});
 function onloadFunc () {
   var type = getPageType();
   var typeObject;
