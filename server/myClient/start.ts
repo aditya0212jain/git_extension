@@ -21,6 +21,7 @@ var globalBranch;
 var globalBranchBase;
 var globalBranchHead;
 var serverDirectory= path.join(__dirname,'serverRepos');
+var serverBusy = false;
 // console.log("serverDire");
 // console.log(serverDirectory);
 serverDirectory = serverDirectory.replace(/\\/g,'/');
@@ -37,25 +38,26 @@ var globalCurrentWorkspace;
  async function handleRequest(obj){
    return new Promise(async (resolve,reject)=>{
     if(obj.method == "blob"){
-      console.log("blob request");
       runShellBlob(obj.repo,obj.branch);
       globalRepo = obj.repo;
       globalBranch = obj.branch;
-      t = await clientTest.startServer(serverDirectory);
+      console.log("before the if serverBusy: "+serverBusy);
+      if(!serverBusy){
+        serverBusy = true;
+        t = await clientTest.startServer(serverDirectory);
+        serverBusy = false;
+      }
+      console.log("After the if serverBusy: "+serverBusy);
       if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
-        console.log(globalCurrentWorkspace);
         if(globalCurrentWorkspace){
           await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
         }else{
           await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
         }
         globalCurrentWorkspace=globalRepo+"_"+globalBranch;
-        console.log("changing");
-        console.log(globalCurrentWorkspace);
       }
       resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method == "pull"){
-      console.log("pull request");
       runShellPull(obj.repo,obj.branchBase,obj.branchHead);
       globalRepo = obj.repo;
       globalBranchHead = obj.branchHead;
@@ -70,13 +72,11 @@ var globalCurrentWorkspace;
       //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
       resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method =="query"){
-      //console.log("query request");
       try{
         if(obj.type=="pull"){
           if(obj.branchType=="head"){
             if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchHead){
                 await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
-              console.log("inside the head part");
               globalCurrentWorkspace = globalRepo+"_"+globalBranchHead;
             }
           }
@@ -87,25 +87,20 @@ var globalCurrentWorkspace;
             }
           }
         }else if(obj.type=="blob"){
-          if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
-            console.log(globalCurrentWorkspace);
+          if(globalCurrentWorkspace!=obj.repo+'_'+obj.branch){
             if(globalCurrentWorkspace){
               await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
             }else{
               await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
             }
-            globalCurrentWorkspace=globalRepo+"_"+globalBranch;
-            console.log("changing");
-            console.log(globalCurrentWorkspace);
+            globalCurrentWorkspace=obj.repo+'_'+obj.branch;
           }
         }
       }catch(e){
         console.log(e);
       }
       var resultForQuery = await handleQuery(obj.query);
-      // console.log("the query is");
-      // console.log(obj);
-      console.log("result of query:");
+      console.log("the result is: ");
       console.log(resultForQuery);
       var returningObject;
       var same=false;
@@ -133,13 +128,8 @@ var globalCurrentWorkspace;
 
 async function handleQuery(obj){
   try{
-
-    //console.log(obj);
     var test = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.textDocument},position : obj.position};//{textDocument: textidentifier,position : obj}
     const def = await t.connection.gotoDefinition(test);
-    //console.log("ANSWER BELOW");
-    //console.log(test)
-    //console.log(def);
     if(def!=null||def!=undefined){
       return def[0];
     }
@@ -153,9 +143,6 @@ async function p(){
   var startServerPath = serverDirectory;
   //t= await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
   var http = require('http');
-
-
-
   http.createServer(async function (request, response) {
     var body = [];
     request.on('error', (err) => {
@@ -183,9 +170,6 @@ async function p(){
 
     });
   }).listen(8080); //the server object listens on port 8080
-  //console.log("trying another language server")
-  //var chp = clientTest.spawnServer(['']);
-  //console.log("successful");
   console.log("w to set workingDirectory");
   console.log("c to clear temp files");
   var rl = readline.createInterface(process.stdin, process.stdout);

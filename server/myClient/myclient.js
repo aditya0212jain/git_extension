@@ -7,6 +7,7 @@ const path = require("path");
 const net = require("net");
 const languageclient_1 = require("../languageclient");
 const os = require("os");
+const shell = require('shelljs');
 function pathToUri(filePath) {
     let newPath = filePath.replace(/\\/g, '/');
     if (newPath[0] !== '/') {
@@ -206,6 +207,10 @@ class myClient {
                         console.log("childProcess exit but not killed");
                     }
                     console.log(exitCode);
+                    shell.exec("rm -r -f ./server_0.9/.metadata");
+                    shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
+                    childProcess = this.spawnServer([``]);
+                    console.log("again childprocess started after the crash");
                     console.log("childProcess exited");
                 });
                 //});

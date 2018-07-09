@@ -11,6 +11,7 @@ import {EventEmitter} from 'events';
 import * as stream from 'stream';
 import * as readline from 'readline';
 import * as os from 'os';
+const shell = require('shelljs');
 
 interface LanguageServerProcess extends EventEmitter {
   stdin: stream.Writable;
@@ -230,6 +231,10 @@ export class myClient {
               console.log("childProcess exit but not killed");
           }
           console.log(exitCode);
+          shell.exec("rm -r -f ./server_0.9/.metadata");
+          shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
+          childProcess = this.spawnServer([``]);
+          console.log("again childprocess started after the crash");
           console.log("childProcess exited");
         });
         //});

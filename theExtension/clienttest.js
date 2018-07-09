@@ -48,7 +48,7 @@ function addSpans(type,repo,branchList){
           var objRequest ;
           if(type=="blob"){
             var queryObject = getQueryObject(this,type,repo,branchList);
-            objRequest = {method:"query",query:queryObject,type:type};
+            objRequest = {method:"query",query:queryObject,type:type,repo:repo,branch:branchList[0]};
           }else {
             //var queryObject = getQueryObject(this,type,repo,branchList);
             var td = this.closest("td");
