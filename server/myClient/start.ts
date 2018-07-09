@@ -56,13 +56,22 @@ var globalCurrentWorkspace;
         }
         globalCurrentWorkspace=globalRepo+"_"+globalBranch;
       }
+      var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+      //console.log(testR);
+      const defR = await t.connection.gotoDefinition(testR);
+      //console.log(defR);
+      console.log("The above are for instant initialization");
       resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method == "pull"){
       runShellPull(obj.repo,obj.branchBase,obj.branchHead);
       globalRepo = obj.repo;
       globalBranchHead = obj.branchHead;
       globalBranchBase = obj.branchBase;
-      t = await clientTest.startServer(serverDirectory);
+      if(!serverBusy){
+        serverBusy = true;
+        t = await clientTest.startServer(serverDirectory);
+        serverBusy = false;
+      }
       if(globalCurrentWorkspace){
         await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
       }else{
@@ -70,6 +79,11 @@ var globalCurrentWorkspace;
       }
       globalCurrentWorkspace = globalRepo+"_"+globalBranchHead;
       //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
+      var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branchHead},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+      //console.log(testR);
+      const defR = await t.connection.gotoDefinition(testR);
+      //console.log(defR);
+      console.log("The above are for instant initialization");
       resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method =="query"){
       try{
