@@ -13,6 +13,7 @@ var globalBranchBase;
 var globalBranchHead;
 var serverDirectory = path.join(__dirname, 'serverRepos');
 var serverBusy = false;
+var forReference = false;
 // console.log("serverDire");
 // console.log(serverDirectory);
 serverDirectory = serverDirectory.replace(/\\/g, '/');
@@ -34,7 +35,10 @@ async function handleRequest(obj) {
             console.log("before the if serverBusy: " + serverBusy);
             if (!serverBusy) {
                 serverBusy = true;
-                t = await clientTest.startServer(serverDirectory);
+                if (!forReference) {
+                    t = await clientTest.startServer(serverDirectory);
+                }
+                forReference = false;
                 serverBusy = false;
             }
             console.log("After the if serverBusy: " + serverBusy);
@@ -46,12 +50,13 @@ async function handleRequest(obj) {
                     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalRepo + "_" + globalBranch }], removed: [] } });
                 }
                 globalCurrentWorkspace = globalRepo + "_" + globalBranch;
+                console.log("setting gcW as: " + globalCurrentWorkspace);
             }
             var testR = { textDocument: { uri: myclient_1.pathToUri(serverDirectory) + "/" + obj.repo + "_" + obj.branch }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
             //console.log(testR);
             const defR = await t.connection.gotoDefinition(testR);
             //console.log(defR);
-            console.log("The above are for instant initialization");
+            //console.log("The above are for instant initialization");
             resolve(JSON.stringify({ method: "serverStarted" }));
         }
         else if (obj.method == "pull") {
@@ -61,7 +66,10 @@ async function handleRequest(obj) {
             globalBranchBase = obj.branchBase;
             if (!serverBusy) {
                 serverBusy = true;
-                t = await clientTest.startServer(serverDirectory);
+                if (!forReference) {
+                    t = await clientTest.startServer(serverDirectory);
+                }
+                forReference = false;
                 serverBusy = false;
             }
             if (globalCurrentWorkspace) {
@@ -71,12 +79,13 @@ async function handleRequest(obj) {
                 await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], removed: [] } });
             }
             globalCurrentWorkspace = globalRepo + "_" + globalBranchHead;
+            console.log("setting gcW as: " + globalCurrentWorkspace);
             //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
             var testR = { textDocument: { uri: myclient_1.pathToUri(serverDirectory) + "/" + obj.repo + "_" + obj.branchHead }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
             //console.log(testR);
             const defR = await t.connection.gotoDefinition(testR);
             //console.log(defR);
-            console.log("The above are for instant initialization");
+            //console.log("The above are for instant initialization");
             resolve(JSON.stringify({ method: "serverStarted" }));
         }
         else if (obj.method == "query") {
@@ -86,12 +95,14 @@ async function handleRequest(obj) {
                         if (globalCurrentWorkspace != globalRepo + "_" + globalBranchHead) {
                             await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalRepo + "_" + globalBranchBase }] } });
                             globalCurrentWorkspace = globalRepo + "_" + globalBranchHead;
+                            console.log("setting gcW as: " + globalCurrentWorkspace);
                         }
                     }
                     else {
                         if (globalCurrentWorkspace != globalRepo + "_" + globalBranchBase) {
                             await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { removed: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchHead, name: globalRepo + "_" + globalBranchHead }], added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranchBase, name: globalRepo + "_" + globalBranchBase }] } });
                             globalCurrentWorkspace = globalRepo + "_" + globalBranchBase;
+                            console.log("setting gcW as: " + globalCurrentWorkspace);
                         }
                     }
                 }
@@ -104,6 +115,7 @@ async function handleRequest(obj) {
                             await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(serverDirectory) + "/" + globalRepo + "_" + globalBranch, name: globalRepo + "_" + globalBranch }], removed: [] } });
                         }
                         globalCurrentWorkspace = obj.repo + '_' + obj.branch;
+                        console.log("setting gcW as: " + globalCurrentWorkspace);
                     }
                 }
             }
@@ -118,6 +130,9 @@ async function handleRequest(obj) {
             if (resultForQuery != undefined || resultForQuery != null) {
                 if (resultForQuery.uri == myclient_1.pathToUri(serverDirectory) + "/" + obj.query.textDocument) {
                     same = true;
+                }
+                else {
+                    forReference = true;
                 }
             }
             if (obj.type == "blob") {
@@ -264,7 +279,7 @@ function runShellBlob(repo, branch) {
     else if (platform == "win32") {
         var text = 'console.log("' + workingDirectory + '");console.log("' + serverDirectory + '");console.log("' + repo + '");console.log("' + branch + '");';
         var command = "echo " + text + " > " + "argShellBlob.js";
-        console.log(command);
+        //console.log(command);
         shell.exec(command);
         shell.exec('chmod +x runShellBlob.sh');
         shell.exec('sh runShellBlob.sh');

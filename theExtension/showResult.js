@@ -64,15 +64,6 @@ function showDiffBlobResult(result){
   chrome.runtime.sendMessage({newLocation: newurl}, function(response) {
       //console.log(response.farewell);
   });
-  //var regex = new RegExp((result.repo+"_")((.)*));
-  // var newBranch;
-  // for(i=0;i<resultArray.length;i++){
-  //   if(regex.test(resultArray[i])){
-  //     var match = regex.exec(resultArray[i]);
-  //     newBranch = match[2];
-  //     console.log(newBranch);
-  //   }
-  // }
 }
 
 function showSamePullResult(result){
