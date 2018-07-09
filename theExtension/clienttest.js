@@ -1,8 +1,8 @@
 //console.log("this is client test");
 function reqListener () {
   var result = JSON.parse(this.responseText);
-  console.log("the result is:");
-  console.log(result);
+  //console.log("the result is:");
+  //console.log(result);
   if(result.method=="blob"){
     showBlobResult(result);
   }else if(result.method=="pull"){
@@ -16,7 +16,7 @@ function reqListener () {
 }
 
 function addSpans(type,repo,branchList){
-  console.log("in addSpans");
+  //console.log("in addSpans");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
     var tag = outSpan[j];
@@ -68,8 +68,8 @@ function addSpans(type,repo,branchList){
 
             }
           }
-          console.log("objRequest is :");
-          console.log(objRequest);
+          //console.log("objRequest is :");
+          //console.log(objRequest);
             sendToServer(objRequest);
           // chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
           //     console.log(response.farewell);

@@ -4,14 +4,14 @@ function onloadFunc () {
   var typeObject;
   if(type=="blob"){
     typeObject = getBlobObject();
-    console.log(typeObject);
+    //console.log(typeObject);
     sendToServer(typeObject);
     preparePage(typeObject);
   }
   else if (type=="pull"){
     typeObject = getPullObject();
     var viewType = getPullViewType();
-    console.log(typeObject);
+    //console.log(typeObject);
     if(viewType=='split'){
       sendToServer(typeObject);
       preparePage(typeObject);

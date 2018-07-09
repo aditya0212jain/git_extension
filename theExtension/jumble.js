@@ -21,12 +21,6 @@ function sort(pattern){
 
 }
 
-function toggle_inFileOrder(adi){
-  //document.body.classList.add("full-width");
-  //var idFiles = document.getElementById("files");
-  //idFiles.style.display ="inline-block";
-}
-
 function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
   //console.log(parseInt(tab_counter.innerHTML));
   for(i=0;i<parseInt(tab_counter.innerHTML);i++){

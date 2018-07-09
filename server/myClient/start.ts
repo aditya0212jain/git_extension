@@ -23,18 +23,9 @@ var globalBranchHead;
 var serverDirectory= path.join(__dirname,'serverRepos');
 var serverBusy = false;
 var forReference = false;
-// console.log("serverDire");
-// console.log(serverDirectory);
 serverDirectory = serverDirectory.replace(/\\/g,'/');
-//console.log(serverDirectory);
 var workingDirectory= "G:/Repos/working";
 var globalCurrentWorkspace;
-// const textidentifier = {uri : "file:///G:/lsp/myServerSide/myClient/repodriller/src/main/java/org/repodriller/RepositoryMining.java"};
-// const positionTest = {line :13,character:10};
-//console.log(textidentifier);
-//console.log(positionTest);
-//const testTextPosition = {textDocument: textidentifier,position:positionTest};
-//console.log(testTextPosition);
 
  async function handleRequest(obj){
    return new Promise(async (resolve,reject)=>{
@@ -169,7 +160,6 @@ async function handleQuery(obj){
 
 async function p(){
   var startServerPath = serverDirectory;
-  //t= await clientTest.startServer(startServerPath); //F:\semester 3\COL106 Data structure\p1\assign1   G:\lsp\myServerSide\myClient
   var http = require('http');
   http.createServer(async function (request, response) {
     var body = [];
@@ -233,9 +223,6 @@ async function p(){
     this.setPrompt(prefix);
    this.prompt();
   }).on('close', function() {
-    // console.log('workingDirectory set as :'+workingDirectory);
-    // workingDirectory=workingDirectory.replace(/\\/g,'/');
-    //process.exit(0);
   });
   rl.setPrompt(prefix);
   rl.prompt();

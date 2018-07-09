@@ -8,7 +8,7 @@ var storage_set = chrome.storage.local.set;
 $(myCode);
 
 function myCode(){
-  console.log("myCode");
+  //console.log("myCode");
   chrome.storage.sync.get({'overlay': true, 'enterprise': '', 'debug': false, 'hosts': ''}, function(prefs){
     var hosts = (prefs['hosts'] || '').split('\n');
     hosts.push('github.com');
