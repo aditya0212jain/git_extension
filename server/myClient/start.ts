@@ -12,6 +12,8 @@ import * as stream from 'stream';
 import * as readline from 'readline';
 import * as os from 'os';
 import {myClient,pathToUri} from './myclient'
+const { performance } = require('perf_hooks');
+import {runShellBlob,runShellPull} from './shellFunctions';
 
 const shell = require('shelljs');
 const clientTest = new myClient();
@@ -20,27 +22,19 @@ var globalRepo;
 var globalBranch;
 var globalBranchBase;
 var globalBranchHead;
-var serverDirectory= path.join(__dirname,'serverRepos');
+export var serverDirectory= path.join(__dirname,'serverRepos');
 var serverBusy = false;
 var forReference = false;
 serverDirectory = serverDirectory.replace(/\\/g,'/');
-var workingDirectory= "G:/Repos/working";
+export var workingDirectory= "G:/Repos/working";
 var globalCurrentWorkspace;
+var ReposInServer = [];
+var localServerExtensionPort = 8080;
+const fs = require('fs');
 
 async function handleRequestBlob(obj){
-  runShellBlob(obj.repo,obj.branch);
   globalRepo = obj.repo;
   globalBranch = obj.branch;
-  //console.log("before the if serverBusy: "+serverBusy);
-  if(!serverBusy){
-    serverBusy = true;
-    if(!forReference){
-      t = await clientTest.startServer(serverDirectory);
-    }
-    forReference = false;
-    serverBusy = false;
-  }
-  //console.log("After the if serverBusy: "+serverBusy);
   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
     if(globalCurrentWorkspace){
       await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
@@ -50,8 +44,41 @@ async function handleRequestBlob(obj){
     globalCurrentWorkspace=globalRepo+"_"+globalBranch;
     console.log("setting gcW as: "+globalCurrentWorkspace);
   }
-  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
-  const defR = await t.connection.gotoDefinition(testR);
+  if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)==-1){
+    var t0 = performance.now();
+    runShellBlob(obj.repo,obj.branch);
+    var t1 = performance.now();
+    console.log("time in running the script is: "+(t1-t0));
+    //console.log("time in running blob script is: "+(Date.getTime()-t0) );
+    globalRepo = obj.repo;
+    globalBranch = obj.branch;
+    //console.log("before the if serverBusy: "+serverBusy);
+    if(!serverBusy){
+      serverBusy = true;
+      if(!forReference){
+        t0 = performance.now();
+        t = await clientTest.startServer(serverDirectory);
+        console.log("time in starting the server : "+(performance.now()-t0));
+      }
+      forReference = false;
+      serverBusy = false;
+    }
+    //console.log("After the if serverBusy: "+serverBusy);
+    if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
+      if(globalCurrentWorkspace){
+        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+      }else{
+        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
+      }
+      globalCurrentWorkspace=globalRepo+"_"+globalBranch;
+      console.log("setting gcW as: "+globalCurrentWorkspace);
+    }
+    t0 = performance.now();
+    var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+    const defR = await t.connection.gotoDefinition(testR);
+    console.log("time in checking empty def: "+(performance.now()-t0));
+    ReposInServer.push(obj.repo+"_"+obj.branch);
+  }
 }
 
 async function handleRequestPull(obj){
@@ -112,8 +139,8 @@ async function handleRequestQuery(obj){
     console.log(e);
   }
   var resultForQuery = await solveQuery(obj.query);
-  console.log("the result is: ");
-  console.log(resultForQuery);
+  // console.log("the result is: ");
+  // console.log(resultForQuery);
   var returningObject;
   var same=false;
   if(resultForQuery!=undefined||resultForQuery!=null){
@@ -124,10 +151,10 @@ async function handleRequestQuery(obj){
     }
   }
   if(obj.type=="blob"){
-    returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:globalRepo,branch:globalBranch}
+    returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:obj.repo,branch:obj.branch}
   }
   else if (obj.type=="pull"){
-    returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,branchType:obj.branchType,same:same,repo:globalRepo};
+    returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,branchType:obj.branchType,same:same,repo:obj.repo};
   }
   return returningObject;
 }
@@ -169,7 +196,63 @@ async function solveQuery(obj){
 }
 
 async function p(){
-  var startServerPath = serverDirectory;
+  localServerStart();
+  consoleCommands();
+}
+
+async function consoleCommands(){
+  console.log("w to set workingDirectory");
+  console.log("c to clear temp files");
+  console.log("r to start server");
+  var rl = readline.createInterface(process.stdin, process.stdout);
+  var whichDir=0;// 1 for w and 2 for s
+  var prefix = '>';
+  var afterPrefix ='>';
+  rl.on('line',async function(line) {
+    switch(line.trim()){
+      case 'w':
+      whichDir=1;
+      prefix="Enter working directory";
+      break;
+      case 'c':
+      whichDir=0;
+      //console.log("rm -r -f "+serverDirectory+"/*");
+      shell.exec("rm -r -f "+serverDirectory+"/*");
+      shell.exec("rm -r -f ./server_0.9/.metadata");
+      shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
+      ReposInServer = [];
+      console.log("done");
+      break;
+      case 'r':
+      t = await clientTest.startServer(serverDirectory);
+      //console.log("started");
+      fs.readdirSync(serverDirectory).forEach(file => {
+        ReposInServer.push(file);
+      })
+      this.close();
+      break;
+      default:
+      if(whichDir==1){
+        workingDirectory=line;
+        console.log('workingDirectory set as '+workingDirectory);
+        workingDirectory=workingDirectory.replace(/\\/g,'/');
+        prefix = ">"
+        break
+      }else{
+        console.log("wrong input");
+        break;
+      }
+    }
+    this.setPrompt(prefix);
+   this.prompt();
+  }).on('close', function() {
+
+  });
+  rl.setPrompt(prefix);
+  rl.prompt();
+}
+
+async function localServerStart(){
   var http = require('http');
   http.createServer(async function (request, response) {
     var body = [];
@@ -197,82 +280,7 @@ async function p(){
     response.end();
 
     });
-  }).listen(8080); //the server object listens on port 8080
-  console.log("w to set workingDirectory");
-  console.log("c to clear temp files");
-  var rl = readline.createInterface(process.stdin, process.stdout);
-  var whichDir=0;// 1 for w and 2 for s
-  var prefix = '>';
-  var afterPrefix ='>';
-  rl.on('line', function(line) {
-    switch(line.trim()){
-      case 'w':
-      whichDir=1;
-      prefix="Enter working directory";
-      break;
-      case 'c':
-      whichDir=0;
-      //console.log("rm -r -f "+serverDirectory+"/*");
-      shell.exec("rm -r -f "+serverDirectory+"/*");
-      shell.exec("rm -r -f ./server_0.9/.metadata");
-      shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
-      console.log("done");
-      break;
-      default:
-      if(whichDir==1){
-        workingDirectory=line;
-        console.log('workingDirectory set as '+workingDirectory);
-        workingDirectory=workingDirectory.replace(/\\/g,'/');
-        prefix = ">"
-        break
-      }else{
-        console.log("wrong input");
-        break;
-      }
-    }
-    this.setPrompt(prefix);
-   this.prompt();
-  }).on('close', function() {
-  });
-  rl.setPrompt(prefix);
-  rl.prompt();
-
-}
-
-function runShellBlob(repo,branch){
-  var platform = os.platform();
-  if(platform=="linux" || platform =="darwin"){
-    var text = '\'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");\'';
-    var command = "echo "+text+" > "+"argShellBlob.js";
-    shell.exec(command);
-    shell.exec('chmod +x runShellBlobLinux.sh');
-    shell.exec('./runShellBlobLinux.sh');
-  }else if(platform=="win32"){
-    var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch+'");';
-    var command = "echo "+text+" > "+"argShellBlob.js";
-    //console.log(command);
-    shell.exec(command);
-    shell.exec('chmod +x runShellBlob.sh');
-    shell.exec('sh runShellBlob.sh');
-  }
-
-}
-
-function runShellPull(repo,branch1,branch2){
-  var platform = os.platform();
-  if(platform=="linux" || platform =="darwin"){
-    var text = '\'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");\'';
-    var command = "echo "+text+" > "+"argShellPull.js";
-    shell.exec(command);
-    shell.exec('chmod +x runShellPullLinux.sh');
-    shell.exec('./runShellPullLinux.sh');
-  }else if(platform=="win32"){
-    var text = 'console.log("'+workingDirectory+'");console.log("'+serverDirectory+'");console.log("'+repo+'");console.log("'+branch1+'");'+'console.log("'+branch2+'");';
-    var command = "echo "+text+" > "+"argShellPull.js";
-    shell.exec(command);
-    shell.exec('chmod +x runShellPull.sh');
-    shell.exec('sh runShellPull.sh');
-  }
+  }).listen(localServerExtensionPort); //the server object listens on port 8080
 }
 
 p();
