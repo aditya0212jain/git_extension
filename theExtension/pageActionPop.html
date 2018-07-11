@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        button {
+          height: 100%;
+          width: 100%;
+          outline: none;
+        }
+      </style>
+      <script>
+        chrome.runtime.sendMessage({clicked : true});
+      </script>
+    </head>
+    <body>
+      <button id="getRepoNav">Get this Repo</button>
+    </body>
+  </html>

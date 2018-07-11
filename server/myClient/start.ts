@@ -25,14 +25,15 @@ export declare var globalBranch;
 export declare var globalBranchBase;
 export declare var globalBranchHead;
 export declare var serverDirectory;
-serverDirectory = path.join(__dirname,'serverRepos');1
+serverDirectory = path.join(__dirname,'serverRepos');
 export declare var serverBusy ;
 serverBusy = false;
 export declare var forReference;
 forReference = false;
 serverDirectory = serverDirectory.replace(/\\/g,'/');
 export declare var workingDirectory;
-workingDirectory= "G:/Repos/working";
+workingDirectory= path.join(__dirname,'serverWorking');
+workingDirectory = workingDirectory.replace(/\\/g,'/');
 export declare var globalCurrentWorkspace;
 export declare var ReposInServer ;
 ReposInServer = [];
@@ -71,13 +72,17 @@ export async function handleRequestBlob(obj){
       }
       serverBusy = false;
     }
+    if (fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branch)) {
+      console.log("directory now exists");
+      ReposInServer.push(obj.repo+"_"+obj.branch);
+    }
   }
   forReference = false;
   var t0 = performance.now();
   var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in checking empty def: "+(performance.now()-t0));
-  ReposInServer.push(obj.repo+"_"+obj.branch);
+
 }
 
 export async function handleRequestPull(obj){
@@ -166,6 +171,10 @@ export async function handleRequestQuery(obj){
   return returningObject;
 }
 
+export async function handleRequestGitClone(url){
+  shell.exec("cd "+workingDirectory+" && "+"git clone "+url+" && echo 'done cloning'");
+}
+
 async function handleRequest(obj){
    return new Promise(async (resolve,reject)=>{
     if(obj.method == "blob"){
@@ -184,6 +193,9 @@ async function handleRequest(obj){
       resolve();
     }else if(obj.method=="closeServer"){
       console.log("closeServer request");
+      resolve();
+    }else if(obj.method=="gitClone"){
+      await handleRequestGitClone(obj.url);
       resolve();
     }
   })

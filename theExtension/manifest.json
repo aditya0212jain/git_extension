@@ -5,6 +5,9 @@
   "description": "Test code reviewer",
   "permissions": ["tabs","activeTab", "*://*.google.com/*","storage","*://*/*","notifications"],
   "author":"Aditya Jain",
+  "browser_action":{
+    "default_title":"TCR"
+  },
   "options_ui": {
   "page": "lib/options.html",
   "chrome_style": true

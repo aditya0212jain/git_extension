@@ -1,3 +1,15 @@
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(request);
+    if(request.method=="gitClone"){
+      var httpsUrl = document.getElementsByClassName('https-clone-options')[0];
+      var inputGroup = httpsUrl.getElementsByClassName('input-group');
+      var pol = $(inputGroup).children();
+      console.log($(pol[0]).attr('value'));
+      var url = $(pol[0]).attr('value');
+      sendToServer({method:"gitClone",url:url});
+    }
+  });
 window.onload = function () {onloadFunc();};
 function onloadFunc () {
   var type = getPageType();

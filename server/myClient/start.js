@@ -10,11 +10,11 @@ const shell = require('shelljs');
 var clientTest;
 clientTest = new myclient_1.myClient();
 exports.serverDirectory = path.join(__dirname, 'serverRepos');
-1;
 exports.serverBusy = false;
 exports.forReference = false;
 exports.serverDirectory = exports.serverDirectory.replace(/\\/g, '/');
-exports.workingDirectory = "G:/Repos/working";
+exports.workingDirectory = path.join(__dirname, 'serverWorking');
+exports.workingDirectory = exports.workingDirectory.replace(/\\/g, '/');
 exports.ReposInServer = [];
 var localServerExtensionPort = 8080;
 const fs = require('fs');
@@ -50,13 +50,16 @@ async function handleRequestBlob(obj) {
             }
             exports.serverBusy = false;
         }
+        if (fs.existsSync(exports.serverDirectory + "/" + obj.repo + "_" + obj.branch)) {
+            console.log("directory now exists");
+            exports.ReposInServer.push(obj.repo + "_" + obj.branch);
+        }
     }
     exports.forReference = false;
     var t0 = performance.now();
     var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
     const defR = await exports.t.connection.gotoDefinition(testR);
     console.log("time in checking empty def: " + (performance.now() - t0));
-    exports.ReposInServer.push(obj.repo + "_" + obj.branch);
 }
 exports.handleRequestBlob = handleRequestBlob;
 async function handleRequestPull(obj) {
@@ -147,6 +150,10 @@ async function handleRequestQuery(obj) {
     return returningObject;
 }
 exports.handleRequestQuery = handleRequestQuery;
+async function handleRequestGitClone(url) {
+    shell.exec("cd " + exports.workingDirectory + " && " + "git clone " + url + " && echo 'done cloning'");
+}
+exports.handleRequestGitClone = handleRequestGitClone;
 async function handleRequest(obj) {
     return new Promise(async (resolve, reject) => {
         if (obj.method == "blob") {
@@ -169,6 +176,10 @@ async function handleRequest(obj) {
         }
         else if (obj.method == "closeServer") {
             console.log("closeServer request");
+            resolve();
+        }
+        else if (obj.method == "gitClone") {
+            await handleRequestGitClone(obj.url);
             resolve();
         }
     });

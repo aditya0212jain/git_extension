@@ -15,6 +15,8 @@ function reqListener () {
   }
 }
 
+
+
 function addSpans(type,repo,branchList){
   //console.log("in addSpans");
   var outSpan = document.getElementsByClassName("blob-code-inner");
