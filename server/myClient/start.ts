@@ -14,25 +14,33 @@ import * as os from 'os';
 import {myClient,pathToUri} from './myclient'
 const { performance } = require('perf_hooks');
 import {runShellBlob,runShellPull} from './shellFunctions';
+//import {handleRequestPull,handleRequestBlob,handleRequestQuery} from './localRequestHandlers';
 
 const shell = require('shelljs');
-const clientTest = new myClient();
-var t;
-var globalRepo;
-var globalBranch;
-var globalBranchBase;
-var globalBranchHead;
-export var serverDirectory= path.join(__dirname,'serverRepos');
-var serverBusy = false;
-var forReference = false;
+var clientTest;
+clientTest =  new myClient();
+export declare var t;
+export declare var globalRepo;
+export declare var globalBranch;
+export declare var globalBranchBase;
+export declare var globalBranchHead;
+export declare var serverDirectory;
+serverDirectory = path.join(__dirname,'serverRepos');1
+export declare var serverBusy ;
+serverBusy = false;
+export declare var forReference;
+forReference = false;
 serverDirectory = serverDirectory.replace(/\\/g,'/');
-export var workingDirectory= "G:/Repos/working";
-var globalCurrentWorkspace;
-var ReposInServer = [];
+export declare var workingDirectory;
+workingDirectory= "G:/Repos/working";
+export declare var globalCurrentWorkspace;
+export declare var ReposInServer ;
+ReposInServer = [];
 var localServerExtensionPort = 8080;
 const fs = require('fs');
 
-async function handleRequestBlob(obj){
+
+export async function handleRequestBlob(obj){
   globalRepo = obj.repo;
   globalBranch = obj.branch;
   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
@@ -44,14 +52,13 @@ async function handleRequestBlob(obj){
     globalCurrentWorkspace=globalRepo+"_"+globalBranch;
     console.log("setting gcW as: "+globalCurrentWorkspace);
   }
+  //start the server again if the repo is not in the serverRepos directory
   if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)==-1){
     var t0 = performance.now();
     runShellBlob(obj.repo,obj.branch);
     var t1 = performance.now();
     console.log("time in running the script is: "+(t1-t0));
     //console.log("time in running blob script is: "+(Date.getTime()-t0) );
-    globalRepo = obj.repo;
-    globalBranch = obj.branch;
     //console.log("before the if serverBusy: "+serverBusy);
     if(!serverBusy){
       serverBusy = true;
@@ -63,25 +70,15 @@ async function handleRequestBlob(obj){
       forReference = false;
       serverBusy = false;
     }
-    //console.log("After the if serverBusy: "+serverBusy);
-    if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
-      if(globalCurrentWorkspace){
-        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
-      }else{
-        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
-      }
-      globalCurrentWorkspace=globalRepo+"_"+globalBranch;
-      console.log("setting gcW as: "+globalCurrentWorkspace);
-    }
-    t0 = performance.now();
-    var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
-    const defR = await t.connection.gotoDefinition(testR);
-    console.log("time in checking empty def: "+(performance.now()-t0));
-    ReposInServer.push(obj.repo+"_"+obj.branch);
   }
+  var t0 = performance.now();
+  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+  const defR = await t.connection.gotoDefinition(testR);
+  console.log("time in checking empty def: "+(performance.now()-t0));
+  ReposInServer.push(obj.repo+"_"+obj.branch);
 }
 
-async function handleRequestPull(obj){
+export async function handleRequestPull(obj){
   runShellPull(obj.repo,obj.branchBase,obj.branchHead);
   globalRepo = obj.repo;
   globalBranchHead = obj.branchHead;
@@ -107,7 +104,7 @@ async function handleRequestPull(obj){
   const defR = await t.connection.gotoDefinition(testR);
 }
 
-async function handleRequestQuery(obj){
+export async function handleRequestQuery(obj){
   try{
     if(obj.type=="pull"){
       if(obj.branchType=="head"){
@@ -127,9 +124,9 @@ async function handleRequestQuery(obj){
     }else if(obj.type=="blob"){
       if(globalCurrentWorkspace!=obj.repo+'_'+obj.branch){
         if(globalCurrentWorkspace){
-          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
         }else{
-          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
+          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[]}});
         }
         globalCurrentWorkspace=obj.repo+'_'+obj.branch;
         console.log("setting gcW as: "+globalCurrentWorkspace);
@@ -159,7 +156,7 @@ async function handleRequestQuery(obj){
   return returningObject;
 }
 
- async function handleRequest(obj){
+async function handleRequest(obj){
    return new Promise(async (resolve,reject)=>{
     if(obj.method == "blob"){
       await handleRequestBlob(obj);
@@ -169,8 +166,8 @@ async function handleRequestQuery(obj){
       resolve(JSON.stringify({method:"serverStarted"}));
     }else if(obj.method =="query"){
       var returningObject = await handleRequestQuery(obj);
-      console.log("the returningObject is :");
-      console.log(returningObject);
+      //console.log("the returningObject is :");
+      //console.log(returningObject);
       resolve(JSON.stringify(returningObject));
     }else if(obj.method =="startServer"){
       console.log("startServer request");
@@ -182,7 +179,7 @@ async function handleRequestQuery(obj){
   })
 }
 
-async function solveQuery(obj){
+export async function solveQuery(obj){
   try{
     var test = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.textDocument},position : obj.position};//{textDocument: textidentifier,position : obj}
     const def = await t.connection.gotoDefinition(test);
@@ -195,11 +192,6 @@ async function solveQuery(obj){
   }
 }
 
-async function p(){
-  localServerStart();
-  consoleCommands();
-}
-
 async function consoleCommands(){
   console.log("w to set workingDirectory");
   console.log("c to clear temp files");
@@ -207,29 +199,26 @@ async function consoleCommands(){
   var rl = readline.createInterface(process.stdin, process.stdout);
   var whichDir=0;// 1 for w and 2 for s
   var prefix = '>';
-  var afterPrefix ='>';
   rl.on('line',async function(line) {
     switch(line.trim()){
       case 'w':
       whichDir=1;
       prefix="Enter working directory";
       break;
-      case 'c':
+      case 'c'://command to clean the temp file(serverRepos and other temp files of server)
       whichDir=0;
-      //console.log("rm -r -f "+serverDirectory+"/*");
       shell.exec("rm -r -f "+serverDirectory+"/*");
       shell.exec("rm -r -f ./server_0.9/.metadata");
       shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
       ReposInServer = [];
       console.log("done");
       break;
-      case 'r':
+      case 'r'://command to run the server
       t = await clientTest.startServer(serverDirectory);
-      //console.log("started");
       fs.readdirSync(serverDirectory).forEach(file => {
-        ReposInServer.push(file);
+        ReposInServer.push(file);//reading the repos already in the serverRepos directory
       })
-      this.close();
+      //this.close();//closing the prompt after starting the server
       break;
       default:
       if(whichDir==1){
@@ -278,9 +267,13 @@ async function localServerStart(){
       response.write(obj.method);
     }
     response.end();
-
     });
   }).listen(localServerExtensionPort); //the server object listens on port 8080
+}
+
+async function p(){
+  localServerStart();
+  consoleCommands();
 }
 
 p();
