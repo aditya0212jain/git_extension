@@ -1,3 +1,4 @@
+
 function highlightLineInSamePage(line){
   // var ct = document.getElementById("L"+line);
   // var removeClass = document.getElementsByClassName("definitionHighlight");
@@ -91,7 +92,7 @@ function showSamePullResult(result){
     }
   }
   var objData = getPullObject();
-  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead]);console.log("now spans added")},1500);
+  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead]);console.log("now spans added");myCode();console.log("my code used");},2000);
 
 }
 
