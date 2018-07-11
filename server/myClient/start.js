@@ -33,26 +33,32 @@ async function handleRequestBlob(obj) {
     }
     //start the server again if the repo is not in the serverRepos directory
     if (exports.ReposInServer.indexOf(obj.repo + "_" + obj.branch) == -1) {
-        var t0 = performance.now();
-        shellFunctions_1.runShellBlob(obj.repo, obj.branch);
-        var t1 = performance.now();
-        console.log("time in running the script is: " + (t1 - t0));
-        //console.log("time in running blob script is: "+(Date.getTime()-t0) );
-        //console.log("before the if serverBusy: "+serverBusy);
-        console.log("serverBusy: " + exports.serverBusy);
-        if (!exports.serverBusy) {
-            exports.serverBusy = true;
-            console.log("forReference: " + exports.forReference);
-            if (!exports.forReference) {
-                t0 = performance.now();
-                exports.t = await clientTest.startServer(exports.serverDirectory);
-                console.log("time in starting the server : " + (performance.now() - t0));
-            }
-            exports.serverBusy = false;
+        if (!fs.existsSync(exports.workingDirectory + "/" + obj.repo + "_" + obj.branch)) {
+            console.log("directory does not exists");
+            console.log("first clone it using the extension");
         }
-        if (fs.existsSync(exports.serverDirectory + "/" + obj.repo + "_" + obj.branch)) {
-            console.log("directory now exists");
-            exports.ReposInServer.push(obj.repo + "_" + obj.branch);
+        else {
+            var t0 = performance.now();
+            shellFunctions_1.runShellBlob(obj.repo, obj.branch);
+            var t1 = performance.now();
+            console.log("time in running the script is: " + (t1 - t0));
+            //console.log("time in running blob script is: "+(Date.getTime()-t0) );
+            //console.log("before the if serverBusy: "+serverBusy);
+            console.log("serverBusy: " + exports.serverBusy);
+            if (!exports.serverBusy) {
+                exports.serverBusy = true;
+                console.log("forReference: " + exports.forReference);
+                if (!exports.forReference) {
+                    t0 = performance.now();
+                    exports.t = await clientTest.startServer(exports.serverDirectory);
+                    console.log("time in starting the server : " + (performance.now() - t0));
+                }
+                exports.serverBusy = false;
+            }
+            if (fs.existsSync(exports.serverDirectory + "/" + obj.repo + "_" + obj.branch)) {
+                console.log("directory now exists");
+                exports.ReposInServer.push(obj.repo + "_" + obj.branch);
+            }
         }
     }
     exports.forReference = false;

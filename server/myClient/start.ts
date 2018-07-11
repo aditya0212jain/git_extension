@@ -55,26 +55,31 @@ export async function handleRequestBlob(obj){
   }
   //start the server again if the repo is not in the serverRepos directory
   if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)==-1){
-    var t0 = performance.now();
-    runShellBlob(obj.repo,obj.branch);
-    var t1 = performance.now();
-    console.log("time in running the script is: "+(t1-t0));
-    //console.log("time in running blob script is: "+(Date.getTime()-t0) );
-    //console.log("before the if serverBusy: "+serverBusy);
-    console.log("serverBusy: "+serverBusy);
-    if(!serverBusy){
-      serverBusy = true;
-      console.log("forReference: "+forReference);
-      if(!forReference){
-        t0 = performance.now();
-        t = await clientTest.startServer(serverDirectory);
-        console.log("time in starting the server : "+(performance.now()-t0));
+    if (!fs.existsSync(workingDirectory+"/"+obj.repo+"_"+obj.branch)) {
+      console.log("directory does not exists");
+      console.log("first clone it using the extension");
+    }else{
+      var t0 = performance.now();
+      runShellBlob(obj.repo,obj.branch);
+      var t1 = performance.now();
+      console.log("time in running the script is: "+(t1-t0));
+      //console.log("time in running blob script is: "+(Date.getTime()-t0) );
+      //console.log("before the if serverBusy: "+serverBusy);
+      console.log("serverBusy: "+serverBusy);
+      if(!serverBusy){
+        serverBusy = true;
+        console.log("forReference: "+forReference);
+        if(!forReference){
+          t0 = performance.now();
+          t = await clientTest.startServer(serverDirectory);
+          console.log("time in starting the server : "+(performance.now()-t0));
+        }
+        serverBusy = false;
       }
-      serverBusy = false;
-    }
-    if (fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branch)) {
-      console.log("directory now exists");
-      ReposInServer.push(obj.repo+"_"+obj.branch);
+      if (fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branch)) {
+        console.log("directory now exists");
+        ReposInServer.push(obj.repo+"_"+obj.branch);
+      }
     }
   }
   forReference = false;
@@ -82,7 +87,6 @@ export async function handleRequestBlob(obj){
   var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in checking empty def: "+(performance.now()-t0));
-
 }
 
 export async function handleRequestPull(obj){
