@@ -39,17 +39,19 @@ async function handleRequestBlob(obj) {
         console.log("time in running the script is: " + (t1 - t0));
         //console.log("time in running blob script is: "+(Date.getTime()-t0) );
         //console.log("before the if serverBusy: "+serverBusy);
+        console.log("serverBusy: " + exports.serverBusy);
         if (!exports.serverBusy) {
             exports.serverBusy = true;
+            console.log("forReference: " + exports.forReference);
             if (!exports.forReference) {
                 t0 = performance.now();
                 exports.t = await clientTest.startServer(exports.serverDirectory);
                 console.log("time in starting the server : " + (performance.now() - t0));
             }
-            exports.forReference = false;
             exports.serverBusy = false;
         }
     }
+    exports.forReference = false;
     var t0 = performance.now();
     var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
     const defR = await exports.t.connection.gotoDefinition(testR);
@@ -58,17 +60,18 @@ async function handleRequestBlob(obj) {
 }
 exports.handleRequestBlob = handleRequestBlob;
 async function handleRequestPull(obj) {
-    shellFunctions_1.runShellPull(obj.repo, obj.branchBase, obj.branchHead);
     exports.globalRepo = obj.repo;
     exports.globalBranchHead = obj.branchHead;
     exports.globalBranchBase = obj.branchBase;
-    if (!exports.serverBusy) {
-        exports.serverBusy = true;
-        if (!exports.forReference) {
-            exports.t = await clientTest.startServer(exports.serverDirectory);
+    if (exports.ReposInServer.indexOf(exports.globalRepo + "_" + exports.globalBranchBase) == -1 || exports.ReposInServer.indexOf(exports.globalRepo + "_" + exports.globalBranchHead) == -1) {
+        shellFunctions_1.runShellPull(obj.repo, obj.branchBase, obj.branchHead);
+        if (!exports.serverBusy) {
+            exports.serverBusy = true;
+            if (!exports.forReference) {
+                exports.t = await clientTest.startServer(exports.serverDirectory);
+            }
+            exports.serverBusy = false;
         }
-        exports.forReference = false;
-        exports.serverBusy = false;
     }
     if (exports.globalCurrentWorkspace) {
         await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalRepo + "_" + exports.globalBranchHead, name: exports.globalRepo + "_" + exports.globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
@@ -76,44 +79,48 @@ async function handleRequestPull(obj) {
     else {
         await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalRepo + "_" + exports.globalBranchHead, name: exports.globalRepo + "_" + exports.globalBranchHead }], removed: [] } });
     }
+    exports.forReference = false;
     exports.globalCurrentWorkspace = exports.globalRepo + "_" + exports.globalBranchHead;
     console.log("setting gcW as: " + exports.globalCurrentWorkspace);
     //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
+    var t0 = performance.now();
     var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branchHead }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
     //console.log(testR);
     const defR = await exports.t.connection.gotoDefinition(testR);
+    console.log("time in check: " + (performance.now() - t0));
 }
 exports.handleRequestPull = handleRequestPull;
 async function handleRequestQuery(obj) {
     try {
-        if (obj.type == "pull") {
-            if (obj.branchType == "head") {
-                if (exports.globalCurrentWorkspace != exports.globalRepo + "_" + exports.globalBranchHead) {
-                    await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalRepo + "_" + exports.globalBranchHead, name: exports.globalRepo + "_" + exports.globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalRepo + "_" + exports.globalBranchBase, name: exports.globalRepo + "_" + exports.globalBranchBase }] } });
-                    exports.globalCurrentWorkspace = exports.globalRepo + "_" + exports.globalBranchHead;
-                    console.log("setting gcW as: " + exports.globalCurrentWorkspace);
-                }
+        // if(obj.type=="pull"){
+        // if(obj.branchType=="head"){
+        // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
+        // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+        // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
+        // console.log("setting gcW as: "+globalCurrentWorkspace);
+        // }
+        // }
+        // else{
+        //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
+        //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
+        //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
+        //     console.log("setting gcW as: "+globalCurrentWorkspace);
+        //   }
+        // }
+        // }else if(obj.type=="blob"){
+        if (exports.globalCurrentWorkspace != obj.repo + '_' + obj.branch) {
+            if (exports.globalCurrentWorkspace) {
+                await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
             }
             else {
-                if (exports.globalCurrentWorkspace != exports.globalRepo + "_" + exports.globalBranchBase) {
-                    await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalRepo + "_" + exports.globalBranchHead, name: exports.globalRepo + "_" + exports.globalBranchHead }], added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalRepo + "_" + exports.globalBranchBase, name: exports.globalRepo + "_" + exports.globalBranchBase }] } });
-                    exports.globalCurrentWorkspace = exports.globalRepo + "_" + exports.globalBranchBase;
-                    console.log("setting gcW as: " + exports.globalCurrentWorkspace);
-                }
+                await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [] } });
             }
+            var point = new Promise((resolve, reject) => { console.log("in promise"); setTimeout(function () { console.log("in time out"); resolve(); }, 2500); });
+            await point.then(() => { console.log("in resolve"); });
+            exports.globalCurrentWorkspace = obj.repo + '_' + obj.branch;
+            console.log("setting gcW as: " + exports.globalCurrentWorkspace);
         }
-        else if (obj.type == "blob") {
-            if (exports.globalCurrentWorkspace != obj.repo + '_' + obj.branch) {
-                if (exports.globalCurrentWorkspace) {
-                    await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
-                }
-                else {
-                    await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [] } });
-                }
-                exports.globalCurrentWorkspace = obj.repo + '_' + obj.branch;
-                console.log("setting gcW as: " + exports.globalCurrentWorkspace);
-            }
-        }
+        // }
     }
     catch (e) {
         console.log(e);

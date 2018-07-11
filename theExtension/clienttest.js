@@ -55,15 +55,17 @@ function addSpans(type,repo,branchList){
             var i = $(td).index();
             if(i==1){
               var queryObject = getQueryObject(this,type,repo,branchList);
-              objRequest = {method:"query",query:queryObject,type:type,branchType:"base"};
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"base",repo:repo,branch:branchList[0]};
             }else if(i==3){
               var queryObject = getQueryObject(this,type,repo,branchList);
-              objRequest = {method:"query",query:queryObject,type:type,branchType:"head"};
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"head",repo:repo,branch:branchList[1]};
             }else if(i==2){
               var argumentForUnified = getBranchUnified(td);
               //console.log(argumentForUnified);
               var queryObject = getQueryObject(this,type,repo,branchList,argumentForUnified);
-              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch};//for unified view
+              var tempBranch;
+              argumentForUnified.branch=='base' ? tempBranch=branchList[0] : tempBranch = branchList[1];
+              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch,repo:repo,branch:tempBranch};//for unified view
               //getBranchUnified(td);
 
             }
