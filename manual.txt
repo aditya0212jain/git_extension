@@ -23,13 +23,7 @@ exit by saving (esc then :wq)
 5)To start server:
 	go to git_extension/server/myClient
 	and use the command : node start.js
-6)now you can set your working directory of repo by pressing w and the server directory by pressing s
-7)example  :
-w
-/home/aditya/git_files
-In this case your repo should be inside the git_files directory
-As for the server directory just create any empty directory and give its path like:
-
-s
-/home/aditya/server
-
+6)now press r to start running the server and c to remove the temp files
+7)Using extension:
+	a)open any java git repo and click on the extension button to set it up
+	b)load any file then and enjoy the navigation(first time setup may take a little time)
