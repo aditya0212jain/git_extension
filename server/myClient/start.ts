@@ -66,10 +66,10 @@ export async function handleRequestBlob(obj){
       console.log("time in running the script is: "+(t1-t0));
       //console.log("time in running blob script is: "+(Date.getTime()-t0) );
       //console.log("before the if serverBusy: "+serverBusy);
-      console.log("serverBusy: "+serverBusy);
+      //console.log("serverBusy: "+serverBusy);
       if(!serverBusy){
         serverBusy = true;
-        console.log("forReference: "+forReference);
+        //console.log("forReference: "+forReference);
         if(!forReference){
           t0 = performance.now();
           t = await clientTest.startServer(serverDirectory);
@@ -161,8 +161,8 @@ export async function handleRequestQuery(obj){
         }else{
           await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[]}});
         }
-        var point = new Promise((resolve,reject)=>{console.log("in promise");setTimeout(function(){console.log("in time out");resolve()},2500);});
-        await point.then(()=>{console.log("in resolve")});
+        var point = new Promise((resolve,reject)=>{setTimeout(function(){resolve()},2500);});
+        await point.then(()=>{});
 
         globalCurrentWorkspace=obj.repo+'_'+obj.branch;
         console.log("setting gcW as: "+globalCurrentWorkspace);
@@ -197,11 +197,11 @@ export async function handleRequestGitClone(obj){
     shell.exec("rm -r -f "+workingDirectory+"/"+obj.repo);
     shell.exec("echo 'removed the older repo ,now cloning new'");
     shell.exec("cd "+workingDirectory+" && "+"git clone "+obj.url+" && echo 'done cloning'");
-    console.log("checking sync");
+    //console.log("checking sync");
     return {method:"gitCloneResponse",type:"updated"};
   }else{
     shell.exec("cd "+workingDirectory+" && "+"git clone "+obj.url+" && echo 'done cloning'");
-    console.log("checking sync");
+    //console.log("checking sync");
     return {method:"gitCloneResponse",type:"new"};
   }
 }
@@ -227,8 +227,8 @@ async function handleRequest(obj){
       resolve();
     }else if(obj.method=="gitClone"){
       var ans = await handleRequestGitClone(obj);
-      console.log("answer for gitCloneRequest:");
-      console.log(ans);
+      //console.log("answer for gitCloneRequest:");
+      //console.log(ans);
       resolve(JSON.stringify(ans));
     }
   })
