@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(
       if(request.url=="undefined"){
         message="Open a gitHub repo page";
       }else{
-        message="First try going to "+request.url;
+        message="First try going to "+request.url+" by clicking here";
       }
       var options ={
         type:"basic",
