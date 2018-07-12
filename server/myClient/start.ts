@@ -138,23 +138,24 @@ export async function handleRequestPull(obj){
 }
 
 export async function handleRequestQuery(obj){
-  try{
+  if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)!=-1){
+    try{
     // if(obj.type=="pull"){
-      // if(obj.branchType=="head"){
-        // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
-            // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
-          // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
-          // console.log("setting gcW as: "+globalCurrentWorkspace);
-        // }
-      // }
-      // else{
-      //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
-      //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
-      //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
-      //     console.log("setting gcW as: "+globalCurrentWorkspace);
-      //   }
-      // }
-    // }else if(obj.type=="blob"){
+        // if(obj.branchType=="head"){
+          // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
+              // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+              // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
+              // console.log("setting gcW as: "+globalCurrentWorkspace);
+              // }
+              // }
+              // else{
+              //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
+              //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
+              //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
+              //     console.log("setting gcW as: "+globalCurrentWorkspace);
+              //   }
+              // }
+              // }else if(obj.type=="blob"){
       if(globalCurrentWorkspace!=obj.repo+'_'+obj.branch){
         if(globalCurrentWorkspace){
           await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
@@ -167,29 +168,34 @@ export async function handleRequestQuery(obj){
         globalCurrentWorkspace=obj.repo+'_'+obj.branch;
         console.log("setting gcW as: "+globalCurrentWorkspace);
       }
-    // }
-  }catch(e){
-    console.log(e);
-  }
-  var resultForQuery = await solveQuery(obj.query);
-  // console.log("the result is: ");
-  // console.log(resultForQuery);
-  var returningObject;
-  var same=false;
-  if(resultForQuery!=undefined||resultForQuery!=null){
-    if(resultForQuery.uri==pathToUri(serverDirectory)+"/"+obj.query.textDocument){
-      same=true;
-    }else{
-      forReference = true;
+      // }
+    }catch(e){
+      console.log(e);
     }
+    var resultForQuery = await solveQuery(obj.query);
+    // console.log("the result is: ");
+    // console.log(resultForQuery);
+    var returningObject;
+    var same=false;
+    if(resultForQuery!=undefined||resultForQuery!=null){
+      if(resultForQuery.uri==pathToUri(serverDirectory)+"/"+obj.query.textDocument){
+        same=true;
+      }else{
+        forReference = true;
+      }
+    }
+    if(obj.type=="blob"){
+      returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:obj.repo,branch:obj.branch}
+    }
+    else if (obj.type=="pull"){
+      returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,branchType:obj.branchType,same:same,repo:obj.repo};
+    }
+    return returningObject;
+  }else if(!fs.existsSync(workingDirectory+"/"+obj.repo)){
+    return {method:"repoNotInServerWorkingQuery"};
+  }else{
+    return {method:"reloadToStart"};
   }
-  if(obj.type=="blob"){
-    returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:obj.repo,branch:obj.branch}
-  }
-  else if (obj.type=="pull"){
-    returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,branchType:obj.branchType,same:same,repo:obj.repo};
-  }
-  return returningObject;
 }
 
 export async function handleRequestGitClone(obj){

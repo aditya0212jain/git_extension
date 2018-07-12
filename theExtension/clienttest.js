@@ -14,7 +14,7 @@ function reqListener () {
     });
   }else if(result.method=="gitCloneResponse"){
     chrome.runtime.sendMessage(result,function(response){});
-  }else if(result.method=="repoNotInServerWorking"){
+  }else if(result.method=="repoNotInServerWorking"||result.method=="repoNotInServerWorkingQuery"){
     var tyu= $('h1.public').find('span.author').find('a.url').html();
     var repo = $('strong[itemprop="name"]').find('a').html();
     var urlForCloning;
@@ -23,7 +23,10 @@ function reqListener () {
     }else{
       urlForCloning = "https://github.com/"+tyu+"/"+repo;
     }
-    chrome.runtime.sendMessage({method:"repoNotInServerWorking",url:urlForCloning}, function(response) {});
+    chrome.runtime.sendMessage({method:result.method,url:urlForCloning}, function(response) {});
+  }
+  else if(result.method=="reloadToStart"){
+    chrome.runtime.sendMessage({method:"reloadToStart"},function(response){})
   }
 }
 

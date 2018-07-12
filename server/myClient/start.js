@@ -118,60 +118,68 @@ async function handleRequestPull(obj) {
 }
 exports.handleRequestPull = handleRequestPull;
 async function handleRequestQuery(obj) {
-    try {
-        // if(obj.type=="pull"){
-        // if(obj.branchType=="head"){
-        // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
-        // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
-        // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
-        // console.log("setting gcW as: "+globalCurrentWorkspace);
-        // }
-        // }
-        // else{
-        //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
-        //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
-        //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
-        //     console.log("setting gcW as: "+globalCurrentWorkspace);
-        //   }
-        // }
-        // }else if(obj.type=="blob"){
-        if (exports.globalCurrentWorkspace != obj.repo + '_' + obj.branch) {
-            if (exports.globalCurrentWorkspace) {
-                await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
+    if (exports.ReposInServer.indexOf(obj.repo + "_" + obj.branch) != -1) {
+        try {
+            // if(obj.type=="pull"){
+            // if(obj.branchType=="head"){
+            // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
+            // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+            // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
+            // console.log("setting gcW as: "+globalCurrentWorkspace);
+            // }
+            // }
+            // else{
+            //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
+            //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
+            //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
+            //     console.log("setting gcW as: "+globalCurrentWorkspace);
+            //   }
+            // }
+            // }else if(obj.type=="blob"){
+            if (exports.globalCurrentWorkspace != obj.repo + '_' + obj.branch) {
+                if (exports.globalCurrentWorkspace) {
+                    await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
+                }
+                else {
+                    await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [] } });
+                }
+                var point = new Promise((resolve, reject) => { setTimeout(function () { resolve(); }, 2500); });
+                await point.then(() => { });
+                exports.globalCurrentWorkspace = obj.repo + '_' + obj.branch;
+                console.log("setting gcW as: " + exports.globalCurrentWorkspace);
+            }
+            // }
+        }
+        catch (e) {
+            console.log(e);
+        }
+        var resultForQuery = await solveQuery(obj.query);
+        // console.log("the result is: ");
+        // console.log(resultForQuery);
+        var returningObject;
+        var same = false;
+        if (resultForQuery != undefined || resultForQuery != null) {
+            if (resultForQuery.uri == myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.query.textDocument) {
+                same = true;
             }
             else {
-                await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [] } });
+                exports.forReference = true;
             }
-            var point = new Promise((resolve, reject) => { setTimeout(function () { resolve(); }, 2500); });
-            await point.then(() => { });
-            exports.globalCurrentWorkspace = obj.repo + '_' + obj.branch;
-            console.log("setting gcW as: " + exports.globalCurrentWorkspace);
         }
-        // }
-    }
-    catch (e) {
-        console.log(e);
-    }
-    var resultForQuery = await solveQuery(obj.query);
-    // console.log("the result is: ");
-    // console.log(resultForQuery);
-    var returningObject;
-    var same = false;
-    if (resultForQuery != undefined || resultForQuery != null) {
-        if (resultForQuery.uri == myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.query.textDocument) {
-            same = true;
+        if (obj.type == "blob") {
+            returningObject = { method: obj.type, query: obj.query, definition: resultForQuery, same: same, repo: obj.repo, branch: obj.branch };
         }
-        else {
-            exports.forReference = true;
+        else if (obj.type == "pull") {
+            returningObject = { method: obj.type, query: obj.query, definition: resultForQuery, branchType: obj.branchType, same: same, repo: obj.repo };
         }
+        return returningObject;
     }
-    if (obj.type == "blob") {
-        returningObject = { method: obj.type, query: obj.query, definition: resultForQuery, same: same, repo: obj.repo, branch: obj.branch };
+    else if (!fs.existsSync(exports.workingDirectory + "/" + obj.repo)) {
+        return { method: "repoNotInServerWorkingQuery" };
     }
-    else if (obj.type == "pull") {
-        returningObject = { method: obj.type, query: obj.query, definition: resultForQuery, branchType: obj.branchType, same: same, repo: obj.repo };
+    else {
+        return { method: "reloadToStart" };
     }
-    return returningObject;
 }
 exports.handleRequestQuery = handleRequestQuery;
 async function handleRequestGitClone(obj) {

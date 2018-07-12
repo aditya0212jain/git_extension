@@ -43,6 +43,28 @@ chrome.runtime.onMessage.addListener(
       chrome.notifications.create(options,function(){console.log("this is callback")});
     }else if(request.method=="repoNotInServerWorking"){
       console.log("add the clone option");
+    }else if(request.method=="repoNotInServerWorkingQuery"){
+      var message;
+      if(request.url=="undefined"){
+        message="Open a gitHub repo page";
+      }else{
+        message="First try going to "+request.url+" by clicking here";
+      }
+      var options ={
+        type:"basic",
+        title:"Get this repo for navigation",
+        message:message,
+        iconUrl:"./infoIcon.png",
+      };
+      chrome.notifications.create(request.url,options,function(){console.log("this is callback")});
+    }else if(request.method=="reloadToStart"){
+      var options ={
+        type:"basic",
+        title:"Reload",
+        message:"Reload page to start server",
+        iconUrl:"./infoIcon.png",
+      };
+      chrome.notifications.create(options,function(){console.log("this is callback")});
     }
   });
 
