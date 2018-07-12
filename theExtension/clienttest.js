@@ -9,9 +9,11 @@ function reqListener () {
     showPullResult(result);
   }else if(result.method=="serverStarted"){
     //console.log("Now show notification");
-    chrome.runtime.sendMessage({method: "showNotification"}, function(response) {
+    chrome.runtime.sendMessage({method: "showServerNotification"}, function(response) {
         //console.log("notification showing");
     });
+  }else if(result.method=="gitCloneResponse"){
+    chrome.runtime.sendMessage(result,function(response){});
   }
 }
 

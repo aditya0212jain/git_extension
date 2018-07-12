@@ -33,7 +33,7 @@ async function handleRequestBlob(obj) {
     }
     //start the server again if the repo is not in the serverRepos directory
     if (exports.ReposInServer.indexOf(obj.repo + "_" + obj.branch) == -1) {
-        if (!fs.existsSync(exports.workingDirectory + "/" + obj.repo + "_" + obj.branch)) {
+        if (!fs.existsSync(exports.workingDirectory + "/" + obj.repo)) {
             console.log("directory does not exists");
             console.log("first clone it using the extension");
         }
@@ -156,8 +156,19 @@ async function handleRequestQuery(obj) {
     return returningObject;
 }
 exports.handleRequestQuery = handleRequestQuery;
-async function handleRequestGitClone(url) {
-    shell.exec("cd " + exports.workingDirectory + " && " + "git clone " + url + " && echo 'done cloning'");
+async function handleRequestGitClone(obj) {
+    if (fs.existsSync(exports.workingDirectory + "/" + obj.repo)) {
+        shell.exec("rm -r -f " + exports.workingDirectory + "/" + obj.repo);
+        shell.exec("echo 'removed the older repo ,now cloning new'");
+        shell.exec("cd " + exports.workingDirectory + " && " + "git clone " + obj.url + " && echo 'done cloning'");
+        console.log("checking sync");
+        return { method: "gitCloneResponse", type: "updated" };
+    }
+    else {
+        shell.exec("cd " + exports.workingDirectory + " && " + "git clone " + obj.url + " && echo 'done cloning'");
+        console.log("checking sync");
+        return { method: "gitCloneResponse", type: "new" };
+    }
 }
 exports.handleRequestGitClone = handleRequestGitClone;
 async function handleRequest(obj) {
@@ -185,8 +196,10 @@ async function handleRequest(obj) {
             resolve();
         }
         else if (obj.method == "gitClone") {
-            await handleRequestGitClone(obj.url);
-            resolve();
+            var ans = await handleRequestGitClone(obj);
+            console.log("answer for gitCloneRequest:");
+            console.log(ans);
+            resolve(JSON.stringify(ans));
         }
     });
 }
@@ -271,7 +284,7 @@ async function localServerStart() {
             var answer = await handleRequest(obj);
             response.statusCode = 200;
             response.setHeader('Content-Type', 'application/json');
-            if (obj.method == "query" || obj.method == "pull" || obj.method == "blob") {
+            if (obj.method == "query" || obj.method == "pull" || obj.method == "blob" || obj.method == "gitClone") {
                 response.write(answer);
             }
             else {

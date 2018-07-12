@@ -62,7 +62,7 @@ function showDiffBlobResult(result){
   var newurl = newLocationArray.join('/');
   var line = result.definition.range.start.line+1;
   newurl+= "#L" + line;
-  chrome.runtime.sendMessage({newLocation: newurl}, function(response) {
+  chrome.runtime.sendMessage({method:"openNewTab",newLocation: newurl}, function(response) {
       //console.log(response.farewell);
   });
 }

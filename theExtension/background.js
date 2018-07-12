@@ -1,15 +1,6 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if(request.clicked){
-      console.log("yes it is in");
-    }
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension");
-    if(request.method=="gitClone"){
-      console.log("gitClone");
-    }
-    if(request.method){
+    if(request.method=="showServerNotification"){
       var options ={
         type:"basic",
         title:"Ready for navigation",
@@ -18,12 +9,37 @@ chrome.runtime.onMessage.addListener(
       };
       console.log("its here");
       chrome.notifications.create(options,function(){console.log("this is callback")});
-    }else{
+    }else if(request.method=="openNewTab"){
       chrome.tabs.create({url:request.newLocation});
+    }else if(request.method=="notValidClonePage"){
+      var options ={
+        type:"basic",
+        title:"Invalid Page",
+        message:"Open a gitHub repo page",
+        iconUrl:"./infoIcon.png",
+      };
+      chrome.notifications.create(options,function(){console.log("this is callback")});
+    } else if(request.method=="sentForCloning"){
+      var options ={
+        type:"basic",
+        title:"Cloning Started",
+        message:"Started cloning '"+request.repo+"' repo",
+        iconUrl:"./infoIcon.png",
+      };
+      chrome.notifications.create(options,function(){console.log("this is callback")});
+    }else if(request.method=="gitCloneResponse"){
+      var options ={
+        type:"basic",
+        title:"Cloning Done",
+        message:request.type+" repo",
+        iconUrl:"./iconNotification.png",
+      };
+      chrome.notifications.create(options,function(){console.log("this is callback")});
     }
   });
 
-console.log("it is background");
+
+
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
   console.log(tab.id);

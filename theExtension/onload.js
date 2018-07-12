@@ -2,14 +2,27 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log(request);
     if(request.method=="gitClone"){
-      var httpsUrl = document.getElementsByClassName('https-clone-options')[0];
-      var inputGroup = httpsUrl.getElementsByClassName('input-group');
-      var pol = $(inputGroup).children();
-      console.log($(pol[0]).attr('value'));
-      var url = $(pol[0]).attr('value');
-      sendToServer({method:"gitClone",url:url});
+      console.log("request of GitClone Received");
+      gitCloneFunction();
     }
   });
+
+function gitCloneFunction(){
+  var httpsUrl = document.getElementsByClassName('https-clone-options')[0];
+  if(httpsUrl!=undefined||httpsUrl!=null){
+    var inputGroup = httpsUrl.getElementsByClassName('input-group');
+    var pol = $(inputGroup).children();
+    console.log($(pol[0]).attr('value'));
+    var url = $(pol[0]).attr('value');
+    var repo = $('strong[itemprop="name"]').find('a').html();
+    sendToServer({method:"gitClone",url:url,repo:repo});
+    chrome.runtime.sendMessage({method:"sentForCloning",repo:repo},function(response){});
+  }else{
+    chrome.runtime.sendMessage({method:"notValidClonePage"}, function(response) {});
+  }
+}
+
+
 window.onload = function () {onloadFunc();};
 function onloadFunc () {
   var type = getPageType();

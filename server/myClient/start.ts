@@ -55,7 +55,7 @@ export async function handleRequestBlob(obj){
   }
   //start the server again if the repo is not in the serverRepos directory
   if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)==-1){
-    if (!fs.existsSync(workingDirectory+"/"+obj.repo+"_"+obj.branch)) {
+    if (!fs.existsSync(workingDirectory+"/"+obj.repo)) {
       console.log("directory does not exists");
       console.log("first clone it using the extension");
     }else{
@@ -175,8 +175,18 @@ export async function handleRequestQuery(obj){
   return returningObject;
 }
 
-export async function handleRequestGitClone(url){
-  shell.exec("cd "+workingDirectory+" && "+"git clone "+url+" && echo 'done cloning'");
+export async function handleRequestGitClone(obj){
+  if (fs.existsSync(workingDirectory+"/"+obj.repo)) {
+    shell.exec("rm -r -f "+workingDirectory+"/"+obj.repo);
+    shell.exec("echo 'removed the older repo ,now cloning new'");
+    shell.exec("cd "+workingDirectory+" && "+"git clone "+obj.url+" && echo 'done cloning'");
+    console.log("checking sync");
+    return {method:"gitCloneResponse",type:"updated"};
+  }else{
+    shell.exec("cd "+workingDirectory+" && "+"git clone "+obj.url+" && echo 'done cloning'");
+    console.log("checking sync");
+    return {method:"gitCloneResponse",type:"new"};
+  }
 }
 
 async function handleRequest(obj){
@@ -199,8 +209,10 @@ async function handleRequest(obj){
       console.log("closeServer request");
       resolve();
     }else if(obj.method=="gitClone"){
-      await handleRequestGitClone(obj.url);
-      resolve();
+      var ans = await handleRequestGitClone(obj);
+      console.log("answer for gitCloneRequest:");
+      console.log(ans);
+      resolve(JSON.stringify(ans));
     }
   })
 }
@@ -287,7 +299,7 @@ async function localServerStart(){
     var answer =await handleRequest(obj);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
-    if(obj.method=="query"||obj.method=="pull"||obj.method=="blob"){
+    if(obj.method=="query"||obj.method=="pull"||obj.method=="blob"||obj.method=="gitClone"){
       response.write(answer);
     }else{
       response.write(obj.method);
