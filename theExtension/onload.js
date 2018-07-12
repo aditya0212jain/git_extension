@@ -6,6 +6,9 @@ chrome.runtime.onMessage.addListener(
       gitCloneFunction();
     }
   });
+var tyu= $('h1.public').find('span.author').find('a.url').html();
+var repo = $('strong[itemprop="name"]').find('a').html();
+var urlForCloning = "https://github.com/"+tyu+"/"+repo;
 
 function gitCloneFunction(){
   var httpsUrl = document.getElementsByClassName('https-clone-options')[0];
@@ -18,7 +21,15 @@ function gitCloneFunction(){
     sendToServer({method:"gitClone",url:url,repo:repo});
     chrome.runtime.sendMessage({method:"sentForCloning",repo:repo},function(response){});
   }else{
-    chrome.runtime.sendMessage({method:"notValidClonePage"}, function(response) {});
+    var tyu= $('h1.public').find('span.author').find('a.url').html();
+    var repo = $('strong[itemprop="name"]').find('a').html();
+    var urlForCloning;
+    if(tyu==undefined||repo==undefined){
+      urlForCloning = "undefined";
+    }else{
+      urlForCloning = "https://github.com/"+tyu+"/"+repo;
+    }
+    chrome.runtime.sendMessage({method:"notValidClonePage",url:urlForCloning}, function(response) {});
   }
 }
 

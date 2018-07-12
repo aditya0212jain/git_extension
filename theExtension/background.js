@@ -12,13 +12,19 @@ chrome.runtime.onMessage.addListener(
     }else if(request.method=="openNewTab"){
       chrome.tabs.create({url:request.newLocation});
     }else if(request.method=="notValidClonePage"){
+      var message;
+      if(request.url=="undefined"){
+        message="Open a gitHub repo page";
+      }else{
+        message="First try going to "+request.url;
+      }
       var options ={
         type:"basic",
         title:"Invalid Page",
-        message:"Open a gitHub repo page",
+        message:message,
         iconUrl:"./infoIcon.png",
       };
-      chrome.notifications.create(options,function(){console.log("this is callback")});
+      chrome.notifications.create(request.url,options,function(){console.log("this is callback")});
     } else if(request.method=="sentForCloning"){
       var options ={
         type:"basic",
@@ -46,3 +52,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.sendMessage(tab.id,{method:"gitClone"});
   //console.log('Turning ' + tab.url + ' red!');
 });
+
+chrome.notifications.onClicked.addListener(function(notificationId){
+  if(notificationId!="undefined"){
+    chrome.tabs.create({url: notificationId});
+  }
+})
