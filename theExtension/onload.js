@@ -117,6 +117,12 @@ function sendToServer(obj){
   pReq.addEventListener("load", reqListener);
   pReq.open("POST", "http://localhost:8080");
   pReq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  console.log(obj);
+  pReq.onerror = function() {
+    if(obj.method=="query"||obj.method=="gitClone"){
+      chrome.runtime.sendMessage({method:"serverNotRunning"},function(response){});
+    }
+  }
   pReq.send(JSON.stringify(obj));
   //console.log("sent to server");
 }

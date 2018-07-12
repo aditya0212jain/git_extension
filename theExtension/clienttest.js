@@ -26,7 +26,7 @@ function reqListener () {
     chrome.runtime.sendMessage({method:result.method,url:urlForCloning}, function(response) {});
   }
   else if(result.method=="reloadToStart"){
-    chrome.runtime.sendMessage({method:"reloadToStart"},function(response){})
+    chrome.runtime.sendMessage({method:"reloadToStart"},function(response){});
   }
 }
 

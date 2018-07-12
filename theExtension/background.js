@@ -65,6 +65,14 @@ chrome.runtime.onMessage.addListener(
         iconUrl:"./infoIcon.png",
       };
       chrome.notifications.create(options,function(){console.log("this is callback")});
+    }else if(request.method=="serverNotRunning"){
+      var options ={
+        type:"basic",
+        title:"Server Not Started",
+        message:"Start the server first",
+        iconUrl:"./errorIcon.png",
+      };
+      chrome.notifications.create(options,function(){console.log("this is callback")});
     }
   });
 

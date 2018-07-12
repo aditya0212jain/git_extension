@@ -183,6 +183,9 @@ async function handleRequestQuery(obj) {
 }
 exports.handleRequestQuery = handleRequestQuery;
 async function handleRequestGitClone(obj) {
+    if (!fs.existsSync(exports.workingDirectory)) {
+        shell.exec("mkdir " + 'serverWorking');
+    }
     if (fs.existsSync(exports.workingDirectory + "/" + obj.repo)) {
         shell.exec("rm -r -f " + exports.workingDirectory + "/" + obj.repo);
         shell.exec("echo 'removed the older repo ,now cloning new'");
