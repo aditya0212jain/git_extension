@@ -41,6 +41,8 @@ chrome.runtime.onMessage.addListener(
         iconUrl:"./iconNotification.png",
       };
       chrome.notifications.create(options,function(){console.log("this is callback")});
+    }else if(request.method=="repoNotInServerWorking"){
+      console.log("add the clone option");
     }
   });
 

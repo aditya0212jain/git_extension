@@ -36,6 +36,7 @@ async function handleRequestBlob(obj) {
         if (!fs.existsSync(exports.workingDirectory + "/" + obj.repo)) {
             console.log("directory does not exists");
             console.log("first clone it using the extension");
+            return { method: "repoNotInServerWorking" };
         }
         else {
             var t0 = performance.now();
@@ -66,6 +67,7 @@ async function handleRequestBlob(obj) {
     var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
     const defR = await exports.t.connection.gotoDefinition(testR);
     console.log("time in checking empty def: " + (performance.now() - t0));
+    return { method: "serverStarted" };
 }
 exports.handleRequestBlob = handleRequestBlob;
 async function handleRequestPull(obj) {
@@ -73,13 +75,28 @@ async function handleRequestPull(obj) {
     exports.globalBranchHead = obj.branchHead;
     exports.globalBranchBase = obj.branchBase;
     if (exports.ReposInServer.indexOf(exports.globalRepo + "_" + exports.globalBranchBase) == -1 || exports.ReposInServer.indexOf(exports.globalRepo + "_" + exports.globalBranchHead) == -1) {
-        shellFunctions_1.runShellPull(obj.repo, obj.branchBase, obj.branchHead);
-        if (!exports.serverBusy) {
-            exports.serverBusy = true;
-            if (!exports.forReference) {
-                exports.t = await clientTest.startServer(exports.serverDirectory);
+        if (!fs.existsSync(exports.workingDirectory + "/" + obj.repo)) {
+            console.log("directory does not exists");
+            console.log("first clone it using the extension");
+            return { method: "repoNotInServerWorking" };
+        }
+        else {
+            if (!fs.existsSync(exports.serverDirectory + "/" + obj.repo + "_" + obj.branchHead)) {
+                //console.log("directory now exists");
+                exports.ReposInServer.push(obj.repo + "_" + obj.branchHead);
             }
-            exports.serverBusy = false;
+            if (!fs.existsSync(exports.serverDirectory + "/" + obj.repo + "_" + obj.branchBase)) {
+                //console.log("directory now exists");
+                exports.ReposInServer.push(obj.repo + "_" + obj.branchBase);
+            }
+            shellFunctions_1.runShellPull(obj.repo, obj.branchBase, obj.branchHead);
+            if (!exports.serverBusy) {
+                exports.serverBusy = true;
+                if (!exports.forReference) {
+                    exports.t = await clientTest.startServer(exports.serverDirectory);
+                }
+                exports.serverBusy = false;
+            }
         }
     }
     if (exports.globalCurrentWorkspace) {
@@ -97,6 +114,7 @@ async function handleRequestPull(obj) {
     //console.log(testR);
     const defR = await exports.t.connection.gotoDefinition(testR);
     console.log("time in check: " + (performance.now() - t0));
+    return { method: "serverStarted" };
 }
 exports.handleRequestPull = handleRequestPull;
 async function handleRequestQuery(obj) {
@@ -174,12 +192,12 @@ exports.handleRequestGitClone = handleRequestGitClone;
 async function handleRequest(obj) {
     return new Promise(async (resolve, reject) => {
         if (obj.method == "blob") {
-            await handleRequestBlob(obj);
-            resolve(JSON.stringify({ method: "serverStarted" }));
+            var ansblob = await handleRequestBlob(obj);
+            resolve(JSON.stringify(ansblob));
         }
         else if (obj.method == "pull") {
-            await handleRequestPull(obj);
-            resolve(JSON.stringify({ method: "serverStarted" }));
+            var ansPull = await handleRequestPull(obj);
+            resolve(JSON.stringify(ansPull));
         }
         else if (obj.method == "query") {
             var returningObject = await handleRequestQuery(obj);
@@ -217,20 +235,13 @@ async function solveQuery(obj) {
 }
 exports.solveQuery = solveQuery;
 async function consoleCommands() {
-    console.log("w to set workingDirectory");
     console.log("c to clear temp files");
     console.log("r to start server");
     var rl = readline.createInterface(process.stdin, process.stdout);
-    var whichDir = 0; // 1 for w and 2 for s
     var prefix = '>';
     rl.on('line', async function (line) {
         switch (line.trim()) {
-            case 'w':
-                whichDir = 1;
-                prefix = "Enter working directory";
-                break;
             case 'c': //command to clean the temp file(serverRepos and other temp files of server)
-                whichDir = 0;
                 shell.exec("rm -r -f " + exports.serverDirectory + "/*");
                 shell.exec("rm -r -f ./server_0.9/.metadata");
                 shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
@@ -245,17 +256,7 @@ async function consoleCommands() {
                 //this.close();//closing the prompt after starting the server
                 break;
             default:
-                if (whichDir == 1) {
-                    exports.workingDirectory = line;
-                    console.log('workingDirectory set as ' + exports.workingDirectory);
-                    exports.workingDirectory = exports.workingDirectory.replace(/\\/g, '/');
-                    prefix = ">";
-                    break;
-                }
-                else {
-                    console.log("wrong input");
-                    break;
-                }
+                console.log("wrong input");
         }
         this.setPrompt(prefix);
         this.prompt();

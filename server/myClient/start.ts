@@ -58,6 +58,7 @@ export async function handleRequestBlob(obj){
     if (!fs.existsSync(workingDirectory+"/"+obj.repo)) {
       console.log("directory does not exists");
       console.log("first clone it using the extension");
+      return {method:"repoNotInServerWorking"};
     }else{
       var t0 = performance.now();
       runShellBlob(obj.repo,obj.branch);
@@ -87,6 +88,7 @@ export async function handleRequestBlob(obj){
   var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in checking empty def: "+(performance.now()-t0));
+  return {method:"serverStarted"};
 }
 
 export async function handleRequestPull(obj){
@@ -95,13 +97,27 @@ export async function handleRequestPull(obj){
   globalBranchHead = obj.branchHead;
   globalBranchBase = obj.branchBase;
   if(ReposInServer.indexOf(globalRepo+"_"+globalBranchBase)==-1||ReposInServer.indexOf(globalRepo+"_"+globalBranchHead)==-1){
-    runShellPull(obj.repo,obj.branchBase,obj.branchHead);
-    if(!serverBusy){
-      serverBusy = true;
-      if(!forReference){
-        t = await clientTest.startServer(serverDirectory);
+    if (!fs.existsSync(workingDirectory+"/"+obj.repo)) {
+      console.log("directory does not exists");
+      console.log("first clone it using the extension");
+      return {method:"repoNotInServerWorking"};
+    }else{
+      if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchHead)) {
+        //console.log("directory now exists");
+        ReposInServer.push(obj.repo+"_"+obj.branchHead);
       }
-      serverBusy = false;
+      if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchBase)) {
+        //console.log("directory now exists");
+        ReposInServer.push(obj.repo+"_"+obj.branchBase);
+      }
+      runShellPull(obj.repo,obj.branchBase,obj.branchHead);
+      if(!serverBusy){
+        serverBusy = true;
+        if(!forReference){
+          t = await clientTest.startServer(serverDirectory);
+        }
+        serverBusy = false;
+      }
     }
   }
   if(globalCurrentWorkspace){
@@ -118,6 +134,7 @@ export async function handleRequestPull(obj){
   //console.log(testR);
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in check: "+(performance.now()-t0));
+  return {method:"serverStarted"};
 }
 
 export async function handleRequestQuery(obj){
@@ -192,11 +209,11 @@ export async function handleRequestGitClone(obj){
 async function handleRequest(obj){
    return new Promise(async (resolve,reject)=>{
     if(obj.method == "blob"){
-      await handleRequestBlob(obj);
-      resolve(JSON.stringify({method:"serverStarted"}));
+      var ansblob = await handleRequestBlob(obj);
+      resolve(JSON.stringify(ansblob));
     }else if(obj.method == "pull"){
-      await handleRequestPull(obj);
-      resolve(JSON.stringify({method:"serverStarted"}));
+      var ansPull = await handleRequestPull(obj);
+      resolve(JSON.stringify(ansPull));
     }else if(obj.method =="query"){
       var returningObject = await handleRequestQuery(obj);
       //console.log("the returningObject is :");
@@ -231,20 +248,13 @@ export async function solveQuery(obj){
 }
 
 async function consoleCommands(){
-  console.log("w to set workingDirectory");
   console.log("c to clear temp files");
   console.log("r to start server");
   var rl = readline.createInterface(process.stdin, process.stdout);
-  var whichDir=0;// 1 for w and 2 for s
   var prefix = '>';
   rl.on('line',async function(line) {
     switch(line.trim()){
-      case 'w':
-      whichDir=1;
-      prefix="Enter working directory";
-      break;
       case 'c'://command to clean the temp file(serverRepos and other temp files of server)
-      whichDir=0;
       shell.exec("rm -r -f "+serverDirectory+"/*");
       shell.exec("rm -r -f ./server_0.9/.metadata");
       shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
@@ -255,20 +265,12 @@ async function consoleCommands(){
       t = await clientTest.startServer(serverDirectory);
       fs.readdirSync(serverDirectory).forEach(file => {
         ReposInServer.push(file);//reading the repos already in the serverRepos directory
-      })
+      });
       //this.close();//closing the prompt after starting the server
       break;
       default:
-      if(whichDir==1){
-        workingDirectory=line;
-        console.log('workingDirectory set as '+workingDirectory);
-        workingDirectory=workingDirectory.replace(/\\/g,'/');
-        prefix = ">"
-        break
-      }else{
         console.log("wrong input");
-        break;
-      }
+
     }
     this.setPrompt(prefix);
    this.prompt();
