@@ -3,22 +3,31 @@ chrome.runtime.onMessage.addListener(
     console.log(request);
     if(request.method=="gitClone"){
       console.log("request of GitClone Received");
-      gitCloneFunction();
+      console.log(request.type);
+      gitCloneFunction(request.type);
     }
   });
 var tyu= $('h1.public').find('span.author').find('a.url').html();
 var repo = $('strong[itemprop="name"]').find('a').html();
 var urlForCloning = "https://github.com/"+tyu+"/"+repo;
 
-function gitCloneFunction(){
+function gitCloneFunction(type){
+  var useType;
+  if(type=='https'){
+    useType = document.getElementsByClassName('https-clone-options')[0];
+  }else{
+    useType = document.getElementsByClassName('ssh-clone-options')[0];
+  }
   var httpsUrl = document.getElementsByClassName('https-clone-options')[0];
-  if(httpsUrl!=undefined||httpsUrl!=null){
-    var inputGroup = httpsUrl.getElementsByClassName('input-group');
+  var sshUrl = document.getElementsByClassName('ssh-clone-options')[0];
+
+  if(useType!=undefined||useType!=null){
+    var inputGroup = useType.getElementsByClassName('input-group');
     var pol = $(inputGroup).children();
     console.log($(pol[0]).attr('value'));
     var url = $(pol[0]).attr('value');
     var repo = $('strong[itemprop="name"]').find('a').html();
-    sendToServer({method:"gitClone",url:url,repo:repo});
+    sendToServer({method:"gitClone",url:url,repo:repo,downloadType:type});
     chrome.runtime.sendMessage({method:"sentForCloning",repo:repo},function(response){});
   }else{
     var tyu= $('h1.public').find('span.author').find('a.url').html();

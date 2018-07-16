@@ -77,7 +77,7 @@ chrome.runtime.onMessage.addListener(
     }else if(request.method=="gitCloneRequestFromPopup"){
       chrome.tabs.query({active:true,windowType:"normal", currentWindow: true},function(tab){
         console.log(tab[0].id);
-        chrome.tabs.sendMessage(tab[0].id,{method:"gitClone"});
+        chrome.tabs.sendMessage(tab[0].id,{method:"gitClone",type:request.type});
       });
     }
   });
