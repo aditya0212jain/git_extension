@@ -1,5 +1,6 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
+    console.log(request);
     if(request.method=="showServerNotification"){
       var options ={
         type:"basic",
@@ -73,17 +74,13 @@ chrome.runtime.onMessage.addListener(
         iconUrl:"./errorIcon.png",
       };
       chrome.notifications.create(options,function(){console.log("this is callback")});
+    }else if(request.method=="gitCloneRequestFromPopup"){
+      chrome.tabs.query({active:true,windowType:"normal", currentWindow: true},function(tab){
+        console.log(tab[0].id);
+        chrome.tabs.sendMessage(tab[0].id,{method:"gitClone"});
+      });
     }
   });
-
-
-
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // No tabs or host permissions needed!
-  console.log(tab.id);
-  chrome.tabs.sendMessage(tab.id,{method:"gitClone"});
-  //console.log('Turning ' + tab.url + ' red!');
-});
 
 chrome.notifications.onClicked.addListener(function(notificationId){
   if(notificationId!="undefined"){

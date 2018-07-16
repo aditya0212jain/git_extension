@@ -43,6 +43,7 @@ function onloadFunc () {
     //console.log(typeObject);
     sendToServer(typeObject);
     preparePage(typeObject);
+
   }
   else if (type=="pull"){
     typeObject = getPullObject();
