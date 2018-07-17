@@ -114,12 +114,14 @@ function showTest(btn,objectForSpan){
   addClick(objectForSpan);
 }
 
+//add buttons for the test
 function addButton(index,fileName){
   var div0 = document.getElementById("diff-"+index);
   //console.log(div0.id);
   var fileAction = div0.getElementsByClassName("file-actions")[0];
   //console.log(fileAction.className);
   var btnGroup = fileAction.getElementsByClassName("BtnGroup")[0];
+  console.log(btnGroup);
   //console.log(btnGroup.className);
   var btn = document.createElement("BUTTON");;
   var t = document.createTextNode("Test");
@@ -132,7 +134,8 @@ function addButton(index,fileName){
   btn.setAttribute("value",t);
   var text = "test"+index;
   btn.setAttribute("id",text);
-  fileAction.insertBefore(btn,fileAction.childNodes[4])
+  btn.setAttribute("style","width:60px;")
+  fileAction.insertBefore(btn,fileAction.childNodes[0]);
   //btnGroup.appendChild(btn);
   //document.getElementById("test"+index).addEventListener('click',function() { showTest(document.getElementById("test"+index)); },false);
 }
