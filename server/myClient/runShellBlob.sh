@@ -27,7 +27,3 @@ if [ -d $SERVERFOLDER/$REPO$SP$BRANCH ]   # for file "if [-f /home/rama/file]"
       cd ..
       mv $REPO $REPO$SP$BRANCH
 fi
-#echo ${ARG1[0]}
-#echo ${ARG1[1]}
-#echo ${ARG1[2]}
-#echo ${ARG1[3]}

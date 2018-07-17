@@ -1,16 +1,11 @@
-//console.log("this is client test");
 function reqListener () {
   var result = JSON.parse(this.responseText);
-  //console.log("the result is:");
-  //console.log(result);
   if(result.method=="blob"){
     showBlobResult(result);
   }else if(result.method=="pull"){
     showPullResult(result);
   }else if(result.method=="serverStarted"){
-    //console.log("Now show notification");
     chrome.runtime.sendMessage({method: "showServerNotification"}, function(response) {
-        //console.log("notification showing");
     });
   }else if(result.method=="gitCloneResponse"){
     chrome.runtime.sendMessage(result,function(response){});
@@ -30,16 +25,12 @@ function reqListener () {
   }
 }
 
-
-
 function addSpans(type,repo,branchList){
-  //console.log("in addSpans");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
     var tag = outSpan[j];
     var children = tag.childNodes;
     var n = children.length;
-    //console.log(tag.textContent);
     for(i=0;i<n;i++){
       var te = children[i].textContent;
       var tn = children[i].tagName;
@@ -83,16 +74,9 @@ function addSpans(type,repo,branchList){
               var tempBranch;
               argumentForUnified.branch=='base' ? tempBranch=branchList[0] : tempBranch = branchList[1];
               objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch,repo:repo,branch:tempBranch};//for unified view
-              //getBranchUnified(td);
-
             }
           }
-          //console.log("objRequest is :");
-          //console.log(objRequest);
             sendToServer(objRequest);
-          // chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-          //     console.log(response.farewell);
-          // });
         },false)
       }
     }
@@ -237,8 +221,7 @@ function getBranchUnified(element){
   //element is jquery use as $(element)
   var parent = $(element).parent();
   var children = $(parent).find("td");
-//  console.log(parent);
-//  console.log(children);
+
   var firstline = $(children[0]).attr('data-line-number');
   var secondline = $(children[1]).attr('data-line-number');
   if(secondline==undefined){

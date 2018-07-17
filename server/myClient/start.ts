@@ -42,6 +42,8 @@ const fs = require('fs');
 
 
 export async function handleRequestBlob(obj){
+  var forReferenceObj= false;
+  forReferenceObj= forReference;
   globalRepo = obj.repo;
   globalBranch = obj.branch;
   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
@@ -70,11 +72,9 @@ export async function handleRequestBlob(obj){
       if(!serverBusy){
         serverBusy = true;
         //console.log("forReference: "+forReference);
-        if(!forReference){
           t0 = performance.now();
           t = await clientTest.startServer(serverDirectory);
           console.log("time in starting the server : "+(performance.now()-t0));
-        }
         serverBusy = false;
       }
       if (fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branch)) {
@@ -88,11 +88,10 @@ export async function handleRequestBlob(obj){
   var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in checking empty def: "+(performance.now()-t0));
-  return {method:"serverStarted"};
+  return {method:"serverStarted",forReference:forReferenceObj};
 }
 
 export async function handleRequestPull(obj){
-
   globalRepo = obj.repo;
   globalBranchHead = obj.branchHead;
   globalBranchBase = obj.branchBase;
@@ -101,7 +100,8 @@ export async function handleRequestPull(obj){
       console.log("directory does not exists");
       console.log("first clone it using the extension");
       return {method:"repoNotInServerWorking"};
-    }else{
+    }
+    else{
       if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchHead)) {
         //console.log("directory now exists");
         ReposInServer.push(obj.repo+"_"+obj.branchHead);
@@ -122,7 +122,8 @@ export async function handleRequestPull(obj){
   }
   if(globalCurrentWorkspace){
     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
-  }else{
+  }
+  else{
     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],removed:[]}});
   }
   forReference = false;
@@ -140,22 +141,6 @@ export async function handleRequestPull(obj){
 export async function handleRequestQuery(obj){
   if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)!=-1){
     try{
-    // if(obj.type=="pull"){
-        // if(obj.branchType=="head"){
-          // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
-              // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
-              // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
-              // console.log("setting gcW as: "+globalCurrentWorkspace);
-              // }
-              // }
-              // else{
-              //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
-              //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
-              //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
-              //     console.log("setting gcW as: "+globalCurrentWorkspace);
-              //   }
-              // }
-              // }else if(obj.type=="blob"){
       if(globalCurrentWorkspace!=obj.repo+'_'+obj.branch){
         if(globalCurrentWorkspace){
           await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});

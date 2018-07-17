@@ -2,11 +2,10 @@ chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     console.log(request);
     if(request.method=="gitClone"){
-      console.log("request of GitClone Received");
-      console.log(request.type);
       gitCloneFunction(request.type);
     }
   });
+
 var tyu= $('h1.public').find('span.author').find('a.url').html();
 var repo = $('strong[itemprop="name"]').find('a').html();
 var urlForCloning = "https://github.com/"+tyu+"/"+repo;
@@ -42,39 +41,39 @@ function gitCloneFunction(type){
   }
 }
 
-
 window.onload = function () {onloadFunc();};
+
 function onloadFunc () {
   var type = getPageType();
   var typeObject;
   if(type=="blob"){
     typeObject = getBlobObject();
     //console.log(typeObject);
-    sendToServer(typeObject);
-    preparePage(typeObject);
-
+    // sendToServer(typeObject);
+    // preparePage(typeObject);
   }
   else if (type=="pull"){
     typeObject = getPullObject();
     var viewType = getPullViewType();
     //console.log(typeObject);
-    if(viewType=='split'){
-      sendToServer(typeObject);
-      preparePage(typeObject);
+    //if(viewType=='split'){
+      // sendToServer(typeObject);
+      // preparePage(typeObject);
       prepareExpanders(typeObject);
-    }else{
-      sendToServer(typeObject);
-      preparePage(typeObject);
-      prepareExpanders(typeObject);
-    }
+    // }else{
+    //   sendToServer(typeObject);
+    //   preparePage(typeObject);
+    //   prepareExpanders(typeObject);
+    // }
   }
+  sendToServer(typeObject);
+  preparePage(typeObject);
 }
 
 function prepareExpanders(obj){
   var expanders = document.getElementsByClassName('diff-expander');
   for(i=0;i<expanders.length;i++){
     expanders[i].addEventListener("click",function(){
-      //console.log("expander clicked");
       setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);console.log("Spans added now");prepareExpanders(obj);},600);
     });
   }
@@ -142,20 +141,15 @@ function preparePage(obj){
     addSpans(obj.method,obj.repo,[obj.branch]);
   }else if (obj.method=="pull"){
     toggleSide();
-    placeBtn(obj);
+    placeSortButton(obj);
     addClick(obj);
-    //addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);
   }
 }
 
 function getPullViewType(){
   var diffbar = document.getElementsByClassName('diffbar')[0];
   var uview = $(diffbar).find( "input[value='unified']" );
-  //console.log(uview);
   var sview = $(diffbar).find("input[value='split']");
-  //console.log(sview);
-  //console.log($(sview).attr('checked'));
-  //console.log($(uview).attr('checked'));
   if($(sview).attr('checked')=='checked'){
     return 'split';
   }else{

@@ -11,14 +11,12 @@ function toggleSide(currentFile){
 
   for(i=0;i<prodFile.length;i++){
     var index = prodFile[i];
-    addButton(index,fileName);
+    addTestButtons(index,fileName);
   }
 
 }
 
 function showTest(btn,objectForSpan){
-  //console.log("in");
-  //console.log(btn.id);
   if(btn.parentElement.parentElement.parentElement.hasAttribute("style")==true){
     var div = btn.parentElement.parentElement.parentElement;
     div.removeAttribute("style");
@@ -115,7 +113,7 @@ function showTest(btn,objectForSpan){
 }
 
 //add buttons for the test
-function addButton(index,fileName){
+function addTestButtons(index,fileName){
   var div0 = document.getElementById("diff-"+index);
   //console.log(div0.id);
   var fileAction = div0.getElementsByClassName("file-actions")[0];
@@ -136,12 +134,11 @@ function addButton(index,fileName){
   btn.setAttribute("id",text);
   btn.setAttribute("style","width:60px;")
   fileAction.insertBefore(btn,fileAction.childNodes[0]);
-  //btnGroup.appendChild(btn);
-  //document.getElementById("test"+index).addEventListener('click',function() { showTest(document.getElementById("test"+index)); },false);
 }
 
-function placeBtn(objectForSpan){
-  //console.log("in placeBTN");
+//add sort button
+function placeSortButton(objectForSpan){
+  //console.log("in placeSortButton");
   var d1 = document.getElementsByClassName("diffbar")[0];
   var btn1 = document.createElement("BUTTON");
   var btn2 = document.createElement("BUTTON");
@@ -180,16 +177,6 @@ function placeBtn(objectForSpan){
   div1.setAttribute("class","diffbar-item");
   div1.appendChild(detail);
   d1.insertBefore(div1,d1.childNodes[3]);
-}
-
-function onloadFunc () {
-  var linkurl = document.URL;
-  var myRegex4 = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
-  if(myRegex4.test(linkurl)==true){
-    toggleSide();
-    placeBtn();
-    addClick();
-  }
 }
 
 function addClick(objectForSpan) {

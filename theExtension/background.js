@@ -8,7 +8,6 @@ chrome.runtime.onMessage.addListener(
         message:"Server started",
         iconUrl:"./iconNotification.png",
       };
-      console.log("its here");
       chrome.notifications.create(options,function(){console.log("this is callback")});
     }else if(request.method=="openNewTab"){
       chrome.tabs.create({url:request.newLocation});

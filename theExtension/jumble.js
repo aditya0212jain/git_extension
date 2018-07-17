@@ -1,13 +1,10 @@
 function sort(pattern){
 
+  var tab_counter = document.getElementById("files_tab_counter");
+  var fileinfo = document.getElementsByClassName("file-info");
 
   var tab_counter = document.getElementById("files_tab_counter");
   var fileinfo = document.getElementsByClassName("file-info");
-  //var filePath = []function sort(pattern){
-
-  var tab_counter = document.getElementById("files_tab_counter");
-  var fileinfo = document.getElementsByClassName("file-info");
-  //var filePath = []
   var fileName = [];
   var prodFile = [];
   var testFile = [];
@@ -71,7 +68,7 @@ function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
       pushDiv(index,divContainer);
     }
   }
-//adding the remaining test files
+  //adding the remaining test files
   for(i=0;i<testFile.length;i++){
       var remainingIndex = testFile[i];
       pushDiv(remainingIndex,divContainer);
@@ -87,9 +84,6 @@ function pushDiv(index,divContainer){
 function show(n,divContainer){
   for(i=0;i<n;i++){
       var div = document.getElementById("diff-"+i);
-      // div.style.display ="inline-block";
-      // div.style.width = "49.5%";
-      // div.style.verticalAlign = "top";
       div.innerHTML = divContainer[i];
   }
 }

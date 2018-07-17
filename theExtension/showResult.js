@@ -1,11 +1,5 @@
 
 function highlightLineInSamePage(line){
-  // var ct = document.getElementById("L"+line);
-  // var removeClass = document.getElementsByClassName("definitionHighlight");
-  // for(i=0;i<removeClass.length;i++){
-  //   $(removeClass[i]).removeClass("definitionHighlight");
-  // }
-  // ct.parentElement.classList.add("definitionHighlight");
   var old = location.href;
   //console.log(old);
   var removehash = old.indexOf("#");
@@ -30,7 +24,6 @@ function showBlobResult(result){
   }
 }
 
-
 function showPullResult(result){
   if(result.same==true){
     showSamePullResult(result);
@@ -38,8 +31,6 @@ function showPullResult(result){
     showDiffPullResult(result);
   }
 }
-
-
 
 function showSameBlobResult(result){
   var obj = result.definition;
