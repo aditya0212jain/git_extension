@@ -43,6 +43,11 @@ function gitCloneFunction(type){
 
 window.onload = function () {onloadFunc();};
 
+/**
+*This function is called when a new page is loaded
+*@function
+*@async
+*/
 function onloadFunc () {
   var type = getPageType();
   var typeObject;

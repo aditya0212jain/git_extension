@@ -305,6 +305,11 @@ async function localServerStart(){
   }).listen(localServerExtensionPort); //the server object listens on port 8080
 }
 
+/**
+*The entering function of the start file
+*@function
+*@async
+*/
 async function p(){
   localServerStart();
   consoleCommands();

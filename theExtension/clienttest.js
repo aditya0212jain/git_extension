@@ -1,3 +1,7 @@
+/**
+*The Listener function for the local server requests
+*@function
+*/
 function reqListener () {
   var result = JSON.parse(this.responseText);
   if(result.method=="blob"){
@@ -25,6 +29,15 @@ function reqListener () {
   }
 }
 
+/**
+*This function is used to add the span tag around the code for query handling and
+*it adds the listener to the spans which send the query objects to the local server
+*
+*@function
+*@param {string} type blob/pull
+*@param {string} repo name of the repo
+*@param {string[]} branchList names of the branches
+*/
 function addSpans(type,repo,branchList){
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
@@ -83,6 +96,12 @@ function addSpans(type,repo,branchList){
   }
 }
 
+/**
+*Gets the line number for the clicked element
+*@function
+*@param {Object} element element with class 'blob-code-innner'
+*@return {number} the line number
+*/
 function getLine(element){
   //console.log("clicked");
   //console.log(element);
@@ -120,6 +139,12 @@ function getLine(element){
   }
 }
 
+/**
+*Gets the character number for the clicked element
+*@function
+*@param {Object} element the clicked span element
+@return {number} the character number starting from 0
+*/
 function getCharacter(element){
   var count1 = getCharacterTill(element);
   var parent = element.parentElement;
@@ -130,6 +155,12 @@ function getCharacter(element){
   return count1+count2;//+element.textContent.replace(/\t/g,"    ").length
 }
 
+/**
+*Gets the character number from the beginning of the parent tag till the argument. Used for getCharacter() function
+*@function
+*@param {Object} element element till which count is needed
+*@return {number} count of the characters
+*/
 function getCharacterTill(element){
   var index = $(element).index();
   var count=0;
@@ -143,6 +174,13 @@ function getCharacterTill(element){
   return count;
 }
 
+/**
+*Gets the path directory for the clicked element for the query .Called by the getQueryObject.
+*
+*@function
+*@param {Object} element the element clicked
+*@return {string} pathDir for the requested element
+*/
 function getFilePath(element){
   var href = window.location.href;
   var myRegexPull = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
@@ -155,7 +193,6 @@ function getFilePath(element){
     final = final.replace(/\r?\n|\r|\s/g,"");
     return final;
   }else if (myRegexPull.test(href)==true){
-    //console.log("Pull working");
     var jsfile = element.closest(".js-file");
     var fileinfo = jsfile.getElementsByClassName('file-info')[0];
     var a2 = fileinfo.getElementsByTagName('a')[0];
@@ -163,11 +200,20 @@ function getFilePath(element){
     var href = window.location.href;
     var repository = href.split('/');
     var pullindex = repository.indexOf('pull');
-    //console.log(repository[pullindex-1] +'/' + pathdir);
     return pathdir;
   }
 }
 
+/**
+*Called in the addSpans functions for and attached in the listener for click for the span elements
+*@function
+*@param {Object} element the clicked elements
+*@param {string} type blob/pull
+*@param {string} repo name of the repo
+*@param {string[]} branchList names of the branches
+*@param {Object} ifViewIsUnified object in case of unified view
+*@return {Object} the query object
+*/
 function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   var linet;
   if(ifViewIsUnified){
@@ -217,6 +263,12 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   return argpass;
 }
 
+/**
+*Used for unified view to get argument
+*@function
+*@param {Object} element td element closest to the clicked element
+*@return {Object} {branch,line} 
+*/
 function getBranchUnified(element){
   //element is jquery use as $(element)
   var parent = $(element).parent();

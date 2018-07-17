@@ -19,6 +19,8 @@ exports.ReposInServer = [];
 var localServerExtensionPort = 8080;
 const fs = require('fs');
 async function handleRequestBlob(obj) {
+    var forReferenceObj = false;
+    forReferenceObj = exports.forReference;
     exports.globalRepo = obj.repo;
     exports.globalBranch = obj.branch;
     if (exports.globalCurrentWorkspace != exports.globalRepo + "_" + exports.globalBranch) {
@@ -49,11 +51,9 @@ async function handleRequestBlob(obj) {
             if (!exports.serverBusy) {
                 exports.serverBusy = true;
                 //console.log("forReference: "+forReference);
-                if (!exports.forReference) {
-                    t0 = performance.now();
-                    exports.t = await clientTest.startServer(exports.serverDirectory);
-                    console.log("time in starting the server : " + (performance.now() - t0));
-                }
+                t0 = performance.now();
+                exports.t = await clientTest.startServer(exports.serverDirectory);
+                console.log("time in starting the server : " + (performance.now() - t0));
                 exports.serverBusy = false;
             }
             if (fs.existsSync(exports.serverDirectory + "/" + obj.repo + "_" + obj.branch)) {
@@ -67,7 +67,7 @@ async function handleRequestBlob(obj) {
     var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
     const defR = await exports.t.connection.gotoDefinition(testR);
     console.log("time in checking empty def: " + (performance.now() - t0));
-    return { method: "serverStarted" };
+    return { method: "serverStarted", forReference: forReferenceObj };
 }
 exports.handleRequestBlob = handleRequestBlob;
 async function handleRequestPull(obj) {
@@ -120,22 +120,6 @@ exports.handleRequestPull = handleRequestPull;
 async function handleRequestQuery(obj) {
     if (exports.ReposInServer.indexOf(obj.repo + "_" + obj.branch) != -1) {
         try {
-            // if(obj.type=="pull"){
-            // if(obj.branchType=="head"){
-            // if(globalCurrentWorkspace!=obj.repo+"_"+obj.branch){
-            // await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
-            // globalCurrentWorkspace = obj.repo+"_"+obj.branch;
-            // console.log("setting gcW as: "+globalCurrentWorkspace);
-            // }
-            // }
-            // else{
-            //   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranchBase){
-            //     await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalRepo+"_"+globalBranchBase}]}});
-            //     globalCurrentWorkspace=globalRepo+"_"+globalBranchBase;
-            //     console.log("setting gcW as: "+globalCurrentWorkspace);
-            //   }
-            // }
-            // }else if(obj.type=="blob"){
             if (exports.globalCurrentWorkspace != obj.repo + '_' + obj.branch) {
                 if (exports.globalCurrentWorkspace) {
                     await exports.t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.repo + "_" + obj.branch, name: obj.repo + "_" + obj.branch }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
@@ -306,6 +290,11 @@ async function localServerStart() {
         });
     }).listen(localServerExtensionPort); //the server object listens on port 8080
 }
+/**
+*The entering function of the start file
+*@function
+*@async
+*/
 async function p() {
     localServerStart();
     consoleCommands();
