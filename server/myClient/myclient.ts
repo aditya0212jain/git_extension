@@ -295,7 +295,6 @@ export class myClient {
     childProcess.stderr.setEncoding('utf8');
     childProcess.stderr.on('data', (chunk: Buffer) => {
     const errorString = chunk.toString();
-    //console.log("o3");
     });
   }
 

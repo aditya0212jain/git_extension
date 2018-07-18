@@ -14,38 +14,73 @@ import * as os from 'os';
 import {myClient,pathToUri} from './myclient'
 const { performance } = require('perf_hooks');
 import {runShellBlob,runShellPull} from './shellFunctions';
-//import {handleRequestPull,handleRequestBlob,handleRequestQuery} from './localRequestHandlers';
+const fs = require('fs');
+
+/**
+*@file Manages all the connections between local server and language server
+*@author Aditya Jain
+*/
+/**
+*@module start
+*/
 
 const shell = require('shelljs');
 var clientTest;
 clientTest =  new myClient();
-export declare var t;
+/**
+* the connection
+*@member t the language server connection
+*/
+var t;
 export declare var globalRepo;
 export declare var globalBranch;
 export declare var globalBranchBase;
 export declare var globalBranchHead;
+/**
+*the directory for the server repos where server will start
+*@member serverDirectory
+*/
 export declare var serverDirectory;
 serverDirectory = path.join(__dirname,'serverRepos');
+serverDirectory = serverDirectory.replace(/\\/g,'/');
+/**
+*variable for checking if server is busy
+*@member serverBusy
+*/
 export declare var serverBusy ;
 serverBusy = false;
 export declare var forReference;
 forReference = false;
-serverDirectory = serverDirectory.replace(/\\/g,'/');
+
 export declare var workingDirectory;
 workingDirectory= path.join(__dirname,'serverWorking');
 workingDirectory = workingDirectory.replace(/\\/g,'/');
+/**
+*the workspace on which the server is currently running
+*@member globalCurrentWorkspace
+*/
 export declare var globalCurrentWorkspace;
+/**
+*the repos which are in serverRepos directory
+*@member ReposInServer
+*/
 export declare var ReposInServer ;
 ReposInServer = [];
 var localServerExtensionPort = 8080;
-const fs = require('fs');
 
-
-export async function handleRequestBlob(obj){
+/**
+*Handler function for blob page load request
+*@function
+*@async
+*@param {Object} obj the request object
+*@return serverStarted or repoNotInServerWorking objects
+*/
+async function handleRequestBlob(obj){
   var forReferenceObj= false;
   forReferenceObj= forReference;
   globalRepo = obj.repo;
   globalBranch = obj.branch;
+  //Check the current workspace and update it if needed
   if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
     if(globalCurrentWorkspace){
       await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
@@ -62,19 +97,11 @@ export async function handleRequestBlob(obj){
       console.log("first clone it using the extension");
       return {method:"repoNotInServerWorking"};
     }else{
-      var t0 = performance.now();
       runShellBlob(obj.repo,obj.branch);
-      var t1 = performance.now();
-      console.log("time in running the script is: "+(t1-t0));
-      //console.log("time in running blob script is: "+(Date.getTime()-t0) );
-      //console.log("before the if serverBusy: "+serverBusy);
-      //console.log("serverBusy: "+serverBusy);
       if(!serverBusy){
         serverBusy = true;
         //console.log("forReference: "+forReference);
-          t0 = performance.now();
           t = await clientTest.startServer(serverDirectory);
-          console.log("time in starting the server : "+(performance.now()-t0));
         serverBusy = false;
       }
       if (fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branch)) {
@@ -91,7 +118,14 @@ export async function handleRequestBlob(obj){
   return {method:"serverStarted",forReference:forReferenceObj};
 }
 
-export async function handleRequestPull(obj){
+/**
+*Handler function for pull page load request
+*@function
+*@async
+*@param {Object} obj the request object
+*@return serverStarted or repoNotInServerWorking objects
+*/
+async function handleRequestPull(obj){
   globalRepo = obj.repo;
   globalBranchHead = obj.branchHead;
   globalBranchBase = obj.branchBase;
@@ -103,11 +137,9 @@ export async function handleRequestPull(obj){
     }
     else{
       if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchHead)) {
-        //console.log("directory now exists");
         ReposInServer.push(obj.repo+"_"+obj.branchHead);
       }
       if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchBase)) {
-        //console.log("directory now exists");
         ReposInServer.push(obj.repo+"_"+obj.branchBase);
       }
       runShellPull(obj.repo,obj.branchBase,obj.branchHead);
@@ -132,13 +164,19 @@ export async function handleRequestPull(obj){
   //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
   var t0 = performance.now();
   var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branchHead},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
-  //console.log(testR);
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in check: "+(performance.now()-t0));
   return {method:"serverStarted"};
 }
 
-export async function handleRequestQuery(obj){
+/**
+*Handler function for query from the local server
+*@function
+*@async
+*@param {Object} obj the request object
+*@return the result of required notification objects
+*/
+async function handleRequestQuery(obj){
   if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)!=-1){
     try{
       if(globalCurrentWorkspace!=obj.repo+'_'+obj.branch){
@@ -183,7 +221,14 @@ export async function handleRequestQuery(obj){
   }
 }
 
-export async function handleRequestGitClone(obj){
+/**
+*Handler function for gitClone requests
+*@function
+*@async
+*@param {Object} obj the request object
+*@return {Object} after cloning sends the gitCloneResponse object
+*/
+async function handleRequestGitClone(obj){
   if(!fs.existsSync(workingDirectory)){
     shell.exec("mkdir "+'serverWorking');
   }
@@ -200,6 +245,13 @@ export async function handleRequestGitClone(obj){
   }
 }
 
+/**
+*The request handler function for the local server
+*@function
+*@async
+*@param {Object} obj the request from the extension
+*@return the answer objects for different requests
+*/
 async function handleRequest(obj){
    return new Promise(async (resolve,reject)=>{
     if(obj.method == "blob"){
@@ -228,7 +280,14 @@ async function handleRequest(obj){
   })
 }
 
-export async function solveQuery(obj){
+/**
+*The function for sending the query to the language server and getting the definition
+*@function
+*@async
+*@param {Object} obj the query object
+*@return {Object} the definition object
+*/
+async function solveQuery(obj){
   try{
     var test = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.textDocument},position : obj.position};//{textDocument: textidentifier,position : obj}
     const def = await t.connection.gotoDefinition(test);
@@ -241,6 +300,11 @@ export async function solveQuery(obj){
   }
 }
 
+/**
+*The function managing the console commands
+*@function
+*@async
+*/
 async function consoleCommands(){
   console.log("c to clear temp files");
   console.log("r to start server");
@@ -275,8 +339,14 @@ async function consoleCommands(){
   rl.prompt();
 }
 
+/**
+*Starts the local server and listens to it at port 8080
+*@function
+*@async
+*/
 async function localServerStart(){
   var http = require('http');
+  //creating server
   http.createServer(async function (request, response) {
     var body = [];
     request.on('error', (err) => {
@@ -289,12 +359,18 @@ async function localServerStart(){
       response.on('error', (err) => {
       console.error(err);
     });
+    //getting the request as an JSON obj
     var obj = JSON.parse(result);
-    console.log("obj below");
-    console.log(obj);
+    // console.log("obj below");
+    // console.log(obj);
+    /**
+    *sending the request to the handler and waiting for result
+    */
     var answer =await handleRequest(obj);
     response.statusCode = 200;
     response.setHeader('Content-Type', 'application/json');
+
+    //writing the response for the request
     if(obj.method=="query"||obj.method=="pull"||obj.method=="blob"||obj.method=="gitClone"){
       response.write(answer);
     }else{
