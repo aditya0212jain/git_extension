@@ -7,3 +7,4 @@ server/myClient/serverRepos/*
 server/myClient/argShellBlob.js
 server/myClient/argShellPull.js
 server/myClient/serverWorking/*
+doc/*
