@@ -11,6 +11,7 @@
 *@function
 */
 function reqListener () {
+  console.log("in");
   var result = JSON.parse(this.responseText);
   if(result.method=="blob"){
     showBlobResult(result);
@@ -47,6 +48,7 @@ function reqListener () {
 *@param {string[]} branchList names of the branches
 */
 function addSpans(type,repo,branchList){
+  console.log("in");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
     var tag = outSpan[j];
@@ -111,6 +113,7 @@ function addSpans(type,repo,branchList){
 *@return {number} the line number
 */
 function getLine(element){
+  console.log("in");
   //console.log("clicked");
   //console.log(element);
   if(element.parentElement!=undefined || element.parentElement!=null){
@@ -154,6 +157,7 @@ function getLine(element){
 @return {number} the character number starting from 0
 */
 function getCharacter(element){
+  console.log("in");
   var count1 = getCharacterTill(element);
   var parent = element.parentElement;
   var count2 = 0;
@@ -170,6 +174,7 @@ function getCharacter(element){
 *@return {number} count of the characters
 */
 function getCharacterTill(element){
+  console.log("in");
   var index = $(element).index();
   var count=0;
   var parent = element.parentElement;
@@ -190,6 +195,7 @@ function getCharacterTill(element){
 *@return {string} pathDir for the requested element
 */
 function getFilePath(element){
+  console.log("in");
   var href = window.location.href;
   var myRegexPull = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
   var myRegexBlob = /(.)*(github)(.)*(blob)(.)*/g;
@@ -223,6 +229,7 @@ function getFilePath(element){
 *@return {Object} the query object
 */
 function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
+  console.log("in");
   var linet;
   if(ifViewIsUnified){
     linet = ifViewIsUnified.line-1;
@@ -278,6 +285,7 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
 *@return {Object} {branch,line}
 */
 function getBranchUnified(element){
+  console.log("in");
   //element is jquery use as $(element)
   var parent = $(element).parent();
   var children = $(parent).find("td");

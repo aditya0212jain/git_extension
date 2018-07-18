@@ -38,9 +38,6 @@
         "onload.js",
         "showResult.js",
         "popup.js"
-      ],
-      "css": [
-        "tcr.css"
       ]
     }
   ],

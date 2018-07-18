@@ -12,6 +12,7 @@
 *@param {string} type https/ssh
 */
 function popupCloneFunction(type){
+  console.log("in");
   chrome.runtime.sendMessage({method:"gitCloneRequestFromPopup",type:type});
 }
 
@@ -19,6 +20,7 @@ function popupCloneFunction(type){
 *Setting up the click listeners for the buttons in the popup
 */
 document.addEventListener("DOMContentLoaded",function(event){
+  console.log("in");
   document.getElementById('httpsClone').addEventListener("click",function(){popupCloneFunction('https')});
   document.getElementById('sshClone').addEventListener("click",function(){popupCloneFunction('ssh')});
 })

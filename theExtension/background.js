@@ -14,6 +14,7 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     //console.log(request);
+    console.log("in");
     //the below request is received when the server is started
     if(request.method=="showServerNotification"){
       var options ={
