@@ -215,7 +215,7 @@ function addClick(objectForSpan) {
       t.addEventListener('click',function() {showTest(this,objectForSpan)});
     }
   }
-  addSpans(objectForSpan.method,objectForSpan.repo,[objectForSpan.branchBase,objectForSpan.branchHead]);
+  addSpans(objectForSpan.method,objectForSpan.repo,[objectForSpan.branchBase,objectForSpan.branchHead],objectForSpan.author);
 }
 
 /**

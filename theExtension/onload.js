@@ -48,10 +48,11 @@ function gitCloneFunction(type){
     var url = $(pol[0]).attr('value');
     //the name of the repo which is being cloned
     var repo = $('strong[itemprop="name"]').find('a').html();
+    var author = getAuthorRepoPage();
     //sending the request to the local server
-    sendToServer({method:"gitClone",url:url,repo:repo,downloadType:type});
+    sendToServer({method:"gitClone",url:url,repo:repo,downloadType:type,author:author});
     //sending the message to the background to show the sentForCloning notification
-    chrome.runtime.sendMessage({method:"sentForCloning",repo:repo},function(response){});
+    chrome.runtime.sendMessage({method:"sentForCloning",repo:repo,author:author},function(response){});
   }
   else{
     //if entered here means not the correct page for cloning
@@ -113,7 +114,7 @@ function prepareExpanders(obj){
   for(i=0;i<expanders.length;i++){
     expanders[i].addEventListener("click",function(){
       //setTimeout used so that the content can be loaded before using the next functions
-      setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead]);prepareExpanders(obj);},600);
+      setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead],obj.author);prepareExpanders(obj);},600);
     });
   }
 }
@@ -145,7 +146,11 @@ function getPageType(){
 *@return Object with method,repo,branch
 */
 function getBlobObject(){
-  console.log("in");
+  var url = document.URL;
+  url = url.split('/');
+  var i = url.indexOf('blob');
+  var authorName = url[i-2];
+
   var blobpath = document.getElementById('blob-path');
   var path = blobpath.textContent.split('/');
   var repoName = path[0].replace(/\r?\n|\r|\s/g,"");
@@ -157,6 +162,7 @@ function getBlobObject(){
   var branch = match[2];
   var obj = {method : "blob" ,
   repo : repoName,
+  author:authorName,
   branch : branch }
   return obj;
 }
@@ -167,14 +173,14 @@ function getBlobObject(){
 *@return Object with method,repo,branchBase,branchHead
 */
 function getPullObject(){
-  console.log("in");
   var url = document.URL;
   url = url.split('/');
   var i = url.indexOf('pull');
   var repoName = url[i-1];
+  var authorName = url[i-2];
   var branchBase = document.getElementsByClassName('base-ref')[0];
   var branchHead = document.getElementsByClassName('head-ref')[0];
-  var obj = { method : "pull" , repo : repoName , branchBase : branchBase.textContent , branchHead : branchHead.textContent};
+  var obj = { method : "pull" , repo : repoName , branchBase : branchBase.textContent , branchHead : branchHead.textContent ,author:authorName};
   return obj;
 }
 
@@ -212,7 +218,7 @@ function preparePage(obj){
   console.log("in");
   if(obj.method=="blob"){
     //incase of blob only add the spans for navigation
-    addSpans(obj.method,obj.repo,[obj.branch]);
+    addSpans(obj.method,obj.repo,[obj.branch],obj.author);
   }else if (obj.method=="pull"){
     //for pull add all the other features
     //the below function adds the test buttons

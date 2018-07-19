@@ -80,9 +80,10 @@ function showSameBlobResult(result){
 */
 function showDiffBlobResult(result){
   console.log("in");
+  console.log(result);
   var resultPath = result.definition.uri;
   var resultArray = resultPath.split('/');
-  var index = resultArray.indexOf(result.repo+"_"+result.branch);
+  var index = resultArray.indexOf(result.author+"@"+result.repo+"_"+result.branch);
   //getting the name of the result file in an array below
   var resultFile = resultArray.slice(index+1,resultArray.length);
   var olduri = location.href;
@@ -134,7 +135,7 @@ function showSamePullResult(result){
   }
   var objData = getPullObject();
   //using setTimeout to wait for the content to load if the result has the line which is hidden
-  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead]);myCode();},2000);
+  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead],objData.author);myCode();},2000);
 
 }
 
@@ -159,7 +160,7 @@ function showDiffPullResult(result){
 
   if(r==-1){
     //if no '/' is present in the branch name
-    var index = resultArray.indexOf(result.repo+"_"+branch);
+    var index = resultArray.indexOf(result.author+"@"+result.repo+"_"+branch);
     var resultFile = resultArray.slice(index+1,resultArray.length);
     var olduri = location.href;
     var oldarray = olduri.split('/');
@@ -178,7 +179,7 @@ function showDiffPullResult(result){
     // });
   }else {
     var branchArray = branch.split('/');
-    var index = resultArray.indexOf(result.repo+"_"+branchArray[0]);
+    var index = resultArray.indexOf(result.author+"@"+result.repo+"_"+branchArray[0]);
     var tocontinue = true;
     for(i=1;i<branchArray.length;i++){
       if(resultArray[index+i+1]!=branchArray[i+1]){

@@ -47,7 +47,7 @@ function reqListener () {
 *@param {string} repo name of the repo
 *@param {string[]} branchList names of the branches
 */
-function addSpans(type,repo,branchList){
+function addSpans(type,repo,branchList,author){
   console.log("in");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
@@ -75,28 +75,27 @@ function addSpans(type,repo,branchList){
         childOfChild[o].addEventListener("mouseover", function(event){event.target.style.color = "orange";},false);
         childOfChild[o].addEventListener("mouseout", function(event){ event.target.style.color=""},false);
         childOfChild[o].addEventListener("click", function(){
-          //var queryObject = getQueryObject(this,type,repo,branchList);
           var objRequest ;
           if(type=="blob"){
-            var queryObject = getQueryObject(this,type,repo,branchList);
-            objRequest = {method:"query",query:queryObject,type:type,repo:repo,branch:branchList[0]};
+            var queryObject = getQueryObject(this,type,repo,branchList,author);
+            objRequest = {method:"query",query:queryObject,type:type,repo:repo,branch:branchList[0],author:author};
           }else {
             //var queryObject = getQueryObject(this,type,repo,branchList);
             var td = this.closest("td");
             var i = $(td).index();
             if(i==1){
-              var queryObject = getQueryObject(this,type,repo,branchList);
-              objRequest = {method:"query",query:queryObject,type:type,branchType:"base",repo:repo,branch:branchList[0]};
+              var queryObject = getQueryObject(this,type,repo,branchList,author);
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"base",repo:repo,branch:branchList[0],author:author};
             }else if(i==3){
-              var queryObject = getQueryObject(this,type,repo,branchList);
-              objRequest = {method:"query",query:queryObject,type:type,branchType:"head",repo:repo,branch:branchList[1]};
+              var queryObject = getQueryObject(this,type,repo,branchList,author);
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"head",repo:repo,branch:branchList[1],author:author};
             }else if(i==2){
               var argumentForUnified = getBranchUnified(td);
               //console.log(argumentForUnified);
-              var queryObject = getQueryObject(this,type,repo,branchList,argumentForUnified);
+              var queryObject = getQueryObject(this,type,repo,branchList,author,argumentForUnified);
               var tempBranch;
               argumentForUnified.branch=='base' ? tempBranch=branchList[0] : tempBranch = branchList[1];
-              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch,repo:repo,branch:tempBranch};//for unified view
+              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch,repo:repo,branch:tempBranch,author:author};//for unified view
             }
           }
             sendToServer(objRequest);
@@ -228,7 +227,7 @@ function getFilePath(element){
 *@param {Object} ifViewIsUnified object in case of unified view
 *@return {Object} the query object
 */
-function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
+function getQueryObject(element,type,repo,branchList,author,ifViewIsUnified,){
   console.log("in");
   var linet;
   if(ifViewIsUnified){
@@ -245,7 +244,7 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   var argpass;
   if(type=="blob"){
     //console.log("branch is "+branchList[0]);
-    argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
+    argpass = {textDocument : author+"@"+repo+"_"+branchList[0]+"/"+path , position : positiont };
   }
   else if (type=="pull"){
     //console.log("pull type request in getting query object");
@@ -255,20 +254,20 @@ function getQueryObject(element,type,repo,branchList,ifViewIsUnified){
   if(ifViewIsUnified){
     if(i==1||ifViewIsUnified.branch=="base"){
       //console.log("branch is "+branchList[0]);
-      argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
+      argpass = {textDocument : author+"@"+repo+"_"+branchList[0]+"/"+path , position : positiont };
     }
     else if(i==3||ifViewIsUnified.branch=="head"){
     //  console.log("branch is "+branchList[1]);
-      argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
+      argpass = {textDocument : author+"@"+repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
   }else{
     if(i==1){
       //console.log("branch is "+branchList[0]);
-      argpass = {textDocument : repo+"_"+branchList[0]+"/"+path , position : positiont };
+      argpass = {textDocument : author+"@"+repo+"_"+branchList[0]+"/"+path , position : positiont };
     }
     else if(i==3){
       //console.log("branch is "+branchList[1]);
-      argpass = {textDocument : repo+"_"+branchList[1]+"/"+path , position : positiont };
+      argpass = {textDocument : author+"@"+repo+"_"+branchList[1]+"/"+path , position : positiont };
     }
 
   }

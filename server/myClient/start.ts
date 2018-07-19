@@ -80,38 +80,40 @@ async function handleRequestBlob(obj){
   globalRepo = obj.repo;
   globalBranch = obj.branch;
   //Check the current workspace and update it if needed
-  if(globalCurrentWorkspace!=globalRepo+"_"+globalBranch){
+  if(globalCurrentWorkspace!=obj.author+"@"+globalRepo+"_"+globalBranch){
     if(globalCurrentWorkspace){
-      await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+      await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+globalRepo+"_"+globalBranch,name:obj.author+"@"+globalRepo+"_"+globalBranch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+      var point = new Promise((resolve,reject)=>{setTimeout(function(){resolve()},2500);});
+      await point.then(()=>{});
     }else{
-      await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranch,name:globalRepo+"_"+globalBranch}],removed:[]}});
+      await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+globalRepo+"_"+globalBranch,name:obj.author+"@"+globalRepo+"_"+globalBranch}],removed:[]}});
     }
-    globalCurrentWorkspace=globalRepo+"_"+globalBranch;
+    globalCurrentWorkspace=obj.author+"@"+globalRepo+"_"+globalBranch;
     console.log("setting gcW as: "+globalCurrentWorkspace);
   }
   //start the server again if the repo is not in the serverRepos directory
-  if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)==-1){
-    if (!fs.existsSync(workingDirectory+"/"+obj.repo)) {
+  if(ReposInServer.indexOf(obj.author+"@"+obj.repo+"_"+obj.branch)==-1){
+    if (!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)) {
       console.log("directory does not exists");
       console.log("first clone it using the extension");
       return {method:"repoNotInServerWorking"};
     }else{
-      runShellBlob(obj.repo,obj.branch);
+      runShellBlob(obj.repo,obj.branch,obj.author);
       if(!serverBusy){
         serverBusy = true;
         //console.log("forReference: "+forReference);
           t = await clientTest.startServer(serverDirectory);
         serverBusy = false;
       }
-      if (fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branch)) {
+      if (fs.existsSync(serverDirectory+"/"+obj.author+"@"+obj.repo+"_"+obj.branch)) {
         console.log("directory now exists");
-        ReposInServer.push(obj.repo+"_"+obj.branch);
+        ReposInServer.push(obj.author+"@"+obj.repo+"_"+obj.branch);
       }
     }
   }
   forReference = false;
   var t0 = performance.now();
-  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.author+"@"+obj.repo+"_"+obj.branch},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in checking empty def: "+(performance.now()-t0));
   return {method:"serverStarted",forReference:forReferenceObj};
@@ -128,20 +130,20 @@ async function handleRequestPull(obj){
   globalRepo = obj.repo;
   globalBranchHead = obj.branchHead;
   globalBranchBase = obj.branchBase;
-  if(ReposInServer.indexOf(globalRepo+"_"+globalBranchBase)==-1||ReposInServer.indexOf(globalRepo+"_"+globalBranchHead)==-1){
-    if (!fs.existsSync(workingDirectory+"/"+obj.repo)) {
+  if(ReposInServer.indexOf(obj.author+"@"+globalRepo+"_"+globalBranchBase)==-1||ReposInServer.indexOf(obj.author+"@"+globalRepo+"_"+globalBranchHead)==-1){
+    if (!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)) {
       console.log("directory does not exists");
       console.log("first clone it using the extension");
       return {method:"repoNotInServerWorking"};
     }
     else{
-      if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchHead)) {
-        ReposInServer.push(obj.repo+"_"+obj.branchHead);
+      if (!fs.existsSync(serverDirectory+"/"+obj.author+"@"+obj.repo+"_"+obj.branchHead)) {
+        ReposInServer.push(obj.author+"@"+obj.repo+"_"+obj.branchHead);
       }
-      if (!fs.existsSync(serverDirectory+"/"+obj.repo+"_"+obj.branchBase)) {
-        ReposInServer.push(obj.repo+"_"+obj.branchBase);
+      if (!fs.existsSync(serverDirectory+"/"+obj.author+"@"+obj.repo+"_"+obj.branchBase)) {
+        ReposInServer.push(obj.author+"@"+obj.repo+"_"+obj.branchBase);
       }
-      runShellPull(obj.repo,obj.branchBase,obj.branchHead);
+      runShellPull(obj.repo,obj.branchBase,obj.branchHead,obj.author);
       if(!serverBusy){
         serverBusy = true;
         if(!forReference){
@@ -152,17 +154,17 @@ async function handleRequestPull(obj){
     }
   }
   if(globalCurrentWorkspace){
-    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+globalRepo+"_"+globalBranchHead,name:obj.author+"@"+globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
   }
   else{
-    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalRepo+"_"+globalBranchHead}],removed:[]}});
+    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+globalRepo+"_"+globalBranchHead,name:obj.author+"@"+globalRepo+"_"+globalBranchHead}],removed:[]}});
   }
   forReference = false;
-  globalCurrentWorkspace = globalRepo+"_"+globalBranchHead;
+  globalCurrentWorkspace = obj.author+"@"+globalRepo+"_"+globalBranchHead;
   console.log("setting gcW as: "+globalCurrentWorkspace);
   //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
   var t0 = performance.now();
-  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branchHead},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.author+"@"+obj.repo+"_"+obj.branchHead},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in check: "+(performance.now()-t0));
   return {method:"serverStarted"};
@@ -176,18 +178,19 @@ async function handleRequestPull(obj){
 *@return the result of required notification objects
 */
 async function handleRequestQuery(obj){
-  if(ReposInServer.indexOf(obj.repo+"_"+obj.branch)!=-1){
+  console.log(obj);
+  if(ReposInServer.indexOf(obj.author+"@"+obj.repo+"_"+obj.branch)!=-1){
     try{
-      if(globalCurrentWorkspace!=obj.repo+'_'+obj.branch){
+      if(globalCurrentWorkspace!=obj.author+"@"+obj.repo+'_'+obj.branch){
         if(globalCurrentWorkspace){
-          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+obj.repo+"_"+obj.branch,name:obj.author+"@"+obj.repo+"_"+obj.branch}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
         }else{
-          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.repo+"_"+obj.branch,name:obj.repo+"_"+obj.branch}],removed:[]}});
+          await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+obj.repo+"_"+obj.branch,name:obj.author+"@"+obj.repo+"_"+obj.branch}],removed:[]}});
         }
         var point = new Promise((resolve,reject)=>{setTimeout(function(){resolve()},2500);});
         await point.then(()=>{});
 
-        globalCurrentWorkspace=obj.repo+'_'+obj.branch;
+        globalCurrentWorkspace=obj.author+"@"+obj.repo+'_'+obj.branch;
         console.log("setting gcW as: "+globalCurrentWorkspace);
       }
       // }
@@ -195,8 +198,8 @@ async function handleRequestQuery(obj){
       console.log(e);
     }
     var resultForQuery = await solveQuery(obj.query);
-    // console.log("the result is: ");
-    // console.log(resultForQuery);
+    console.log("the result is: ");
+    console.log(resultForQuery);
     var returningObject;
     var same=false;
     if(resultForQuery!=undefined||resultForQuery!=null){
@@ -207,13 +210,13 @@ async function handleRequestQuery(obj){
       }
     }
     if(obj.type=="blob"){
-      returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:obj.repo,branch:obj.branch}
+      returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,same:same,repo:obj.repo,branch:obj.branch,author:obj.author}
     }
     else if (obj.type=="pull"){
-      returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,branchType:obj.branchType,same:same,repo:obj.repo};
+      returningObject = {method:obj.type,query:obj.query,definition:resultForQuery,branchType:obj.branchType,same:same,repo:obj.repo,author:obj.author};
     }
     return returningObject;
-  }else if(!fs.existsSync(workingDirectory+"/"+obj.repo)){
+  }else if(!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)){
     return {method:"repoNotInServerWorkingQuery"};
   }else{
     return {method:"reloadToStart"};
@@ -231,14 +234,16 @@ async function handleRequestGitClone(obj){
   if(!fs.existsSync(workingDirectory)){
     shell.exec("mkdir "+'serverWorking');
   }
-  if (fs.existsSync(workingDirectory+"/"+obj.repo)) {
-    shell.exec("rm -r -f "+workingDirectory+"/"+obj.repo);
+  if (fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)) {
+    shell.exec("rm -r -f "+workingDirectory+"/"+obj.author+"@"+obj.repo);
     shell.exec("echo 'removed the older repo ,now cloning new'");
     shell.exec("cd "+workingDirectory+" && "+"git clone "+obj.url+" && echo 'done cloning'");
+    shell.exec("mv "+workingDirectory+"/"+obj.repo+" "+workingDirectory+"/"+obj.author+"@"+obj.repo);
     //console.log("checking sync");
     return {method:"gitCloneResponse",type:"updated"};
   }else{
     shell.exec("cd "+workingDirectory+" && "+"git clone "+obj.url+" && echo 'done cloning'");
+    shell.exec("mv "+workingDirectory+"/"+obj.repo+" "+workingDirectory+"/"+obj.author+"@"+obj.repo);
     //console.log("checking sync");
     return {method:"gitCloneResponse",type:"new"};
   }

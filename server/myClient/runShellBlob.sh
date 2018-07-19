@@ -4,7 +4,9 @@ WORKINGFOLDER=${ARG1[0]}
 SERVERFOLDER=${ARG1[1]}
 REPO=${ARG1[2]}
 BRANCH=${ARG1[3]}
+AUTHOR=${ARG1[4]}
 SP="_"
+ATRATE="@"
 #rm -r -f $SERVERFOLDER/$REPO*
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH
 if [ -d $SERVERFOLDER ]
@@ -13,17 +15,16 @@ if [ -d $SERVERFOLDER ]
    else
       mkdir $SERVERFOLDER
 fi
-if [ -d $SERVERFOLDER/$REPO$SP$BRANCH ]   # for file "if [-f /home/rama/file]"
+if [ -d $SERVERFOLDER/$AUTHOR$ATRATE$REPO$SP$BRANCH ]   # for file "if [-f /home/rama/file]"
    then
       echo "dir present"
-      cd $SERVERFOLDER/$REPO$SP$BRANCH
+      cd $SERVERFOLDER/$AUTHOR$ATRATE$REPO$SP$BRANCH
       git checkout $BRANCH
-      echo "now check out"
    else
       echo "dir not present"
-      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER/
-      cd $SERVERFOLDER/$REPO
+      cp -r $WORKINGFOLDER/$AUTHOR$ATRATE$REPO $SERVERFOLDER/
+      cd $SERVERFOLDER/$AUTHOR$ATRATE$REPO
       git checkout $BRANCH
       cd ..
-      mv $REPO $REPO$SP$BRANCH
+      mv $AUTHOR$ATRATE$REPO $AUTHOR$ATRATE$REPO$SP$BRANCH
 fi

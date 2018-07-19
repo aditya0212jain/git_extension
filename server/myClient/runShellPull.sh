@@ -5,7 +5,9 @@ SERVERFOLDER=${ARG1[1]}
 REPO=${ARG1[2]}
 BRANCH1=${ARG1[3]}
 BRANCH2=${ARG1[4]}
+AUTHOR=${ARG1[5]}
 SP="_"
+ATRATE="@"
 #rm -r -f $SERVERFOLDER/$REPO*
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH1
 #rm -r -f $SERVERFOLDER/$REPO$SP$BRANCH2
@@ -15,42 +17,31 @@ if [ -d $SERVERFOLDER ]
    else
       mkdir $SERVERFOLDER
 fi
-if [ -d $SERVERFOLDER/$REPO$SP$BRANCH1 ]   # for file "if [-f /home/rama/file]"
+if [ -d $SERVERFOLDER/$AUTHOR$ATRATE$REPO$SP$BRANCH1 ]   # for file "if [-f /home/rama/file]"
    then
       echo "dir present"
-      cd $SERVERFOLDER/$REPO$SP$BRANCH1
+      cd $SERVERFOLDER/$AUTHOR$ATRATE$REPO$SP$BRANCH1
       git checkout $BRANCH1
       echo "now check out"
    else
       echo "dir not present"
-      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER/
-      cd $SERVERFOLDER/$REPO
+      cp -r $WORKINGFOLDER/$AUTHOR$ATRATE$REPO $SERVERFOLDER/
+      cd $SERVERFOLDER/$AUTHOR$ATRATE$REPO
       git checkout $BRANCH1
       cd ..
-      mv $REPO $REPO$SP$BRANCH1
+      mv $AUTHOR$ATRATE$REPO $AUTHOR$ATRATE$REPO$SP$BRANCH1
 fi
-if [ -d $SERVERFOLDER/$REPO$SP$BRANCH2 ]   # for file "if [-f /home/rama/file]"
+if [ -d $SERVERFOLDER/$AUTHOR$ATRATE$REPO$SP$BRANCH2 ]   # for file "if [-f /home/rama/file]"
    then
       echo "dir present"
-      cd $SERVERFOLDER/$REPO$SP$BRANCH2
+      cd $SERVERFOLDER/$AUTHOR$ATRATE$REPO$SP$BRANCH2
       git checkout $BRANCH2
       echo "now check out"
    else
       echo "dir not present"
-      cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER/
-      cd $SERVERFOLDER/$REPO
+      cp -r $WORKINGFOLDER/$AUTHOR$ATRATE$REPO $SERVERFOLDER/
+      cd $SERVERFOLDER/$AUTHOR$ATRATE$REPO
       git checkout $BRANCH2
       cd ..
-      mv $REPO $REPO$SP$BRANCH2
+      mv $AUTHOR$ATRATE$REPO $AUTHOR$ATRATE$REPO$SP$BRANCH2
 fi
-#cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER
-#cd $SERVERFOLDER/$REPO
-#git checkout $BRANCH2
-#cd ..
-#mv $REPO $REPO$SP$BRANCH2
-#cp -r $WORKINGFOLDER/$REPO $SERVERFOLDER
-#cd $SERVERFOLDER/$REPO
-#git checkout $BRANCH1
-#cd ..
-#mv $REPO $REPO$SP$BRANCH1
-#echo pullDone
