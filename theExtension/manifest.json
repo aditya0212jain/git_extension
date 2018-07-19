@@ -33,7 +33,7 @@
       "js": [
         "jumble.js",
         "toggle.js",
-        "clienttest.js",
+        "navigation.js",
         "lib/jquery-2.1.3.min.js",
         "onload.js",
         "showResult.js",
