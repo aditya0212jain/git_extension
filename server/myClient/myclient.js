@@ -8,20 +8,8 @@ const net = require("net");
 const languageclient_1 = require("../languageclient");
 const os = require("os");
 const shell = require('shelljs');
-
 /**
-*@file Implements the class for the client side of the lsp
-*@author Aditya Jain
-*/
-/**
-*@module myclient
-*/
-
-/**
-*converts the file path to the uri format
-*@function
-*@param {string} filepath
-*@param {string} uri
+*Function to convert the filePath into fileUri used by the language server to start
 */
 function pathToUri(filePath) {
     let newPath = filePath.replace(/\\/g, '/');
@@ -31,14 +19,13 @@ function pathToUri(filePath) {
     return encodeURI(`file://${newPath}`).replace(/[?#]/g, encodeURIComponent);
 }
 exports.pathToUri = pathToUri;
-
-
 /**
-*implements the language server protocol for client side
-*@class
+*Class implementing the languageclient using the languageclient.ts file
+*Responsible for setting up the language server and the process of initiliazing it
 */
 class myClient {
     constructor() {
+        //The below function is never used
         this.reportBusyWhile = async (title, f) => {
             this.logger.info(`[Started] ${title}`);
             let res;
@@ -51,6 +38,7 @@ class myClient {
             return res;
         };
     }
+    //function to get the initiliazing parameters for the server
     getInitializeParams(projectPath, process) {
         return {
             processId: process.pid,
@@ -146,105 +134,97 @@ class myClient {
             workspaceFolders: null,
         };
     }
+    /**
+    *Function called to start the language server
+    *@async
+    *@function
+    *@param {string} ProjectPath the path in which the server will be initiated
+    */
     async startServer(projectPath) {
-        //console.log("its in")
-        //const process = this.spawnServerWithSocket().then((result) => result );
+        //The below command starts the server using childProcess
         const process = await this.spawnServerWithSocket().then((result) => { return result; });
         ;
-        //console.log("loaded process");
         this.captureServerErrors(process, projectPath);
-        //const process = this.spawnServer([`--tcp=127.0.0.1`]);
+        //the Directory where the server repos are
         let serverHome = path.join(__dirname, 'server');
-        //const process = await async f(){ return this.startServerProcess(projectPath); }
+        //creating a connection using sockets (part of lsp)
         const connection = new languageclient_1.LanguageClientConnection(this.createRpcConnection());
-        //console.log("made connection");
+        //getting the initiliazing params for the project path
         const initializeParams = this.getInitializeParams(projectPath, process);
-        //console.log("y1");
+        //initializing the server with the params
         const initialization = connection.initialize(initializeParams);
-        //console.log("y2");
+        //waiting for the server to initialize
         const initializeResponse = await initialization;
-        //console.log("y3");
         this._connection = connection;
-        //console.log(initializeResponse);
-        //console.log(initializeResponse.capabilities.workspace);
-        //console.log(process);
+        //below is a implementation of the ActiveServer defined above
         const newServer = {
             projectPath,
             process,
             connection,
             capabilities: initializeResponse.capabilities,
         };
-        //console.log("y4");
         connection.initialized();
-        //console.log("About to shut down");
-        // var a = await newServer.connection.shutdown();
-        // console.log(a);
-        // connection.on('exit',() => console.log("exiting works"));
-        // console.log("About to exit and dispose");
-        // newServer.connection.exit();
-        // newServer.connection.dispose();
         process.on('exit', () => { console.log("process exit"); });
-        //newServer.process.kill();
         console.log("server started");
+        //returning the ActiveServer interface object
         return newServer;
     }
+    //Function to create a socket connection
+    //Following the language server protocol
     createRpcConnection() {
         let reader;
         let writer;
-        //console.log("RPC");
-        //console.log(this.socket);
-        //console.log(this);
-        //console.log("r1");
         reader = new rpc.SocketMessageReader(this.socket);
         writer = new rpc.SocketMessageWriter(this.socket);
-        //console.log("r2");
         return rpc.createMessageConnection(reader, writer);
     }
+    /**
+    *creates a local server at 3000 and calls the function to spawn the language server
+    *@function spawnServerWithSocket
+    */
     spawnServerWithSocket() {
         return new Promise((resolve, reject) => {
-            //console.log("inside spawn with socket");
             let childProcess;
             let server;
-            //const pro1 = new Promise((resolve1,reject) => {
+            //below server is started at port 3000
             server = net.createServer(socket => {
                 // When the language server connects, grab socket, stop listening and resolve
-                //console.log("inside net.createServer");
                 this.socket = socket;
                 server.close();
-                //console.log("about to resolve childProcess");
-                // console.log(this.socket);
+                //resolving the process
                 resolve(childProcess);
-                //console.log("after resolve command");
             }).listen(3000);
-            //});
             const pro2 = new Promise((resolve2, reject) => {
-                //server.listen(3000, '127.0.0.1', () => {
-                //console.log(server.address());
                 // Once we have a port assigned spawn the Language Server with the port
                 childProcess = this.spawnServer([``]); //--tcp=127.0.0.1:${server.address().port}
-                //  console.log("childProcess started");
+                //if the childProcess exits with a crash then delete the server temp files and try again
                 childProcess.on('exit', exitCode => {
                     if (!childProcess.killed) {
                         console.log("childProcess exit but not killed");
                     }
                     console.log(exitCode);
+                    //Deleting the temp files to fix the crash
                     shell.exec("rm -r -f ./server_0.9/.metadata");
                     shell.exec("rm -r -f ./server_0.9/jdt.ls-java-project");
+                    //Spawning the server again after the removal of temp files
                     childProcess = this.spawnServer([``]);
                     console.log("again childprocess started after the crash");
-                    console.log("childProcess exited");
                 });
                 //});
             });
-            //console.log("why did it stuck :O");
         });
     }
+    /**
+    *starting the language server using the childProcess
+    *@function spawnServer
+    */
     spawnServer(extraArgs) {
-        //console.log("inside spawnserver");
         const command = "java";
         //const serverHome = path.join(__dirname,'server');
         const serverHome = path.join(__dirname, 'server_0.9');
+        //getting the platform on which the program is running
         var platform = os.platform();
+        //variabel for the argument to start the server
         var variable;
         console.log("platform: " + platform);
         if (platform == "linux") {
@@ -257,21 +237,28 @@ class myClient {
             variable = "mac";
         }
         variable = "config_" + variable;
-        //console.log("variable platform: " + variable);
+        //putting all the arg for the starting of the language server
+        //if using different server then change the launcher argument
         const args = ['-jar', 'plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar', '-configuration', variable, '-data']; //launcher_1.5.0.v20180119-0753.jar for old server
         if (extraArgs) {
             args.push(extraArgs);
         }
-        //this.logger.debug(`starting "${command} ${args.join(' ')}"`)
-        //console.log("about to start childprocess");
+        //using cp.spawn to start server
         const childProcess = cp.spawn(command, args, { cwd: serverHome });
-        //console.log("returning from spawnServer");
         return childProcess;
     }
+    /**
+    *Gets the definition result from the server connection using function defined in languageclient.ts
+    *@function getDefinitions
+    */
     async getDefinition(params) {
         const definitionLocation = this._connection.gotoDefinition(params);
         return definitionLocation;
     }
+    /**
+    *capturing server errors
+    *@function captureServerErrors
+    */
     captureServerErrors(childProcess, projectPath) {
         childProcess.on('error', (err) => console.log("o1"));
         childProcess.on('exit', (code, signal) => console.log("o2"));

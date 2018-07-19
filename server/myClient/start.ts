@@ -6,7 +6,6 @@ import * as path from 'path';
 import * as net from 'net';
 import { Socket } from 'net';
 import { LanguageClientConnection } from '../languageclient';
-import {NullLogger,ConsoleLogger,Logger} from '../logger';
 import {EventEmitter} from 'events';
 import * as stream from 'stream';
 import * as readline from 'readline';

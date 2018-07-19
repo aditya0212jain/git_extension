@@ -3,7 +3,7 @@
  * @author Aditya Jain
  */
 
-/** @module clienttest */
+/** @module navigation */
 
 
 /**
