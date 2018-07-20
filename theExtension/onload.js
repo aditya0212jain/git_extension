@@ -16,7 +16,7 @@ window.onload = function () {onloadFunc();};
 */
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log("in");
+
     // request when gitClone button is pressed in the popup.js
     if(request.method=="gitClone"){
       //calling the function for cloning
@@ -30,7 +30,7 @@ chrome.runtime.onMessage.addListener(
 *@param {string} type https/ssh
 */
 function gitCloneFunction(type){
-  console.log("in");
+
   //the variable which will contain the info regarding the cloning
   var useType;
   //setting useType according to type
@@ -75,7 +75,7 @@ function gitCloneFunction(type){
 *@function
 */
 function onloadFunc () {
-  console.log("in");
+
   var type = getPageType();
   var typeObject;
   if(type=="blob"){
@@ -108,7 +108,7 @@ function onloadFunc () {
 *@param {Object} obj typeObject , contains info regarding the page loaded
 */
 function prepareExpanders(obj){
-  console.log("in");
+
   //getting all the expanders
   var expanders = document.getElementsByClassName('diff-expander');
   for(i=0;i<expanders.length;i++){
@@ -130,7 +130,7 @@ function prepareExpanders(obj){
 *@return pull/blob/notValid
 */
 function getPageType(){
-  console.log("in");
+
   var url = document.URL;
   var RegexPull = /(.)*(github)(.)*(pull)(.)*(files)(.)*/g;
   var RegexBlob = /(.)*(github)(.)*(blob)(.)*/g;
@@ -206,7 +206,7 @@ function getPullObject(){
 *@function
 */
 function sendToServer(obj){
-  console.log("in");
+
   var pReq = new XMLHttpRequest();
   //adding the listener as reqListener function
   pReq.addEventListener("load", reqListener);
@@ -232,7 +232,7 @@ function sendToServer(obj){
 *@param {Object} obj the typeObject for the page
 */
 function preparePage(obj){
-  console.log("in");
+
   if(obj.method=="blob"){
     //incase of blob only add the spans for navigation
     addSpans(obj.method,obj.repo,[obj.branch],obj.author);
@@ -253,7 +253,7 @@ function preparePage(obj){
 *@return split/unified
 */
 function getPullViewType(){
-  console.log("in");
+
   var diffbar = document.getElementsByClassName('diffbar')[0];
   var uview = $(diffbar).find( "input[value='unified']" );
   var sview = $(diffbar).find("input[value='split']");

@@ -75,6 +75,7 @@ chrome.runtime.onMessage.addListener(
     //now showing notification when the repo is not present and a query is made
     else if(request.method=="repoNotInServerWorkingQuery"){
       var message;
+      console.log(request);
       if(request.url=="undefined"){
         message="Open a gitHub repo page";
       }else{

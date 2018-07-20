@@ -12,7 +12,7 @@
 *@param {number} line the line number which needs to be highlighted
 */
 function highlightLineInSamePage(line){
-  console.log("in");
+
   //the current url
   var old = location.href;
   var removehash = old.indexOf("#");
@@ -32,7 +32,7 @@ function highlightLineInSamePage(line){
 *@param {Object} result contains the result received from local server
 */
 function showBlobResult(result){
-  console.log("in");
+
   var query = result.query;
   var definition = result.definition;
   var same = result.same;
@@ -51,7 +51,7 @@ function showBlobResult(result){
 *@param {Object} result contains the result received from local server
 */
 function showPullResult(result){
-  console.log("in");
+
   if(result.same==true){
     //if in same file
     showSamePullResult(result);
@@ -67,7 +67,7 @@ function showPullResult(result){
 *@param {Object} result contains the result received from local server
 */
 function showSameBlobResult(result){
-  console.log("in");
+
   var obj = result.definition;
   var line = obj.range.start.line +1;
   highlightLineInSamePage(line);
@@ -79,7 +79,7 @@ function showSameBlobResult(result){
 *@param {Object} result contains the result received from local server
 */
 function showDiffBlobResult(result){
-  console.log("in");
+
   console.log(result);
   var resultPath = result.definition.uri;
   var resultArray = resultPath.split('/');
@@ -107,7 +107,7 @@ function showDiffBlobResult(result){
 *@param {Object} result contains the result received from local server
 */
 function showSamePullResult(result){
-  console.log("in");
+
   var srcPath = result.query.textDocument;
   var pathArray = srcPath.split('/');
   pathArray = pathArray.slice(1,pathArray.length);
@@ -145,7 +145,7 @@ function showSamePullResult(result){
 *@param {Object} result contains the result received from local server
 */
 function showDiffPullResult(result){
-  console.log("in");
+
   //stores the branch name
   var branch;
   if(result.branchType=="base"){

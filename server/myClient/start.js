@@ -93,20 +93,25 @@ async function handleRequestPull(obj) {
     exports.globalRepo = obj.repo;
     exports.globalBranchHead = obj.branchHead;
     exports.globalBranchBase = obj.branchBase;
-    if (exports.ReposInServer.indexOf(obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchBase) == -1 || exports.ReposInServer.indexOf(obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchHead) == -1) {
+    if (exports.ReposInServer.indexOf(obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchBase) == -1 || exports.ReposInServer.indexOf(obj.author2 + "@" + exports.globalRepo + "_" + exports.globalBranchHead) == -1) {
         if (!fs.existsSync(exports.workingDirectory + "/" + obj.author + "@" + obj.repo)) {
             console.log("directory does not exists");
             console.log("first clone it using the extension");
-            return { method: "repoNotInServerWorking" };
+            return { method: "repoNotInServerWorking", author: obj.author, repo: obj.repo };
+        }
+        else if (!fs.existsSync(exports.workingDirectory + "/" + obj.author2 + "@" + obj.repo)) {
+            console.log("directory does not exists");
+            console.log("first clone it using the extension");
+            return { method: "repoNotInServerWorking", author: obj.author2, repo: obj.repo };
         }
         else {
-            if (!fs.existsSync(exports.serverDirectory + "/" + obj.author + "@" + obj.repo + "_" + obj.branchHead)) {
-                exports.ReposInServer.push(obj.author + "@" + obj.repo + "_" + obj.branchHead);
+            if (!fs.existsSync(exports.serverDirectory + "/" + obj.author2 + "@" + obj.repo + "_" + obj.branchHead)) {
+                exports.ReposInServer.push(obj.author2 + "@" + obj.repo + "_" + obj.branchHead);
             }
             if (!fs.existsSync(exports.serverDirectory + "/" + obj.author + "@" + obj.repo + "_" + obj.branchBase)) {
                 exports.ReposInServer.push(obj.author + "@" + obj.repo + "_" + obj.branchBase);
             }
-            shellFunctions_1.runShellPull(obj.repo, obj.branchBase, obj.branchHead, obj.author);
+            shellFunctions_1.runShellPull(obj.repo, obj.branchBase, obj.branchHead, obj.author, obj.author2);
             if (!exports.serverBusy) {
                 exports.serverBusy = true;
                 if (!exports.forReference) {
@@ -117,17 +122,17 @@ async function handleRequestPull(obj) {
         }
     }
     if (exports.globalCurrentWorkspace) {
-        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchHead, name: obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
+        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.author2 + "@" + exports.globalRepo + "_" + exports.globalBranchHead, name: obj.author2 + "@" + exports.globalRepo + "_" + exports.globalBranchHead }], removed: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + exports.globalCurrentWorkspace, name: exports.globalCurrentWorkspace }] } });
     }
     else {
-        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchHead, name: obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchHead }], removed: [] } });
+        await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders', { event: { added: [{ uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.author2 + "@" + exports.globalRepo + "_" + exports.globalBranchHead, name: obj.author2 + "@" + exports.globalRepo + "_" + exports.globalBranchHead }], removed: [] } });
     }
     exports.forReference = false;
-    exports.globalCurrentWorkspace = obj.author + "@" + exports.globalRepo + "_" + exports.globalBranchHead;
+    exports.globalCurrentWorkspace = obj.author2 + "@" + exports.globalRepo + "_" + exports.globalBranchHead;
     console.log("setting gcW as: " + exports.globalCurrentWorkspace);
     //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
     var t0 = performance.now();
-    var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.author + "@" + obj.repo + "_" + obj.branchHead }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
+    var testR = { textDocument: { uri: myclient_1.pathToUri(exports.serverDirectory) + "/" + obj.author2 + "@" + obj.repo + "_" + obj.branchHead }, position: { line: 0, character: 0 } }; //{textDocument: textidentifier,position : obj}
     const defR = await t.connection.gotoDefinition(testR);
     console.log("time in check: " + (performance.now() - t0));
     return { method: "serverStarted" };
@@ -182,7 +187,7 @@ async function handleRequestQuery(obj) {
         return returningObject;
     }
     else if (!fs.existsSync(exports.workingDirectory + "/" + obj.author + "@" + obj.repo)) {
-        return { method: "repoNotInServerWorkingQuery" };
+        return { method: "repoNotInServerWorkingQuery", author: obj.author, repo: obj.repo };
     }
     else {
         return { method: "reloadToStart" };
@@ -292,6 +297,9 @@ async function consoleCommands() {
                 console.log("done");
                 break;
             case 'r': //command to run the server
+                if (!fs.existsSync(exports.serverDirectory)) {
+                    shell.exec('mkdir ' + 'serverRepos');
+                }
                 t = await clientTest.startServer(exports.serverDirectory);
                 fs.readdirSync(exports.serverDirectory).forEach(file => {
                     exports.ReposInServer.push(file); //reading the repos already in the serverRepos directory

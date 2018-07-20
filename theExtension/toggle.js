@@ -9,8 +9,8 @@
 *Adds the test button to all the production files
 *@function
 */
-function toggleSide(currentFile){
-  console.log("in");
+function toggleSide(){
+  console.log("toggleSide");
   var tab_counter = document.getElementById("files_tab_counter");
   var fileinfo = document.getElementsByClassName("file-info");
 
@@ -35,7 +35,7 @@ function toggleSide(currentFile){
 *@param {Object} objectForSpan for enabling the span
 */
 function showTest(btn,objectForSpan){
-  console.log("in");
+
   if(btn.parentElement.parentElement.parentElement.hasAttribute("style")==true){
     //if the files are already side by side
     //remove their style and set them normal
@@ -131,7 +131,7 @@ function showTest(btn,objectForSpan){
 *@param {string[]} fileName contains names of all the files
 */
 function addTestButtons(index,fileName){
-  console.log("in");
+
   var div0 = document.getElementById("diff-"+index);
   var fileAction = div0.getElementsByClassName("file-actions")[0];
   var btnGroup = fileAction.getElementsByClassName("BtnGroup")[0];
@@ -158,7 +158,7 @@ function addTestButtons(index,fileName){
 *@param {Object} objectForSpan object to be passed for enabling span
 */
 function placeSortButton(objectForSpan){
-  console.log("in");
+
   var d1 = document.getElementsByClassName("diffbar")[0];
   var btn1 = document.createElement("BUTTON");
   var btn2 = document.createElement("BUTTON");
@@ -206,7 +206,7 @@ function placeSortButton(objectForSpan){
 *@param {Object} objectForSpan object to be passed for enabling span
 */
 function addClick(objectForSpan) {
-  console.log("in");
+  
   var n = document.getElementById("files_tab_counter");
   for(i=0;i<parseInt(n.innerHTML);i++){
     var t = document.getElementById("test"+i);
@@ -215,7 +215,11 @@ function addClick(objectForSpan) {
       t.addEventListener('click',function() {showTest(this,objectForSpan)});
     }
   }
-  addSpans(objectForSpan.method,objectForSpan.repo,[objectForSpan.branchBase,objectForSpan.branchHead],objectForSpan.author);
+  if(objectForSpan.method=="blob"){
+    addSpans(objectForSpan.method,objectForSpan.repo,[objectForSpan.branchBase,objectForSpan.branchHead],objectForSpan.author);
+  }else{
+    addSpans(objectForSpan.method,objectForSpan.repo,[objectForSpan.branchBase,objectForSpan.branchHead],objectForSpan.author,objectForSpan.author2);
+  }
 }
 
 /**
@@ -224,7 +228,7 @@ function addClick(objectForSpan) {
 *@param {Object} objectForSpan object to be passed for enabling span
 */
 function productionFirst(objectForSpan){
-  console.log("in");
+
   //sorts the files
   sort(0);
   //closing the sort menu
@@ -240,7 +244,7 @@ function productionFirst(objectForSpan){
 *@param {Object} objectForSpan object to be passed for enabling span
 */
 function testFirst(objectForSpan){
-  console.log("in");
+
   //sorts the files
   sort(1);
   //closing the sort menu

@@ -131,10 +131,14 @@ async function handleRequestPull(obj){
   globalBranchHead = obj.branchHead;
   globalBranchBase = obj.branchBase;
   if(ReposInServer.indexOf(obj.author+"@"+globalRepo+"_"+globalBranchBase)==-1||ReposInServer.indexOf(obj.author2+"@"+globalRepo+"_"+globalBranchHead)==-1){
-    if ((!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo))||(!fs.existsSync(workingDirectory+"/"+obj.author2+"@"+obj.repo))) {
+    if (!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)) {
       console.log("directory does not exists");
       console.log("first clone it using the extension");
-      return {method:"repoNotInServerWorking"};
+      return {method:"repoNotInServerWorking",author:obj.author,repo:obj.repo};
+    }else if(!fs.existsSync(workingDirectory+"/"+obj.author2+"@"+obj.repo)){
+      console.log("directory does not exists");
+      console.log("first clone it using the extension");
+      return {method:"repoNotInServerWorking",author:obj.author2,repo:obj.repo}
     }
     else{
       if (!fs.existsSync(serverDirectory+"/"+obj.author2+"@"+obj.repo+"_"+obj.branchHead)) {
@@ -216,7 +220,7 @@ async function handleRequestQuery(obj){
     }
     return returningObject;
   }else if(!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)){
-    return {method:"repoNotInServerWorkingQuery"};
+    return {method:"repoNotInServerWorkingQuery",author:obj.author,repo:obj.repo};
   }else{
     return {method:"reloadToStart"};
   }
@@ -323,6 +327,9 @@ async function consoleCommands(){
       console.log("done");
       break;
       case 'r'://command to run the server
+      if(!fs.existsSync(serverDirectory)){
+        shell.exec('mkdir '+'serverRepos');
+      }
       t = await clientTest.startServer(serverDirectory);
       fs.readdirSync(serverDirectory).forEach(file => {
         ReposInServer.push(file);//reading the repos already in the serverRepos directory

@@ -11,7 +11,7 @@
 *@param {number} pattern 0 -> profuction first and 1 -> test firt
 */
 function sort(pattern){
-  console.log("in");
+
   var tab_counter = document.getElementById("files_tab_counter");
   var fileinfo = document.getElementsByClassName("file-info");
 
@@ -45,7 +45,7 @@ function sort(pattern){
 *@param {Object} fileinfo array containing all the information regarding the files
 */
 function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
-  console.log("in");
+
   for(i=0;i<parseInt(tab_counter.innerHTML);i++){
     var myRegex = /(.*)(<a)(.*)(>)(.*)(<\/a>)(.*)/g;
     if(fileinfo[i]!=undefined){
@@ -74,7 +74,7 @@ function getNames(tab_counter,fileName,prodFile,testFile,fileinfo){
 *@param {string[]} testFile names of all the files
 */
 function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
-  console.log("in");
+
   for(i=0;i<prodFile.length;i++){
     var index = prodFile[i];
     var hasTest=false;
@@ -120,7 +120,7 @@ function sortDiv(prodFile,fileName,pattern,divContainer,testFile){
 *@param {Object[]} divContainer array in which the contents the files are being pushed
 */
 function pushDiv(index,divContainer){
-  console.log("in");
+  
   var div = document.getElementById("diff-"+index);
   divContainer.push(div.innerHTML);
 }
@@ -132,7 +132,7 @@ function pushDiv(index,divContainer){
 *@param {Object[]} divContainer array in which the contents the files are being stored in the sorted manner
 */
 function show(n,divContainer){
-  console.log("in");
+
   for(i=0;i<n;i++){
       var div = document.getElementById("diff-"+i);
       //changing the html of the original page
