@@ -114,7 +114,12 @@ function prepareExpanders(obj){
   for(i=0;i<expanders.length;i++){
     expanders[i].addEventListener("click",function(){
       //setTimeout used so that the content can be loaded before using the next functions
-      setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead],obj.author);prepareExpanders(obj);},600);
+      if(obj.method=="blob"){
+        setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead],obj.author);prepareExpanders(obj);},600);
+      }
+      else{
+        setTimeout(function(){addSpans(obj.method,obj.repo,[obj.branchBase,obj.branchHead],obj.author,obj.author2);prepareExpanders(obj);},600);
+      }
     });
   }
 }
@@ -180,7 +185,19 @@ function getPullObject(){
   var authorName = url[i-2];
   var branchBase = document.getElementsByClassName('base-ref')[0];
   var branchHead = document.getElementsByClassName('head-ref')[0];
-  var obj = { method : "pull" , repo : repoName , branchBase : branchBase.textContent , branchHead : branchHead.textContent ,author:authorName};
+  var obj;
+  if(branchBase.textContent.indexOf(':')==-1){
+    obj = { method : "pull" , repo : repoName , branchBase : branchBase.textContent , branchHead : branchHead.textContent ,author:authorName,author2:authorName};
+  }
+  else{
+    var branchArray = branchBase.textContent.split(':');
+    branchBase = branchArray[1];
+    authorName = branchArray[0];
+    branchArray = branchHead.textContent.split(':');
+    branchHead = branchArray[1];
+    var author2 = branchArray[0];
+    obj = { method : "pull" , repo : repoName , branchBase : branchBase , branchHead : branchHead ,author:authorName,author2:author2};
+  }
   return obj;
 }
 

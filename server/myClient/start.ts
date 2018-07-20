@@ -130,15 +130,15 @@ async function handleRequestPull(obj){
   globalRepo = obj.repo;
   globalBranchHead = obj.branchHead;
   globalBranchBase = obj.branchBase;
-  if(ReposInServer.indexOf(obj.author+"@"+globalRepo+"_"+globalBranchBase)==-1||ReposInServer.indexOf(obj.author+"@"+globalRepo+"_"+globalBranchHead)==-1){
-    if (!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo)) {
+  if(ReposInServer.indexOf(obj.author+"@"+globalRepo+"_"+globalBranchBase)==-1||ReposInServer.indexOf(obj.author2+"@"+globalRepo+"_"+globalBranchHead)==-1){
+    if ((!fs.existsSync(workingDirectory+"/"+obj.author+"@"+obj.repo))||(!fs.existsSync(workingDirectory+"/"+obj.author2+"@"+obj.repo))) {
       console.log("directory does not exists");
       console.log("first clone it using the extension");
       return {method:"repoNotInServerWorking"};
     }
     else{
-      if (!fs.existsSync(serverDirectory+"/"+obj.author+"@"+obj.repo+"_"+obj.branchHead)) {
-        ReposInServer.push(obj.author+"@"+obj.repo+"_"+obj.branchHead);
+      if (!fs.existsSync(serverDirectory+"/"+obj.author2+"@"+obj.repo+"_"+obj.branchHead)) {
+        ReposInServer.push(obj.author2+"@"+obj.repo+"_"+obj.branchHead);
       }
       if (!fs.existsSync(serverDirectory+"/"+obj.author+"@"+obj.repo+"_"+obj.branchBase)) {
         ReposInServer.push(obj.author+"@"+obj.repo+"_"+obj.branchBase);
@@ -154,17 +154,17 @@ async function handleRequestPull(obj){
     }
   }
   if(globalCurrentWorkspace){
-    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+globalRepo+"_"+globalBranchHead,name:obj.author+"@"+globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
+    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author2+"@"+globalRepo+"_"+globalBranchHead,name:obj.author2+"@"+globalRepo+"_"+globalBranchHead}],removed:[{uri:pathToUri(serverDirectory)+"/"+globalCurrentWorkspace,name:globalCurrentWorkspace}]}});
   }
   else{
-    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author+"@"+globalRepo+"_"+globalBranchHead,name:obj.author+"@"+globalRepo+"_"+globalBranchHead}],removed:[]}});
+    await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{added:[{uri:pathToUri(serverDirectory)+"/"+obj.author2+"@"+globalRepo+"_"+globalBranchHead,name:obj.author2+"@"+globalRepo+"_"+globalBranchHead}],removed:[]}});
   }
   forReference = false;
-  globalCurrentWorkspace = obj.author+"@"+globalRepo+"_"+globalBranchHead;
+  globalCurrentWorkspace = obj.author2+"@"+globalRepo+"_"+globalBranchHead;
   console.log("setting gcW as: "+globalCurrentWorkspace);
   //await t.connection._rpc.sendNotification('workspace/didChangeWorkspaceFolders',{event:{removed:[],added:[{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchBase,name:globalBranchBase},{uri:pathToUri(serverDirectory)+"/"+globalRepo+"_"+globalBranchHead,name:globalBranchHead}]}});
   var t0 = performance.now();
-  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.author+"@"+obj.repo+"_"+obj.branchHead},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
+  var testR = {textDocument: {uri : pathToUri(serverDirectory)+"/"+obj.author2+"@"+obj.repo+"_"+obj.branchHead},position : {line:0,character:0}};//{textDocument: textidentifier,position : obj}
   const defR = await t.connection.gotoDefinition(testR);
   console.log("time in check: "+(performance.now()-t0));
   return {method:"serverStarted"};

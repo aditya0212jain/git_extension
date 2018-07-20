@@ -47,7 +47,7 @@ function reqListener () {
 *@param {string} repo name of the repo
 *@param {string[]} branchList names of the branches
 */
-function addSpans(type,repo,branchList,author){
+function addSpans(type,repo,branchList,author,author2){
   console.log("in");
   var outSpan = document.getElementsByClassName("blob-code-inner");
   for(j=0;j<outSpan.length;j++){
@@ -88,14 +88,16 @@ function addSpans(type,repo,branchList,author){
               objRequest = {method:"query",query:queryObject,type:type,branchType:"base",repo:repo,branch:branchList[0],author:author};
             }else if(i==3){
               var queryObject = getQueryObject(this,type,repo,branchList,author);
-              objRequest = {method:"query",query:queryObject,type:type,branchType:"head",repo:repo,branch:branchList[1],author:author};
+              objRequest = {method:"query",query:queryObject,type:type,branchType:"head",repo:repo,branch:branchList[1],author:author2};
             }else if(i==2){
               var argumentForUnified = getBranchUnified(td);
               //console.log(argumentForUnified);
               var queryObject = getQueryObject(this,type,repo,branchList,author,argumentForUnified);
               var tempBranch;
+              var tempAuthor;
               argumentForUnified.branch=='base' ? tempBranch=branchList[0] : tempBranch = branchList[1];
-              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch,repo:repo,branch:tempBranch,author:author};//for unified view
+              argumentForUnified.branch=='base' ? tempAuthor=author : tempAuthor = author2;
+              objRequest = {method:"query",query:queryObject,type:type,branchType:argumentForUnified.branch,repo:repo,branch:tempBranch,author:tempAuthor};//for unified view
             }
           }
             sendToServer(objRequest);

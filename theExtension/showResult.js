@@ -135,7 +135,7 @@ function showSamePullResult(result){
   }
   var objData = getPullObject();
   //using setTimeout to wait for the content to load if the result has the line which is hidden
-  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead],objData.author);myCode();},2000);
+  setTimeout(function(){addSpans(objData.method,objData.repo,[objData.branchBase,objData.branchHead],objData.author,objData.author2);myCode();},2000);
 
 }
 
