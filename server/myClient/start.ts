@@ -143,7 +143,7 @@ async function handleRequestPull(obj){
       if (!fs.existsSync(serverDirectory+"/"+obj.author+"@"+obj.repo+"_"+obj.branchBase)) {
         ReposInServer.push(obj.author+"@"+obj.repo+"_"+obj.branchBase);
       }
-      runShellPull(obj.repo,obj.branchBase,obj.branchHead,obj.author);
+      runShellPull(obj.repo,obj.branchBase,obj.branchHead,obj.author,obj.author2);
       if(!serverBusy){
         serverBusy = true;
         if(!forReference){
@@ -169,7 +169,6 @@ async function handleRequestPull(obj){
   console.log("time in check: "+(performance.now()-t0));
   return {method:"serverStarted"};
 }
-
 /**
 *Handler function for query from the local server
 *@function
